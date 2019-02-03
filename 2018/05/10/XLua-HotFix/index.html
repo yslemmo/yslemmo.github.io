@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在使用Ulua方法进行热更新的时候，在项目的开发阶段就必要用独立的Lua脚本实现，这样才能使用Ulua来进行热更新，但是如果一个项目完成之后发现需要进行热更新，这个时候用ULua就非常不方便了。但是XLua可以解决这个问题，解决方案就是“HotFix”热补丁。（对项目进行修补）实现方式：  对要进行“修补”的C#类，在该类的头部[Hotfix]标签来标记，对于已经使用了[hotfix]标记了的类">
+<meta name="keywords" content="热更新,xLua,Untiy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XLua_HotFix热补丁修复">
+<meta property="og:url" content="http://yslemmo.github.io/2018/05/10/XLua-HotFix/index.html">
+<meta property="og:site_name" content="Lemmo&#39;s Blog">
+<meta property="og:description" content="在使用Ulua方法进行热更新的时候，在项目的开发阶段就必要用独立的Lua脚本实现，这样才能使用Ulua来进行热更新，但是如果一个项目完成之后发现需要进行热更新，这个时候用ULua就非常不方便了。但是XLua可以解决这个问题，解决方案就是“HotFix”热补丁。（对项目进行修补）实现方式：  对要进行“修补”的C#类，在该类的头部[Hotfix]标签来标记，对于已经使用了[hotfix]标记了的类">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://op9nb8t4b.bkt.clouddn.com/18-5-10/29613175.jpg">
+<meta property="og:updated_time" content="2018-05-10T13:27:26.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XLua_HotFix热补丁修复">
+<meta name="twitter:description" content="在使用Ulua方法进行热更新的时候，在项目的开发阶段就必要用独立的Lua脚本实现，这样才能使用Ulua来进行热更新，但是如果一个项目完成之后发现需要进行热更新，这个时候用ULua就非常不方便了。但是XLua可以解决这个问题，解决方案就是“HotFix”热补丁。（对项目进行修补）实现方式：  对要进行“修补”的C#类，在该类的头部[Hotfix]标签来标记，对于已经使用了[hotfix]标记了的类">
+<meta name="twitter:image" content="http://op9nb8t4b.bkt.clouddn.com/18-5-10/29613175.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yslemmo.github.io/2018/05/10/XLua-HotFix/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>XLua_HotFix热补丁修复 | Lemmo's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemmo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个人的碎碎念</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yslemmo.github.io/2018/05/10/XLua-HotFix/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lemmo">
+      <meta itemprop="description" content="一个伪文青">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/32269?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemmo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">XLua_HotFix热补丁修复
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-10 20:51:14 / 修改时间：21:27:26" itemprop="dateCreated datePublished" datetime="2018-05-10T20:51:14+08:00">2018-05-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p>在使用Ulua方法进行热更新的时候，在项目的开发阶段就必要用独立的Lua脚本实现，这样才能使用Ulua来进行热更新，但是如果一个项目完成之后发现需要进行热更新，这个时候用ULua就非常不方便了。但是XLua可以解决这个问题，解决方案就是<strong>“HotFix”热补丁</strong>。（对项目进行修补）实现方式：</p>
+<blockquote>
+<p>对要进行“修补”的C#类，在该类的头部[Hotfix]标签来标记，对于已经使用了<code>[hotfix]</code>标记了的类，可以通过“Lua”代码修改“类中的方法”。</p>
+</blockquote>
+<h1 id="使用HotFix进行热修复"><a href="#使用HotFix进行热修复" class="headerlink" title="使用HotFix进行热修复"></a>使用HotFix进行热修复</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="添加宏信息"><a href="#添加宏信息" class="headerlink" title="添加宏信息"></a>添加宏信息</h3><blockquote>
+<p>File–&gt; Build Settings… –&gt; Player Settings… –&gt; Configuration：Scripting Define Symbols：HOTFIX_ENABLE；（对于每一个平台都需要添加这条宏信息！）</p>
+</blockquote>
+<p><img src="http://op9nb8t4b.bkt.clouddn.com/18-5-10/29613175.jpg" alt=""></p>
+<h3 id="执行菜单生成命令"><a href="#执行菜单生成命令" class="headerlink" title="执行菜单生成命令"></a>执行菜单生成命令</h3><p><strong>XLua-&gt;Generate Code</strong>，该命令执行完毕后会生成一堆Wrap 文件，存放到XLua/Gen 文件夹下。</p>
+<h3 id="执行菜单注入命令"><a href="#执行菜单注入命令" class="headerlink" title="执行菜单注入命令"></a>执行菜单注入命令</h3><p><strong>XLua-&gt;Hotfix Inject In Editor</strong>，成功之后，会在控制台输出：“hotfix inject finish!”或者“had injected!”。</p>
+<ul>
+<li>如果出现红色警告提示“please install the Tools”，就需要把Tools 文件夹拷贝到项目中，和Assets 文件夹同级别位置。</li>
+<li>只要修改过C#中的代码，就需要重新执行注入命令！（否则会报错）</li>
+</ul>
+<h1 id="HotFix热修复案例"><a href="#HotFix热修复案例" class="headerlink" title="HotFix热修复案例"></a>HotFix热修复案例</h1><h2 id="Hotfix语法"><a href="#Hotfix语法" class="headerlink" title="Hotfix语法"></a>Hotfix语法</h2><ul>
+<li>引入命名空间：<code>using Xlua;</code></li>
+<li>对要进行热修复的C#类用【hotfix】标记</li>
+<li>编写hotfix命令：<code>xlua.hotfix(CS.类名, &#39;方法名&#39;, lua 方法)</code>（对于CS.类中的某个方法使用lua方法修复）</li>
+<li>创建XLua虚拟机对象（Lua解析器），使用Dostring方法执行。</li>
+</ul>
+<h2 id="修复案例"><a href="#修复案例" class="headerlink" title="修复案例"></a>修复案例</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> XLua;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Hotfix</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HotFixDemo</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> LuaEnv luaEnv;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> hotfixStrOne = <span class="string">@"</span></span><br><span class="line"><span class="string">        xlua.hotfix(CS.HotFixDemo, 'Hello', function()</span></span><br><span class="line"><span class="string">            print('Lua Hello~~')    </span></span><br><span class="line"><span class="string">        end)</span></span><br><span class="line"><span class="string">    "</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> hotfixStrTwo = <span class="string">@"</span></span><br><span class="line"><span class="string">        xlua.hotfix(CS.HotFixDemo, 'Add', function(self, a, b)</span></span><br><span class="line"><span class="string">            print('Lua中的乘法:' .. a*b)</span></span><br><span class="line"><span class="string">        end)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    "</span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        luaEnv = <span class="keyword">new</span> LuaEnv();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(Input.GetKeyDown(KeyCode.A))&#123;</span><br><span class="line">            Hello();</span><br><span class="line">            Add(<span class="number">5</span>, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Space))&#123;</span><br><span class="line">            luaEnv.DoString(hotfixStrOne);</span><br><span class="line">            luaEnv.DoString(hotfixStrTwo);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Hello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        Debug.Log(<span class="string">"C# Hello~~"</span>);&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>&#123;</span><br><span class="line">        Debug.Log(<span class="string">"C#中的加法："</span> + (a + b));&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有参方法修复时，需要传递当前脚本对象this，在lua 中用self 代替。</li>
+<li>要修复无参的方法，但是那个方法内使用到了该类中的字段，如果想要在Lua代码中方法到，有两种方法：<ol>
+<li>C#类中的字段公开（使用Public修饰），在lua代码中通过<code>self.字段名</code>的方式来方法（破坏了C#语言的“封装性”）</li>
+<li>在lua 语言中，使用代码获取C#类中private 成员的访问权<code>xlua.private_accessible(CS.类名)</code>，这样就可以在Lua 脚本中访问到C#类当中的私有成员，同时不会破坏C#原有的封装性和逻辑关系。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/热更新/" rel="tag"># 热更新</a>
+          
+            <a href="/tags/xLua/" rel="tag"># xLua</a>
+          
+            <a href="/tags/Untiy/" rel="tag"># Untiy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/07/SimpleFrameWork-Introduction/" rel="next" title="SimpleFrameWork框架简单介绍">
+                <i class="fa fa-chevron-left"></i> SimpleFrameWork框架简单介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/12/Python-Crawler-Use-Response/" rel="prev" title="Python_Crawler_Use_Response">
+                Python_Crawler_Use_Response <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/32269?v=3&s=460" alt="lemmo">
+            
+              <p class="site-author-name" itemprop="name">lemmo</p>
+              <p class="site-description motion-element" itemprop="description">一个伪文青</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用HotFix进行热修复"><span class="nav-number">1.</span> <span class="nav-text">使用HotFix进行热修复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-number">1.1.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加宏信息"><span class="nav-number">1.1.1.</span> <span class="nav-text">添加宏信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行菜单生成命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">执行菜单生成命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行菜单注入命令"><span class="nav-number">1.1.3.</span> <span class="nav-text">执行菜单注入命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HotFix热修复案例"><span class="nav-number">2.</span> <span class="nav-text">HotFix热修复案例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hotfix语法"><span class="nav-number">2.1.</span> <span class="nav-text">Hotfix语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复案例"><span class="nav-number">2.2.</span> <span class="nav-text">修复案例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemmo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
