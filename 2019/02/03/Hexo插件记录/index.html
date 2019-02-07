@@ -108,6 +108,7 @@
 
 
   <meta name="description" content="记录一些常用的Hexo插件">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo插件记录">
 <meta property="og:url" content="http://yslemmo.github.io/2019/02/03/Hexo插件记录/index.html">
@@ -115,7 +116,8 @@
 <meta property="og:description" content="记录一些常用的Hexo插件">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog-1258616090.cos.ap-chengdu.myqcloud.com/18-3-20/6928171.jpg">
-<meta property="og:updated_time" content="2019-02-06T16:12:25.418Z">
+<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190207160448.png">
+<meta property="og:updated_time" content="2019-02-07T08:15:07.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo插件记录">
 <meta name="twitter:description" content="记录一些常用的Hexo插件">
@@ -375,7 +377,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lemmo">
       <meta itemprop="description" content="一个伪文青">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/32269?v=3&s=460">
+      <meta itemprop="image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -430,7 +432,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-07 00:12:25" itemprop="dateModified" datetime="2019-02-07T00:12:25+08:00">2019-02-07</time>
+                <time title="修改时间：2019-02-07 16:15:07" itemprop="dateModified" datetime="2019-02-07T16:15:07+08:00">2019-02-07</time>
               
             
           </span>
@@ -476,7 +478,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">466</span>
+                <span title="本文字数">903</span>
               
 
               
@@ -490,7 +492,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -521,13 +523,30 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编辑 <code>站点配置文件</code>，新增以下内容到任意位置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编辑 <code>主题配置文件</code>，启用本地搜索功能：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Local search</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><strong>采坑注意：</strong>：在Next的主题配置文件中已经存在了<code>local_search</code>的语句了，不要重复添加，否则会报错。只需要搜索到相关位置，将<code>false</code>更改为<code>true</code>即可。搜索效果如下：<br><img src="http://blog-1258616090.cos.ap-chengdu.myqcloud.com/18-3-20/6928171.jpg" alt=""></p>
+<h2 id="图片预览插件：FancyBox"><a href="#图片预览插件：FancyBox" class="headerlink" title="图片预览插件：FancyBox"></a>图片预览插件：FancyBox</h2><p>Hexo-Next主题中已经有图片预览的功能了，如果要使用，在主题的配置中文件中把<code>FancyBox:False</code>改为<code>true</code>。但是不知道什么原因，我开启之后无法打开网站。考虑到可能是没有下载FancyBox这个插件的原因。FancyBox有两个版本，<code>FancyBox2</code>和<code>FancyBox3</code>，一般来说v2版本就够用了。</p>
+<p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190207160448.png" alt=""></p>
+<p>下面是安装插件的步骤（参考<a href="https://github.com/theme-next/theme-next-fancybox" target="_blank" rel="noopener">fancybox的github地址</a>））</p>
+<ol>
+<li><p>转到Next主题的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装FancyBox到<code>Source/lib</code>路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-fancybox <span class="built_in">source</span>/lib/fancybox</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在NexT的<code>_config.yml</code>中开启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fancybox: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next/<span class="built_in">source</span>/lib/fancybox</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <hr>
 <ul>
 <li><a href="http://blog.cofess.com/2017/08/16/comon-plug-in-and-usage-of-hexo-blog.html" target="_blank" rel="noopener">Hexo博客常用插件及用法</a>!</li>
@@ -552,6 +571,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+        </div>
       
 
       
@@ -633,7 +658,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/32269?v=3&s=460" alt="lemmo">
+              <img class="site-author-image" itemprop="image" src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/avatar.jpg" alt="lemmo">
             
               <p class="site-author-name" itemprop="name">lemmo</p>
               <p class="site-description motion-element" itemprop="description">一个伪文青</p>
@@ -646,7 +671,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -683,7 +708,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -762,7 +789,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -805,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本地搜索：Local-Search"><span class="nav-number">1.</span> <span class="nav-text">本地搜索：Local Search</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本地搜索：Local-Search"><span class="nav-number">1.</span> <span class="nav-text">本地搜索：Local Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片预览插件：FancyBox"><span class="nav-number">2.</span> <span class="nav-text">图片预览插件：FancyBox</span></a></li></ol></div>
             
 
           </div>
@@ -844,7 +873,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">30k</span>
+    <span title="站点总字数">31k</span>
   
 
   
@@ -853,7 +882,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">54 分钟</span>
+    <span title="站点阅读时长">56 分钟</span>
   
 </div>
 

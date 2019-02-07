@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用Scrapy遇到的问题汇总]]></title>
+    <url>%2F2019%2F02%2F07%2F%E4%BD%BF%E7%94%A8Scrapy%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB%2F</url>
+    <content type="text"><![CDATA[简单记录一下，自己再安装鹤使用Scrapy框架过程中遇到的各种问题及解决办法 安装使用环境：Win10 1803、Python 3.6.3 利用pip命令可以直接安装Scrapy，但是会出现一些安装包装不上而报错，比如Twisted。可以先去这个Pyhton Extension Packages下载Twisted到本地，然后单独安装 1pip install twisted （注意要下载Twisted‑18.9.0‑cp36‑cp36m‑win_amd64.whl不要下载错了，是cp36。否则安装的时候会提示is not a supported wheel on this platform） Scrapy输出文件编码为’utf-8’在编写爬虫中文内容输出到*.json文件后发现中文是Unicode编码，尝试了各种方法测试都不成功，后来找到一种方法终于成功了，把Scrapy项目文件夹中的Setting.py增加一行配置： 1FEED_EXPORT_ENCODING = 'utf-8' scrapy异常：http status code is not handled or allowed原因是http状态码没有被识别，需要在settings.py中添加这个状态码信息，同样在Setting.py添加一行： 1HTTPERROR_ALLOWED_CODES = [404] 未完待补充……]]></content>
+      <categories>
+        <category>Crwaler</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Scrapy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[单例模式]]></title>
     <url>%2F2019%2F02%2F03%2F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[一、单例模式介绍“单例”字面意思上理解为——一个类只有一个实例，所以单例模式也就是保证一个类只有一个实例的一种实现方法罢了 [test][1] (设计模式其实就是帮助我们解决实际开发过程中的方法, 该方法是为了降低对象之间的耦合度,然而解决方法有很多种,所以前人就总结了一些常用的解决方法为书籍,从而把这本书就称为设计模式) 官方定义：确保一个类只有一个实例,并提供一个全局访问点。 二、为什么会有单例模式为什么要有单例模式的？它在什么情况下使用的？从单例模式的定义中我们可以看出——单例模式的使用自然是当我们的系统中某个对象只需要一个实例的情况， 例如:操作系统中只能有一个任务管理器,操作文件时,同一时间内只允许一个实例对其操作等,既然现实生活中有这样的应用场景,自然在软件设计领域必须有这样的解决方案了(因为软件设计也是现实生活中的抽象)，所以也就有了单例模式了。 三、Mono子类C#脚本单例 定义一个当前类的公开，静态，当前类类型返回值的一个字段； 1public static Master Instance; //一个名为Master的类 在Awake 事件方法中完成该字段的赋值。 1234void Awake()&#123; Instance = this;&#125; 在其他类中使用单例 1Master.Instance.字段/方法; 四、非Mono 子类C#脚本单例 定义一个当前类的私有，静态，当前类类型返回值的字段； 1private static ClassNmae instance; 创建一个无参私有构造方法 1private ClassNmae() &#123; &#125; 创建一个公开，静态，用于封装字段的属性；在该属性内实现单例，（或者可以创建公开的、静态的方法） 1234567891011public static ClassNmae Instance &#123; get &#123; if (instance == null) &#123; instance = new ClassNmae(); &#125; return instance; &#125; &#125; 在其他类中使用单例]]></content>
@@ -48,10 +60,13 @@
   <entry>
     <title><![CDATA[Hexo插件记录]]></title>
     <url>%2F2019%2F02%2F03%2FHexo%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[记录一些常用的Hexo插件 NexT官方集成插件介绍：https://theme-next.iissnan.com/third-party-services.html 本地搜索：Local Search 安装 hexo-generator-searchdb，在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑 站点配置文件，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 编辑 主题配置文件，启用本地搜索功能： 123# Local searchlocal_search: enable: true 采坑注意：：在Next的主题配置文件中已经存在了local_search的语句了，不要重复添加，否则会报错。只需要搜索到相关位置，将false更改为true即可。搜索效果如下： Hexo博客常用插件及用法!]]></content>
+    <content type="text"><![CDATA[记录一些常用的Hexo插件 NexT官方集成插件介绍：https://theme-next.iissnan.com/third-party-services.html 本地搜索：Local Search 安装 hexo-generator-searchdb，在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑 站点配置文件，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 编辑 主题配置文件，启用本地搜索功能： 123# Local searchlocal_search: enable: true 采坑注意：：在Next的主题配置文件中已经存在了local_search的语句了，不要重复添加，否则会报错。只需要搜索到相关位置，将false更改为true即可。搜索效果如下： 图片预览插件：FancyBoxHexo-Next主题中已经有图片预览的功能了，如果要使用，在主题的配置中文件中把FancyBox:False改为true。但是不知道什么原因，我开启之后无法打开网站。考虑到可能是没有下载FancyBox这个插件的原因。FancyBox有两个版本，FancyBox2和FancyBox3，一般来说v2版本就够用了。 下面是安装插件的步骤（参考fancybox的github地址）） 转到Next主题的目录 1$ cd themes/next 安装FancyBox到Source/lib路径 1git clone https://github.com/theme-next/theme-next-fancybox source/lib/fancybox 在NexT的_config.yml中开启 1fancybox: true 更新 12$ cd themes/next/source/lib/fancybox$ git pull Hexo博客常用插件及用法!]]></content>
       <categories>
         <category>默认</category>
       </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[XLua_HotFix热补丁修复]]></title>
