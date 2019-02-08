@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[使用Scrapy遇到的问题汇总]]></title>
-    <url>%2F2019%2F02%2F07%2F%E4%BD%BF%E7%94%A8Scrapy%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB%2F</url>
-    <content type="text"><![CDATA[简单记录一下，自己再安装鹤使用Scrapy框架过程中遇到的各种问题及解决办法 安装使用环境：Win10 1803、Python 3.6.3 利用pip命令可以直接安装Scrapy，但是会出现一些安装包装不上而报错，比如Twisted。可以先去这个Pyhton Extension Packages下载Twisted到本地，然后单独安装 1pip install twisted （注意要下载Twisted‑18.9.0‑cp36‑cp36m‑win_amd64.whl不要下载错了，是cp36。否则安装的时候会提示is not a supported wheel on this platform） Scrapy输出文件编码为’utf-8’在编写爬虫中文内容输出到*.json文件后发现中文是Unicode编码，尝试了各种方法测试都不成功，后来找到一种方法终于成功了，把Scrapy项目文件夹中的Setting.py增加一行配置： 1FEED_EXPORT_ENCODING = 'utf-8' scrapy异常：http status code is not handled or allowed原因是http状态码没有被识别，需要在settings.py中添加这个状态码信息，同样在Setting.py添加一行： 1HTTPERROR_ALLOWED_CODES = [404] 未完待补充……]]></content>
+    <title><![CDATA[使用Item Pipeline把Scrapy爬取的数据存储到MongoDB]]></title>
+    <url>%2F2019%2F02%2F08%2FScrapy-To-MongoDB-By-Pipeline%2F</url>
+    <content type="text"><![CDATA[使用Item Pipeline(项目管道)来保存使用Scrapy爬取的item对象 Pipeline是什么 当Item在Spider中被收集之后，它将会被传递到Item Pipeline，一些组件会按照一定的顺序执行对Item的处理。 每个item pipeline组件(有时称之为“Item Pipeline”)是实现了简单方法的Python类。他们接收到Item并通过它执行一些行为，同时也决定此Item是否继续通过pipeline，或是被丢弃而不再进行处理。 ——Scrapy Doc item pipeline的功能： 清理HTML数据 验证爬取的数据(检查item包含某些字段) 查重(并丢弃) 将爬取结果保存到数据库中 在pipeline.py中编写MongoDBPipeline123456789101112131415161718192021222324252627from scrapy import Itemimport pymongoclass MonoDBPipeline(object): ''' 将item写入到MongoDB中 ''' @classmethod def from_crawler(cls, crawler): # 访问配置文件取mongodb的url和name，如果没有则使用默认值 cls.DB_URL = crawler.settings.get('MONGO_DB_URI', 'mongodb://localhost:27017') cls.DB_NAME = crawler.settings.get('MONGO_DB_NAME', 'scrapy_data') return cls() def open_spider(self, spider): self.client = pymongo.MongoClient(self.DB_URL) self.db = self.client[self.DB_NAME] def close_spider(self, spider): self.client.close() def process_item(self, item, spider): collection = self.db[spider.name] # 三元表达式（调用前先对item的类型进行判断，如果item是Item对象，就将其转换为字典) post = dict(item) if isinstance(item, Item) else item collection.insert_one(post) return item from_crawler(cls, crawler) 如果存在，则调用这个类方法来从爬行器创建管道实例。它必须返回管道的新实例。爬虫对象提供对所有Scrapy核心组件的访问，如设置和信号；它是管道访问这些组件并将其功能挂钩到Scrapy的一种方式。 cls（item pipeline类）（如果创建MongoDBPipeline类就为MongoDBPipeline类对象 crawler（Crawlerobject） - 使用此管道的crawler（可以通过crawler.settings访问该配置setting.py文件） open_spider() &amp; close_spider()在Spider整个爬取过程中，数据库的连接和关闭操作只需要进行一次，应在开始处理数据之前连接数据库，并在处理完所有数据之后关闭数据库，因此实现以下两个方法(在Scrapy打开和关闭时被调用)。 process_item(self, item, spider) 每个项目管道组件是一个Python类，必须实现以下方法： process_item(self, item, spider)； 对于每个项目管道组件调用此方法。process_item() 必须：返回一个带数据的dict，返回一个Item （或任何后代类）对象，返回一个Twisted Deferred或者raise DropItemexception。 在process_item中实现MongoDB数据库的写入操作，使用self.db和spider.name获取一个集合(collection)，然后将数据插入该集合。 在配置文件中配置MongoDB的url和name打开Setting.py在任何位置写入（如果不写则默认使用MongoPipeLine.from_crwaler()中的信息）： 12MONGO_DB_URI = 'mongodb://localhost:27017'MONGO_DB_NAME = 'python_ZhuanLan' 启动MongoPipeline组件打开Setting.py，把MongoPipeline添加到ITEM_PIPELINES中，后面的数字代表它们的运算优先级（顺序），item按数字从低到高的顺序，通过pipeline（1-1000，数字越低组件的优先级越高）： 123ITEM_PIPELINES = &#123; 'zhihu_Crawl.pipelines.MonoDBPipeline':300,&#125; 参考资料： Scrapy使用Pipeline写入MongoDB Scrapy中文文档-Item Pipeline]]></content>
       <categories>
-        <category>Crwaler</category>
+        <category>Scrapy</category>
+      </categories>
+      <tags>
+        <tag>Crawler</tag>
+        <tag>MongoDB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Scrapy遇到的问题汇总]]></title>
+    <url>%2F2019%2F02%2F07%2FThe-Problem-Collection-Use-Scrapy%2F</url>
+    <content type="text"><![CDATA[简单记录一下，自己再安装鹤使用Scrapy框架过程中遇到的各种问题及解决办法 安装使用环境：Win10 1803、Python 3.6.3 利用pip命令可以直接安装Scrapy，但是会出现一些安装包装不上而报错，比如Twisted。可以先去这个Pyhton Extension Packages下载Twisted到本地，然后单独安装 1pip install twisted （注意要下载Twisted‑18.9.0‑cp36‑cp36m‑win_amd64.whl不要下载错了，是cp36。否则安装的时候会提示is not a supported wheel on this platform） Scrapy输出文件编码为’utf-8’在编写爬虫中文内容输出到*.json文件后发现中文是Unicode编码，尝试了各种方法测试都不成功，后来找到一种方法终于成功了，把Scrapy项目文件夹中的Setting.py增加一行配置： 1FEED_EXPORT_ENCODING = 'utf-8' Scrapy导出csv文件乱码使用Vscode的通过编码重新保存，将文件的编码格式改为UTF-8 with BOM，再重新用Excel打开csv就正常了。 参考：https://blog.csdn.net/u011361138/article/details/79912895 Scrapy异常：http status code is not handled or allowed原因是http状态码没有被识别，需要在settings.py中添加这个状态码信息，同样在Setting.py添加一行（如果是404错误就改为404，如果是400错误，就改成400： 123HTTPERROR_ALLOWED_CODES = [状态码]HTTPERROR_ALLOWED_CODES = [404]HTTPERROR_ALLOWED_CODES = [400] 另一种方法是在Spider函数中添加 12handle_httpstatus_list = [404]handle_httpstatus_list = [400] 如果还是出现400错误问题，我观察到后面的Debug信息是：*/robots.txt。 robots.txt（爬虫协议)是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。——wiki 知乎robots地址：https://www.zhihu.com/robots.txt 淘宝robots地址：https://www.taobao.com/robots.txt 总结来说这个爬虫协议允许爬虫机器爬取的范围，不过这个协议属于君子协议，Scrapy默认是遵循robot协议，需要在Setting.py中改变ROBOTSTXT_OBEY的值为False。 在做了上面的设置之后还是400错误，可以给Reaqueset请求添加一个Headers头部，可以让爬虫伪装成浏览器 1234567headers = &#123; 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125;def start_requests(self): url = 'http://www.hnfnu.edu.cn/index/xyxw/342.htm' # 这样就不要设置Start_urls变量了 yield Request(url, headers=self.headers) 不过在我今天在爬去知乎专栏的文章（Ajax加载），调试了很久也只能抓取到第一次加载的列表内容，检查了后面的yiled Requeset(url, callback=self.parse) 设置没有问题，然后我把Headers信息添加在Setting.py中问题就解决了： 123DEFAULT_REQUEST_HEADERS = &#123; 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125; 未完待补充……]]></content>
+      <categories>
+        <category>Scrapy</category>
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Scrapy</tag>
+        <tag>Debug</tag>
       </tags>
   </entry>
   <entry>
