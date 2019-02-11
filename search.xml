@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[抓取再豆瓣搜索到的图片]]></title>
-    <url>%2F2019%2F02%2F11%2Fcrawl-douban-image-and-download%2F</url>
-    <content type="text"><![CDATA[爬取豆瓣图片并下载到本地 使用Python抓取和周迅有关的图片并下载到本地。 目标​ 豆瓣搜索“周迅”的相关图片，并且下载到本地 网站分析豆瓣图片是通过Ajax动态加载的，按F12打开Chrome浏览器的开发者工具，图片是通过GET来请求的，请求地址是： 1https://www.douban.com/j/search_photo?q=%E5%91%A8%E8%BF%85&amp;limit=20&amp;start=0 其中：【q=：关键字| limit=：一次请求的数量（修改了也没用） | start=：请求的开始位置（偏移量）】。点开Preview，看到网站给我们发送了一个20个长度的json数据包 点开第一个，这里面有几个key，我们需要的是图片的url，另外还可以存储图片的title。这里面可以看到有两个url，分别是scr和url。 把它们全部在地址栏打开，发现这个scr链接是图片的缩略图地址，这个url链接是图片post的主页地址。这两个都不是我们想要的，但是可以右键看一下图片的真实地址 复制出来图片的地址，观察到图片的命名就是上面接受的id值，这样我们就可以通过获取每张图片的id值来组拼出图片的下载地址了。 1https://img3.doubanio.com/view/photo/l/public/p637462204.webp 完整的爬取定义Header，图片的存储地址，保存抓取到的图片item 12345678910dir = './image' # 图片地址imageItemList = [] # 用列表存储所有的图片item（字典）headers = &#123; 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'Accept-Encoding':'gzip, deflate, sdch', 'Accept-Language':'zh-CN,zh;q=0.8', 'Cache-Control':'max-age=0', 'Connection':'keep-alive', 'User-Agent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36' &#125; 获取并存储图片的url地址以键值对的方式存储到字典中，并把把所有的item字典追加到列表中1234567891011121314151617import requestsimport jsondef get_img_url(): ''' 获取图片的url下载地址 ''' for i in range(0,300,20): url = 'https://www.douban.com/j/search_photo?q=%E5%91%A8%E8%BF%85&amp;limit=20&amp;start=0' response = requests.request('Get', url,headers=headers) images = json.loads(response.content.decode('utf-8'))['images'] for j in range(0, len(images)): imageItem = &#123;&#125; imageItem['title'] = images[j]['title'] id = images[j]['id'] imageItem['url'] = 'https://img3.doubanio.com/view/photo/l/public/p'+str(id)+'.webp' imageItemList.append(imageItem) 通过For循环获取，range(0,300,20)，表示要获取的图片数量为300张，Sep（步长）为20，因为每次获取的是20条数据。 通过response.content，获取response返回的内容，之前用response.body提示错误。这个应该是scrapy自己封装的属性。 通过json.loads()把json对象转换成Python对象，这样方便Python去解析。 图片的url是通过id值来组拼的。 从列表获取图片链接并下载图片，然后使用dwebp工具转换图片格式 1234567891011121314151617181920212223242526272829def request_download(url, path): ''' 下载文件的方法 ''' r = requests.get(url) with open(path, 'wb') as f: f.write(r.content)def download_img_from(): ''' 从数组中取出所有图片链接并下载，下载后使用dwebp转换图片格式为png，并删除dwebp源图片 ''' index = 1 # 判断是否电脑中是否有此目录，如果没有则创建一个空目录 if not os.path.exists(dir): os.mkdir(dir) for item in imageItemList: url = item['url'] fullpath = dir +'/'+ str(index) + '.webp' # 调用下载方法 request_download(url, fullpath) try: print('开始转换第'+str(index)+'张图片：') os.system('dwebp ./image/%d.webp -o ./image/%d.png' %(index,index)) print('转换第'+str(index)+'张图片完成.') os.remove('./image/'+str(index)+'.webp') #删除webp格式的图片 except Exception as err: print(err) index += 1 从上面的图片item中获取每张图片的url，调用下载方法。 注意：这里获取下载的图片是webp编码的，需要使用dwebp工具进行转换。 WebP（Google开发），是一种同时提供了有损压缩与无损压缩（可逆压缩）的图片文件格式，派生自影像编码格式VP8。在同样大小的图片文件中，能比其他格式更加清晰，能提高网页加载速度，减少网络存储。 安装webp工具直接在scoop中搜索安装（libwqbp）即可，还可以直接去google的webp地址去下载安装，安装完成之后，把安装路径里面bin文件夹路径添加到环境变量中去。 使用webp1dwebp *.webp -o *.png # 第一个是webp文件名，第二个是转换后的png文件名。 启动爬虫程序 先调用爬取路径的方法，再调用下载文件的方法。 123if __name__ == "__main__": get_img_url() download_img_from() 启动爬虫]]></content>
+    <title><![CDATA[使用Scrapy爬虫抓取并下载豆瓣图片]]></title>
+    <url>%2Fpost%2Fcrawl-douban-image-by-scrapy.html</url>
+    <content type="text"><![CDATA[上一篇笔记我直接自己写了一个Python来抓取豆瓣图片，为了让我更加熟悉Scrapy，我又用Scrapy做了一遍。 网站分析直接参考上一篇的目标和网站分析。 工具分析 需要添加一个自己的下载图片的Item Pipeline。 爬虫程序创建一个新的Scrapy项目12scrapy startproject db_img_crawlerscrapy genspider dbimg htpp://douban.com 编写items.py123class ImagesItem(scrapy.Item): image_title = scrapy.Field() # 图片的标题 image_url = scrapy.Field() # 图片的地址 编写主Spider文件，dbimg_crawler.py12345678910111213141516171819202122232425262728import scrapyimport jsonfrom doubanimg.items import ImagesItemfrom scrapy import Requestfrom requests import requestclass DbimgSpider(scrapy.Spider): name = 'dbimg' def start_requests(self): headers = &#123;'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125; for i in range(0,300,20): url = 'https://www.douban.com/j/search_photo?q=%E7%8E%8B%E7%A5%96%E8%B4%A4&amp;limit=20&amp;start=' + str(i) yield Request(url,callback=self.parse_one) def parse_one(self, response): item = ImagesItem() images = json.loads(response.body.decode('utf-8')) images = images['images'] for i in range(0,len(images)): item['image_title'] = images[i]['title'] image_id = images[i]['id'] item['image_url'] = 'https://img3.doubanio.com/view/photo/l/public/p'+str(image_id)+'.webp' # print(item) yield item 直接在start_requeset()中开启循环抓取，方法yield Request，回调给parse_one()抓取每一次的20条数据。 图片的地址同时是由获取到的id值来组拼成的。 编辑piepelines.py123456789101112131415161718192021import scrapyfrom scrapy.pipelines.images import ImagesPipelinefrom scrapy.exceptions import DropItemclass MyImagePipeline(ImagesPipeline): def get_media_requests(self, item, info): yield scrapy.Request(item['image_url'], meta=&#123;'item':item&#125;) def file_path(self, request, response=None, info=None): # item = response.meta['item'] name = 'full/%s' % ((request.url.split('/')[-1]).split('.',1)[0]) + '.jpg' return name def item_completed(self, results, item, info): path = [x['path'] for ok,x in results if ok] if not path: raise DropItem('Item contains no images') print('Saving img...',item['image_url']) print('title',item['image_title']) return item 创建自己的Item Pipeline，继承ImagesPipeline(图片管道)，这个管道的特性有： 将所有下载的图片转换成通用的格式（JPG）和模式（RGB） 避免重新下载最近已经下载过的图片 缩略图生成 检测图像的宽/高，确保它们满足最小限制 要下载图片，需要重写get_media_requests()方法，方法内对图片URL返回一个Request。（默认返回None，表示没有图可下载）要想传递item对象可以把它写在request的meta里面。当下载完成之后，由管道接起，传递到item_completed()方法内。 如果想设置文件的名字，可以重写file_path()，可以通过item = response.meta[&#39;item&#39;]来接受item对象。 编辑Setting.py1234567891011121314151617181920212223242526272829设置HeaderDEFAULT_REQUEST_HEADERS = &#123; 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'Accept-Encoding':'gzip, deflate, sdch', 'Accept-Language':'zh-CN,zh;q=0.8', 'Cache-Control':'max-age=0', 'Connection':'keep-alive', 'User-Agent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'&#125;# 图片存储路径IMAGES_STORE = 'D:\\img'# 爬虫协议ROBOTSTXT_OBEY = False# 最大Requests数CONCURRENT_REQUESTS = 16# 下载延时DOWNLOAD_DELAY = 1# 关闭CookiesCOOKIES_ENABLED = False# 开始MyImagePipelineITEM_PIPELINES = &#123; 'doubanimg.pipelines.MyImagePipeline': 1,&#125; 启动爬虫程序1scrapy crawl dbimg 参考链接： 下载项目图片-scrapy中文文档]]></content>
+      <categories>
+        <category>Scrapy</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Scrapy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[抓取豆瓣搜索到的图片]]></title>
+    <url>%2Fpost%2Fcrawl-douban-image-and-download.html</url>
+    <content type="text"><![CDATA[使用Python抓取和周迅有关的图片并下载到本地。 目标豆瓣搜索“周迅”的相关图片，并且下载到本地 网站分析豆瓣图片是通过Ajax动态加载的，按F12打开Chrome浏览器的开发者工具，图片是通过GET来请求的，请求地址： 1https://www.douban.com/j/search_photo?q=%E5%91%A8%E8%BF%85&amp;limit=20&amp;start=0 其中：【q=：关键字| limit=：一次请求的数量（修改了也没用） | start=：请求的开始位置（偏移量）】。点开Preview，看到网站给我们发送了一个20个长度的json数据包 点开第一个，这里面有几个key，我们需要的是图片的url，另外还可以存储图片的title。这里面可以看到有两个url，分别是scr和url。 把它们全部在地址栏打开，发现这个scr链接是图片的缩略图地址，这个url链接是图片post的主页地址。这两个都不是我们想要的，但是可以右键看一下图片的真实地址 复制出来图片的地址，观察到图片的命名就是上面接受的id值，这样我们就可以通过获取每张图片的id值来组拼出图片的下载地址了。 1https://img3.doubanio.com/view/photo/l/public/p637462204.webp 完整的爬取定义Header，图片的存储地址，保存抓取到的图片item 12345678910dir = './image' # 图片地址imageItemList = [] # 用列表存储所有的图片item（字典）headers = &#123; 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'Accept-Encoding':'gzip, deflate, sdch', 'Accept-Language':'zh-CN,zh;q=0.8', 'Cache-Control':'max-age=0', 'Connection':'keep-alive', 'User-Agent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36' &#125; 获取并存储图片的url地址以键值对的方式存储到字典中，并把把所有的item字典追加到列表中1234567891011121314151617import requestsimport jsondef get_img_url(): ''' 获取图片的url下载地址 ''' for i in range(0,300,20): url = 'https://www.douban.com/j/search_photo?q=%E5%91%A8%E8%BF%85&amp;limit=20&amp;start=0' response = requests.request('Get', url,headers=headers) images = json.loads(response.content.decode('utf-8'))['images'] for j in range(0, len(images)): imageItem = &#123;&#125; imageItem['title'] = images[j]['title'] id = images[j]['id'] imageItem['url'] = 'https://img3.doubanio.com/view/photo/l/public/p'+str(id)+'.webp' imageItemList.append(imageItem) 通过For循环获取，range(0,300,20)，表示要获取的图片数量为300张，Sep（步长）为20，因为每次获取的是20条数据。 通过response.content，获取response返回的内容，之前用response.body提示错误。这个应该是scrapy自己封装的属性。 通过json.loads()把json对象转换成Python对象，这样方便Python去解析。 图片的url是通过id值来组拼的。 从列表获取图片链接并下载图片，然后使用dwebp工具转换图片格式 1234567891011121314151617181920212223242526272829def request_download(url, path): ''' 下载文件的方法 ''' r = requests.get(url) with open(path, 'wb') as f: f.write(r.content)def download_img_from(): ''' 从数组中取出所有图片链接并下载，下载后使用dwebp转换图片格式为png，并删除dwebp源图片 ''' index = 1 # 判断是否电脑中是否有此目录，如果没有则创建一个空目录 if not os.path.exists(dir): os.mkdir(dir) for item in imageItemList: url = item['url'] fullpath = dir +'/'+ str(index) + '.webp' # 调用下载方法 request_download(url, fullpath) try: print('开始转换第'+str(index)+'张图片：') os.system('dwebp ./image/%d.webp -o ./image/%d.png' %(index,index)) print('转换第'+str(index)+'张图片完成.') os.remove('./image/'+str(index)+'.webp') #删除webp格式的图片 except Exception as err: print(err) index += 1 从上面的图片item中获取每张图片的url，调用下载方法。 注意：这里获取下载的图片是webp编码的，需要使用dwebp工具进行转换。 WebP（Google开发），是一种同时提供了有损压缩与无损压缩（可逆压缩）的图片文件格式，派生自影像编码格式VP8。在同样大小的图片文件中，能比其他格式更加清晰，能提高网页加载速度，减少网络存储。 安装webp工具直接在scoop中搜索安装（libwqbp）即可，还可以直接去google的webp地址去下载安装，安装完成之后，把安装路径里面bin文件夹路径添加到环境变量中去。 使用webp1dwebp *.webp -o *.png # 第一个是webp文件名，第二个是转换后的png文件名。 启动爬虫程序 先调用爬取路径的方法，再调用下载文件的方法。 123if __name__ == "__main__": get_img_url() download_img_from() 启动爬虫]]></content>
       <categories>
         <category>clawl</category>
       </categories>
@@ -13,7 +25,7 @@
   </entry>
   <entry>
     <title><![CDATA[使用Item Pipeline把Scrapy爬取的数据存储到MongoDB]]></title>
-    <url>%2F2019%2F02%2F08%2FScrapy-To-MongoDB-By-Pipeline%2F</url>
+    <url>%2Fpost%2FScrapy-To-MongoDB-By-Pipeline.html</url>
     <content type="text"><![CDATA[使用Item Pipeline(项目管道)来保存使用Scrapy爬取的item对象 Pipeline是什么 当Item在Spider中被收集之后，它将会被传递到Item Pipeline，一些组件会按照一定的顺序执行对Item的处理。 每个item pipeline组件(有时称之为“Item Pipeline”)是实现了简单方法的Python类。他们接收到Item并通过它执行一些行为，同时也决定此Item是否继续通过pipeline，或是被丢弃而不再进行处理。 ——Scrapy Doc item pipeline的功能： 清理HTML数据 验证爬取的数据(检查item包含某些字段) 查重(并丢弃) 将爬取结果保存到数据库中 在pipeline.py中编写MongoDBPipeline123456789101112131415161718192021222324252627from scrapy import Itemimport pymongoclass MonoDBPipeline(object): ''' 将item写入到MongoDB中 ''' @classmethod def from_crawler(cls, crawler): # 访问配置文件取mongodb的url和name，如果没有则使用默认值 cls.DB_URL = crawler.settings.get('MONGO_DB_URI', 'mongodb://localhost:27017') cls.DB_NAME = crawler.settings.get('MONGO_DB_NAME', 'scrapy_data') return cls() def open_spider(self, spider): self.client = pymongo.MongoClient(self.DB_URL) self.db = self.client[self.DB_NAME] def close_spider(self, spider): self.client.close() def process_item(self, item, spider): collection = self.db[spider.name] # 三元表达式（调用前先对item的类型进行判断，如果item是Item对象，就将其转换为字典) post = dict(item) if isinstance(item, Item) else item collection.insert_one(post) return item from_crawler(cls, crawler) 如果存在，则调用这个类方法来从爬行器创建管道实例。它必须返回管道的新实例。爬虫对象提供对所有Scrapy核心组件的访问，如设置和信号；它是管道访问这些组件并将其功能挂钩到Scrapy的一种方式。 cls（item pipeline类）（如果创建MongoDBPipeline类就为MongoDBPipeline类对象 crawler（Crawlerobject） - 使用此管道的crawler（可以通过crawler.settings访问该配置setting.py文件） open_spider() &amp; close_spider()在Spider整个爬取过程中，数据库的连接和关闭操作只需要进行一次，应在开始处理数据之前连接数据库，并在处理完所有数据之后关闭数据库，因此实现以下两个方法(在Scrapy打开和关闭时被调用)。 process_item(self, item, spider) 每个项目管道组件是一个Python类，必须实现以下方法： process_item(self, item, spider)； 对于每个项目管道组件调用此方法。process_item() 必须：返回一个带数据的dict，返回一个Item （或任何后代类）对象，返回一个Twisted Deferred或者raise DropItemexception。 在process_item中实现MongoDB数据库的写入操作，使用self.db和spider.name获取一个集合(collection)，然后将数据插入该集合。 在配置文件中配置MongoDB的url和name打开Setting.py在任何位置写入（如果不写则默认使用MongoPipeLine.from_crwaler()中的信息）： 12MONGO_DB_URI = 'mongodb://localhost:27017'MONGO_DB_NAME = 'python_ZhuanLan' 启动MongoPipeline组件打开Setting.py，把MongoPipeline添加到ITEM_PIPELINES中，后面的数字代表它们的运算优先级（顺序），item按数字从低到高的顺序，通过pipeline（1-1000，数字越低组件的优先级越高）： 123ITEM_PIPELINES = &#123; 'zhihu_Crawl.pipelines.MonoDBPipeline':300,&#125; 参考资料： Scrapy使用Pipeline写入MongoDB Scrapy中文文档-Item Pipeline]]></content>
       <categories>
         <category>Scrapy</category>
@@ -25,8 +37,8 @@
   </entry>
   <entry>
     <title><![CDATA[使用Scrapy遇到的问题汇总]]></title>
-    <url>%2F2019%2F02%2F07%2FThe-Problem-Collection-Use-Scrapy%2F</url>
-    <content type="text"><![CDATA[简单记录一下，自己再安装鹤使用Scrapy框架过程中遇到的各种问题及解决办法 安装使用环境：Win10 1803、Python 3.6.3 利用pip命令可以直接安装Scrapy，但是会出现一些安装包装不上而报错，比如Twisted。可以先去这个Pyhton Extension Packages下载Twisted到本地，然后单独安装 1pip install twisted （注意要下载Twisted‑18.9.0‑cp36‑cp36m‑win_amd64.whl不要下载错了，是cp36。否则安装的时候会提示is not a supported wheel on this platform） Scrapy输出文件编码为’utf-8’在编写爬虫中文内容输出到*.json文件后发现中文是Unicode编码，尝试了各种方法测试都不成功，后来找到一种方法终于成功了，把Scrapy项目文件夹中的Setting.py增加一行配置： 1FEED_EXPORT_ENCODING = 'utf-8' Scrapy导出csv文件乱码使用Vscode的通过编码重新保存，将文件的编码格式改为UTF-8 with BOM，再重新用Excel打开csv就正常了。 参考：https://blog.csdn.net/u011361138/article/details/79912895 Scrapy异常：http status code is not handled or allowed原因是http状态码没有被识别，需要在settings.py中添加这个状态码信息，同样在Setting.py添加一行（如果是404错误就改为404，如果是400错误，就改成400： 123HTTPERROR_ALLOWED_CODES = [状态码]HTTPERROR_ALLOWED_CODES = [404]HTTPERROR_ALLOWED_CODES = [400] 另一种方法是在Spider函数中添加 12handle_httpstatus_list = [404]handle_httpstatus_list = [400] 如果还是出现400错误问题，我观察到后面的Debug信息是：*/robots.txt。 robots.txt（爬虫协议)是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。——wiki 知乎robots地址：https://www.zhihu.com/robots.txt 淘宝robots地址：https://www.taobao.com/robots.txt 总结来说这个爬虫协议允许爬虫机器爬取的范围，不过这个协议属于君子协议，Scrapy默认是遵循robot协议，需要在Setting.py中改变ROBOTSTXT_OBEY的值为False。 在做了上面的设置之后还是400错误，可以给Reaqueset请求添加一个Headers头部，可以让爬虫伪装成浏览器 1234567headers = &#123; 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125;def start_requests(self): url = 'http://www.hnfnu.edu.cn/index/xyxw/342.htm' # 这样就不要设置Start_urls变量了 yield Request(url, headers=self.headers) 不过在我今天在爬去知乎专栏的文章（Ajax加载），调试了很久也只能抓取到第一次加载的列表内容，检查了后面的yiled Requeset(url, callback=self.parse) 设置没有问题，然后我把Headers信息添加在Setting.py中问题就解决了： 123DEFAULT_REQUEST_HEADERS = &#123; 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125; 未完待补充……]]></content>
+    <url>%2Fpost%2FThe-Problem-Collection-Use-Scrapy.html</url>
+    <content type="text"><![CDATA[简单记录一下，自己再安装和使用Scrapy框架过程中遇到的各种问题及解决办法 安装使用环境：Win10 1803、Python 3.6.3 利用pip命令可以直接安装Scrapy，但是会出现一些安装包装不上而报错，比如Twisted。可以先去这个Pyhton Extension Packages下载Twisted到本地，然后单独安装 1pip install twisted （注意要下载Twisted‑18.9.0‑cp36‑cp36m‑win_amd64.whl不要下载错了，是cp36。否则安装的时候会提示is not a supported wheel on this platform） Scrapy输出文件编码为’utf-8’在编写爬虫中文内容输出到*.json文件后发现中文是Unicode编码，尝试了各种方法测试都不成功，后来找到一种方法终于成功了，把Scrapy项目文件夹中的Setting.py增加一行配置： 1FEED_EXPORT_ENCODING = 'utf-8' Scrapy导出csv文件乱码使用Vscode的通过编码重新保存，将文件的编码格式改为UTF-8 with BOM，再重新用Excel打开csv就正常了。 参考：https://blog.csdn.net/u011361138/article/details/79912895 Scrapy异常：http status code is not handled or allowed原因是http状态码没有被识别，需要在settings.py中添加这个状态码信息，同样在Setting.py添加一行（如果是404错误就改为404，如果是400错误，就改成400： 123HTTPERROR_ALLOWED_CODES = [状态码]HTTPERROR_ALLOWED_CODES = [404]HTTPERROR_ALLOWED_CODES = [400] 另一种方法是在Spider函数中添加 12handle_httpstatus_list = [404]handle_httpstatus_list = [400] 如果还是出现400错误问题，我观察到后面的Debug信息是：*/robots.txt。 robots.txt（爬虫协议)是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。——wiki 知乎robots地址：https://www.zhihu.com/robots.txt 淘宝robots地址：https://www.taobao.com/robots.txt 总结来说这个爬虫协议允许爬虫机器爬取的范围，不过这个协议属于君子协议，Scrapy默认是遵循robot协议，需要在Setting.py中改变ROBOTSTXT_OBEY的值为False。 在做了上面的设置之后还是400错误，可以给Reaqueset请求添加一个Headers头部，可以让爬虫伪装成浏览器 1234567headers = &#123; 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125;def start_requests(self): url = 'http://www.hnfnu.edu.cn/index/xyxw/342.htm' # 这样就不要设置Start_urls变量了 yield Request(url, headers=self.headers) 不过在我今天在爬去知乎专栏的文章（Ajax加载），调试了很久也只能抓取到第一次加载的列表内容，检查了后面的yiled Requeset(url, callback=self.parse) 设置没有问题，然后我把Headers信息添加在Setting.py中问题就解决了： 123DEFAULT_REQUEST_HEADERS = &#123; 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',&#125; 未完待补充……]]></content>
       <categories>
         <category>Scrapy</category>
       </categories>
@@ -37,20 +49,15 @@
   </entry>
   <entry>
     <title><![CDATA[单例模式]]></title>
-    <url>%2F2019%2F02%2F03%2F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
+    <url>%2Fpost%2FSingleton-Pattern-With-Csharp.html</url>
     <content type="text"><![CDATA[一、单例模式介绍“单例”字面意思上理解为——一个类只有一个实例，所以单例模式也就是保证一个类只有一个实例的一种实现方法罢了 [test][1] (设计模式其实就是帮助我们解决实际开发过程中的方法, 该方法是为了降低对象之间的耦合度,然而解决方法有很多种,所以前人就总结了一些常用的解决方法为书籍,从而把这本书就称为设计模式) 官方定义：确保一个类只有一个实例,并提供一个全局访问点。 二、为什么会有单例模式为什么要有单例模式的？它在什么情况下使用的？从单例模式的定义中我们可以看出——单例模式的使用自然是当我们的系统中某个对象只需要一个实例的情况， 例如:操作系统中只能有一个任务管理器,操作文件时,同一时间内只允许一个实例对其操作等,既然现实生活中有这样的应用场景,自然在软件设计领域必须有这样的解决方案了(因为软件设计也是现实生活中的抽象)，所以也就有了单例模式了。 三、Mono子类C#脚本单例 定义一个当前类的公开，静态，当前类类型返回值的一个字段； 1public static Master Instance; //一个名为Master的类 在Awake 事件方法中完成该字段的赋值。 1234void Awake()&#123; Instance = this;&#125; 在其他类中使用单例 1Master.Instance.字段/方法; 四、非Mono 子类C#脚本单例 定义一个当前类的私有，静态，当前类类型返回值的字段； 1private static ClassNmae instance; 创建一个无参私有构造方法 1private ClassNmae() &#123; &#125; 创建一个公开，静态，用于封装字段的属性；在该属性内实现单例，（或者可以创建公开的、静态的方法） 1234567891011public static ClassNmae Instance &#123; get &#123; if (instance == null) &#123; instance = new ClassNmae(); &#125; return instance; &#125; &#125; 在其他类中使用单例]]></content>
       <tags>
         <tag>Csharp</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[制作UI的流程总结]]></title>
-    <url>%2F2019%2F02%2F03%2F%E5%88%B6%E4%BD%9CUI%E7%9A%84%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[UI制作流程总结 先制作基本的UI界面 然后根据需要重复显示的元素拖拽为预制体； 加载本地或服务器端的Json文件数据，循环实例化UI。 UI 界面制作完毕后，一定是和数据源绑定的。UI 是用于显示数据的。]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[NexT主题如何显示摘要]]></title>
-    <url>%2F2019%2F02%2F03%2FNexT%E4%B8%BB%E9%A2%98%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E7%9F%A5%E6%91%98%E8%A6%81%2F</url>
+    <title><![CDATA[NexT主题显示摘要]]></title>
+    <url>%2Fpost%2Fhexo-next-show-summary.html</url>
     <content type="text"><![CDATA[刚创建好的网站，把几篇以前写的MarkDown文件放在_Post文件夹中，但是打开网站一下，发现在页面中每篇文章都全部显示了，翻看起来不方便。如何解决这个问题. 官方提供了三个解决办法! 在文章中使用手动截断的方法，截断的语句是&lt;!-- more --&gt; 在文章的 front-matter 中添加 description，并提供文章摘录 自动形成摘要，在主题配置文件中添加，默认截取的长度为 150字符，可以根据需要自行设定：123auto_excerpt: enable: true length: 150 文章模版1234567891011---title: git的基本使用date: 2017-01-24categories:- cate1tags: - tag1---&lt;img src="/img/git.png" width = "900" height = "600" alt="git" align=center /&gt;摘要内容......&lt;!-- more --&gt;]]></content>
       <categories>
         <category>Hexo</category>
@@ -60,29 +67,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hexo概念理解]]></title>
-    <url>%2F2019%2F02%2F03%2FHexo%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[刚接触到Hexo，已经被Hexo的简洁性和部署网站的便捷性所惊叹到了，但是Hexo的一些概念在大脑中还不是很清晰，在网上也没有找到一篇特别好的文章来介绍总结。因此本文作为个人使用Hexo认识的比较重要概念的的一些总结。 创建好Hexo后的路径树12345678910111213.├── _config.yml├── package.json|── public├── scaffolds├── source| ├── _drafts| └── _posts| ├── categories| └── tags└── themes |_ next(主题的名字) |_config.yml config.yml配置文件，采用yml的格式 root目录下的_config.yml:站点配置文件 应用的某个主题（如NexT）下的_config.yml:主题配置文件 public文件夹这个文件夹存放的是当我们使用命令hexo g命令后，自动生成的一些html文件, 这些文件都是要上传到远程服务器中。 source文件夹 _posts：保存markdown的源文件 _categories：使用命令hexo new page categories创建分类分页自动生成的文件夹； _tags：同上，这里创建标签分页； 如何创建分页!]]></content>
-      <categories>
-        <category>Computer skills</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>技巧</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hexo本地建站]]></title>
-    <url>%2F2019%2F02%2F03%2FHexo%E6%9C%AC%E5%9C%B0%E5%BB%BA%E7%AB%99%2F</url>
+    <url>%2Fpost%2Fbuild-hexo-blog.html</url>
     <content type="text"><![CDATA[整理总结一下如何在本地安装Hexo，因为本人的电脑是Windows系统，所以以下都是在Windows环境下进行的。 安装前提 GIt Node.Js 1. 安装Git 下载Git：Git官网 安装Git 2. 安装Node.js 直接下载Node.Js的安装包 安装并Add 到Path（自动选择了） 安装Hexo 打开Node.js Command Prompt 运行命令1$ cd d:/hexo #要安装的Hexo的路径 安装hexo的命令 1$ npm install hexo-cli -g 在Blog的目录下初始化 hexo博客，名字可以是任意取 1$ hexo init blog #安装landscape的速度的比较慢 进入博客根目录，并且安装相关插件依赖等 12$ cd blog$ npm install 运行hexo的几个名字，查看效果 12hexo g #生成静态文件，汇总当前目录下生成一个新的叫做public的文件夹hexo s #启动本地的Web服务，启动完成后，可以在地址栏输入「http://127.0.0.1:4000/」查看 运行之后的效果 hexo的官方文档 如何安装主题Hexo中很有很多不同类型的主题： 一些参考 NexT.Mist：示例网站 Next官方使用文档! pure：示例网站 下载主题1git clone https://github.com/iissnan/hexo-theme-next.git themes/next themes/next为下载主题的路径 启动主题修改Hexo目录下的_config.yml配置文件中的theme属性，将其设置为next(网站应该会启动themes下的next主题) 更新12git g #生成git s #启动本地服务器]]></content>
       <tags>
-        <tag>hexo</tag>
         <tag>blog</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[Hexo插件记录]]></title>
-    <url>%2F2019%2F02%2F03%2FHexo%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95%2F</url>
+    <url>%2Fpost%2Fhexo-plug-in-collection.html</url>
     <content type="text"><![CDATA[记录一些常用的Hexo插件 NexT官方集成插件介绍：https://theme-next.iissnan.com/third-party-services.html 本地搜索：Local Search 安装 hexo-generator-searchdb，在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑 站点配置文件，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 编辑 主题配置文件，启用本地搜索功能： 123# Local searchlocal_search: enable: true 采坑注意：：在Next的主题配置文件中已经存在了local_search的语句了，不要重复添加，否则会报错。只需要搜索到相关位置，将false更改为true即可。搜索效果如下： 图片预览插件：FancyBoxHexo-Next主题中已经有图片预览的功能了，如果要使用，在主题的配置中文件中把FancyBox:False改为true。但是不知道什么原因，我开启之后无法打开网站。考虑到可能是没有下载FancyBox这个插件的原因。FancyBox有两个版本，FancyBox2和FancyBox3，一般来说v2版本就够用了。 下面是安装插件的步骤（参考fancybox的github地址）） 转到Next主题的目录 1$ cd themes/next 安装FancyBox到Source/lib路径 1git clone https://github.com/theme-next/theme-next-fancybox source/lib/fancybox 在NexT的_config.yml中开启 1fancybox: true 更新 12$ cd themes/next/source/lib/fancybox$ git pull Hexo博客常用插件及用法!]]></content>
       <categories>
         <category>默认</category>
@@ -92,21 +87,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[XLua_HotFix热补丁修复]]></title>
-    <url>%2F2018%2F05%2F10%2FXLua-HotFix%2F</url>
+    <title><![CDATA[Xlua热补丁修复]]></title>
+    <url>%2Fpost%2Fxlua-hotfix.html</url>
     <content type="text"><![CDATA[使用xlua热补丁修复 在使用Ulua方法进行热更新的时候，在项目的开发阶段就必要用独立的Lua脚本实现，这样才能使用Ulua来进行热更新，但是如果一个项目完成之后发现需要进行热更新，这个时候用ULua就非常不方便了。但是XLua可以解决这个问题，解决方案就是“HotFix”热补丁。（对项目进行修补）实现方式： 对要进行“修补”的C#类，在该类的头部[Hotfix]标签来标记，对于已经使用了[hotfix]标记了的类，可以通过“Lua”代码修改“类中的方法”。 使用HotFix进行热修复环境准备添加宏信息 File–&gt; Build Settings… –&gt; Player Settings… –&gt; Configuration：Scripting Define Symbols：HOTFIX_ENABLE；（对于每一个平台都需要添加这条宏信息！） 执行菜单生成命令XLua-&gt;Generate Code，该命令执行完毕后会生成一堆Wrap 文件，存放到XLua/Gen 文件夹下。 执行菜单注入命令XLua-&gt;Hotfix Inject In Editor，成功之后，会在控制台输出：“hotfix inject finish!”或者“had injected!”。 如果出现红色警告提示“please install the Tools”，就需要把Tools 文件夹拷贝到项目中，和Assets 文件夹同级别位置。 只要修改过C#中的代码，就需要重新执行注入命令！（否则会报错） HotFix热修复案例Hotfix语法 引入命名空间：using Xlua; 对要进行热修复的C#类用【hotfix】标记 编写hotfix命令：xlua.hotfix(CS.类名, &#39;方法名&#39;, lua 方法)（对于CS.类中的某个方法使用lua方法修复） 创建XLua虚拟机对象（Lua解析器），使用Dostring方法执行。 修复案例123456789101112131415161718192021222324252627282930313233343536373839using UnityEngine;using XLua;[Hotfix]public class HotFixDemo : MonoBehaviour &#123; private LuaEnv luaEnv; private string hotfixStrOne = @" xlua.hotfix(CS.HotFixDemo, 'Hello', function() print('Lua Hello~~') end) "; private string hotfixStrTwo = @" xlua.hotfix(CS.HotFixDemo, 'Add', function(self, a, b) print('Lua中的乘法:' .. a*b) end) "; void Start () &#123; luaEnv = new LuaEnv(); &#125; void Update () &#123; if(Input.GetKeyDown(KeyCode.A))&#123; Hello(); Add(5, 2); &#125; if (Input.GetKeyDown(KeyCode.Space))&#123; luaEnv.DoString(hotfixStrOne); luaEnv.DoString(hotfixStrTwo); &#125; &#125; private void Hello()&#123; Debug.Log("C# Hello~~");&#125; private void Add(int a, int b)&#123; Debug.Log("C#中的加法：" + (a + b));&#125;&#125; 有参方法修复时，需要传递当前脚本对象this，在lua 中用self 代替。 要修复无参的方法，但是那个方法内使用到了该类中的字段，如果想要在Lua代码中方法到，有两种方法： C#类中的字段公开（使用Public修饰），在lua代码中通过self.字段名的方式来方法（破坏了C#语言的“封装性”） 在lua 语言中，使用代码获取C#类中private 成员的访问权xlua.private_accessible(CS.类名)，这样就可以在Lua 脚本中访问到C#类当中的私有成员，同时不会破坏C#原有的封装性和逻辑关系。]]></content>
       <categories>
         <category>Unity</category>
       </categories>
       <tags>
-        <tag>热更新</tag>
         <tag>xLua</tag>
         <tag>Untiy</tag>
+        <tag>热更新</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[SimpleFrameWork框架简单介绍]]></title>
-    <url>%2F2018%2F05%2F07%2FSimpleFrameWork-Introduction%2F</url>
+    <url>%2Fpost%2FSimpleFrameWork-Introduction.html</url>
     <content type="text"><![CDATA[SimpleFramework的框架介绍 SimpleFramework 框架SimpleFramework 框架是ULua的集成开发环境 SimpleFramework 框架官网地址： http://www.ulua.org/index.html SimpleFramework 分为两个版本：NGUI 版和UGUI 版，区别是NGUI 版本的框架资源中含有NGUI 这个插件。 SimpleFramework 和ULua和Lua的关系ULua是对原生Lua 环境进行了一次“包装”，用于满足Unity 环境下的热更新需求。为了更方便的使用，于是又对ULua进行“二次包装”，包装成了一个框架：SimpleFramework，比如它们创建Lua的解析器对象都不相同。 Lua：Lua lua = New Lua(); Ulua：LuaState Lua = new LuaState(); SimpleFramework:LuaScriptMgr lua = new LuaScriptMgr(); 它们的关系是：SimpleFramework &gt; ULua &gt; Lua SimpleFramework框架资源结构 Examples：SimpleFramework 热更新案例； Lua：SimpleFramework 框架自带的Lua 源码文件；（自己写的Lua脚本放在这个路径） NGUI：NGUI3.8.2，当你需用更高版本的NGUI 时，替换即可，不需要碰； Plugins：uLua 运行所依赖的底层库文件，不需要碰； Scripts：SimpleFramework 自带的C#脚本文件； uLua：uLua 全部代码。 和Ulua紧密相关的是：Plugins、uLua。和SimpleFramework相关的是：Examples、Lua、Scripts 使用框架框架自带的编辑器命令 Lua菜单：uLua 环境相关处理命令(必备操作) Gen Lua Wrap Files：生成LuaWrap文件 该命令用于生成“Lua 包装文件”，存放在uLua\Source\LuaWrap 目录下。该文件夹下全部是C#脚本，这些脚本文件的名称特点是：脚本名+ Wrap；该文件夹下的脚本对Unity 内常用组件脚本的二次包装，、 Lua 环境运行后，会把这些Wrap 文件加载到Lua 运行环境(Lua 虚拟机)中，最终的效果就是：Lua 调用Wrap 文件，Wrap 文件调用C#，来实现Lua 调用C#。 Clear Lua….. Wrap Files：清除LuaWrap文件，也可以自己手动删除。 Game菜单：Build xxxx [生成不同平台的AssetBundle 资源(必备操作)]Game–&gt;Build Windows Resource 生成Windows 平台下的AB 文件。生成后的AB 会存放到StreamingAssets 文件夹下。在生成的过程中同时还会把Lua 文件夹下的所有脚本拷贝到该目录，存放到lua 文件夹下。 在\Assets\uLua\Editor\Packager.cs脚本中的HandleLuaFile方法就是将/Lua/文件复制到/StreamingAssets/文件夹中（这是本地Server设置的资源的地址，模拟服务器的资源地址） Lua 文件夹结构分析 3rd：第三方的Lua 脚本插件； Common：公共Lua 文件目录； Controller：控制器目录； Logic：管理器目录； System：cstolua 的系统目录； View：视图层目录。 ULua 文件夹结构SimpleFramework 框架项目的核心是uLua，在Unity 环境下使用uLua可以实现Lua 脚本与Unity 内C#脚本的交互，通过Lua 脚本来操作Unity3D内的各种游戏组件。 Core：uLua 核心； Docs：uLua 文档，其实就是LuaInterface 的PDF 使用文档； Editor：uLua 编辑器扩展；[备注：项目内所有的Editor 文件夹都是编辑器扩展文件夹，并不局限于根目录] Examples：uLua 自带演示案例； Source：cstolua 核心目录。 备注：参考：擅码网Lua热更新文档资料]]></content>
       <categories>
         <category>Unity</category>
@@ -119,36 +114,35 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Ulua-And-Charp-Communicate]]></title>
-    <url>%2F2018%2F05%2F07%2FUlua-And-C-Communicate%2F</url>
+    <title><![CDATA[SimpleFramwork框架下Ulua与C#的交互]]></title>
+    <url>%2Fpost%2FUlua-And-Charp-Communicate.html</url>
     <content type="text"><![CDATA[在SimpleFramwork框架下，Ulua与C#的交互！ uLua环境下与C#交互（基本操作）在C#与Lua进行交互需要两个DLL文件来实现分别是Luainterface.dll（C#脚本使用Lua）、luanet.dll(Lua脚本调用C#)。因此需要事先把那两个DLL文件拷贝到项目路径中去，再引用。 在uLua 环境下本质也是通过LuaInterface 来实现Lua 与C#语言交互的。但是uLua 对LuaInterface 进行了二次的封装，不需需要自己手动拷贝这个DLL文件，但是的使用的使用还是要引入命名空间：using LuaInterface; Lua 代码与Unity 内的类的交互[反射方式/ 原生方式]1234567891011121314// 定义了一个字符串变量保存Lua代码（调用C#的类和方法来创建了一个游戏物体，并给它添加了一个“BoxCollider”组件） private string str1 = @" luanet.load_assembly('UnityEngine') GameObject = luanet.import_type('UnityEngine.GameObject') BoxCollider = luanet.import_type('UnityEngine.BoxCollider') local player = GameObject('Lemmo') player:AddComponent(luanet.ctype(BoxCollider)) ";// 创建一个Lua解析器对象，并执行上面定义的Lua脚本 void Start()&#123; LuaState lua = new LuaState(); lua.DoString(str1); &#125; luanet 已经被封装到了LuaInterface 命名空间内，所以我们可以在Lua代码中直接使用luanet 这个对象； 在Lua 环境内操作C#中的类创建对象，不要写new 关键字！ 在Lua 环境内操作C#中的类创建对象，访问对象中的方法使用分号（:）； 这种“反射方式”在项目开发中并不常用，但是也有用无之地，真正大量使用的是下方的Wrap 方式。 同样需要在C#代码中引入LuaInterface； 原生的Lua 解析器对象“Lua”被二次封装成了“LuaState”； LuaState 类存在的位置是：uLua\Core\Lua.cs。 Lua 代码与Unity 内的类的交互[Wrap 方式]1234567891011121314 // 和Str1的功能类似，只不过str2使用了Wrap的方式private string str2 = @" luanet.load_assembly('UnityEngine') GameObject = UnityEngine.GameObject BoxCollider = UnityEngine.BoxCollider local player = GameObject('WrapLemmo') player:AddComponent(BoxCollider.GetClassType()) "; void Start()&#123; LuaScriptMgr lua = new LuaScriptMgr(); lua.Start(); lua.DoString(str2); &#125; 说明： 这种是在uLua 开发过程中最常用的方式，95%+情况都是使用这种方式； Wrap 方式实现Lua 调用C#，依赖的是之前生成的LuaWrap 文件； [也就是我们通过菜单自动生成到uLua\Source\LuaWrap 下的脚本文件] 当使用Wrap 方式时，运行Lua 代码需要使用LuaScriptMgr； 需要把AppConst.cs 脚本中的的DebugMode 修改为true。 包装新的Wrap 脚本当我们用Lua 的Wrap 方式访问Unity 中的组件脚本，或者自己写的脚本的使用，如果这些脚本没有自动生成“xxxxWrap”,项目运行后，就会报错。比如在用Wrap的方式给Player对象通过Lua添加Animator组件的时候，就会报错. 12Animator = UnityEngine.Animator player:AddComponent(Animator.GetClassType()) 解决办法：往框架内添加需要处理的新的类。 找到uLua\Editor\WrapFile.cs 打开该脚本，使用该格式进行添加：_GT(typeof(类名)) ； Lua–&gt;Clear LuaBinder File + Wrap File 清空原有的Wrap 文件； Lua–&gt;Gen Lua Wrap Files 重新生成Wrap 文件； 关于Lua使用“.”和“:”来调用属性和方法在Lua语言中，直接调用操作C#中的对象的方法和属性直接使用“.”来调用，如果是在Lua代码中实例化出来的对象，再调用这个对象的方法则需要用“:”]]></content>
       <categories>
         <category>Lua - Ulua</category>
       </categories>
       <tags>
-        <tag>热更新</tag>
         <tag>Unity</tag>
+        <tag>热更新</tag>
         <tag>Lua</tag>
         <tag>SimpleFramwork</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Lua与Charp进行交互]]></title>
-    <url>%2F2018%2F04%2F24%2FC-use-Lua%2F</url>
+    <title><![CDATA[Lua与Charp交互]]></title>
+    <url>%2Fpost%2Flua-with-csharp.html</url>
     <content type="text"><![CDATA[Lua与C#的交互 Lua与C#进行交互在项目中，C#语言是主语言，Lua 语言是辅助语言，如何才能让两门语言的代码互相访问那？这时候我们需要一座“桥梁”来连接两门语言。 LuaInterfaceLuaInterface 就是C#与Lua 语言相连的那座桥梁。LuaInterface 是一个开源的项目工程，内部有两个核心的DLL 文件： LuaInterface.dll：在C#代码中操作Lua 代码需要依赖该文件； luanet.dll：在Lua 代码中访问C#的类库脚本需要依赖该文件。 在项目中配置使用Lua环境 将两个dll 文件拷贝到项目工程中； 项目工程设置“引用”导入LuaInterface.dll； 将两个dll 的属性都设置成“如果较新则复制”（非常重要，如果不引用则会报错） 使用lua解析器对象 引入using LuaInterface;命名空间； 实例化lua解析器对象：Lua lua = new Lua()； 使用lua解析器对象的一些方法。 123456789101112131415using System;using LuaInterface;namespace LuaThree&#123; class Program &#123; static void Main(string[] args) &#123; Lua lua = new Lua(); lua.DoString("print('This is Lua program')"); // 这里执行的是Lua代码 Console.ReadKey(); &#125; &#125;&#125; C#中Lua代码空间分析 实际上，虽然C#代码和Lua代码是在一个脚本文件中，但是在程序执行的时候，lua代码（上面第11代码是放到了Lua的那块空间去的） C#调用Lua代码C#内执行lua代码语法：Lua解析器对象.DoString(&quot;Lua代码&quot;) 示例： 1234567891011121314151617181920Lua lua = new Lua();//1. 变量的声明与访问；lua.DoString("name = 'YangJie' age = 19 gender = 'Man' address = 'HuNan'");Console.WriteLine(lua["name"]);//2. for循环语句；[演示@符号的用途]lua.DoString(@"for i = 1,10,1 do print(i) end ");//3. 函数的定义与调用；lua.DoString(@"function Show() print('Show LuaFunction in Csharp.'); end Show()");//4. table 数组声明lua.DoString(@" MyArray = &#123;'AAA', 'BBB', 'CCC'&#125;"); C#中调用外部的Lua脚本在实际的时候中，大都汇直接调用外部的Lua脚本 语法：Lua解析器对象.DoFile(&quot;[path]fileName.lua&quot;)方法。 创建Lua脚本文件：添加-&gt;新建项-&gt;常规-&gt;文本文件，改名且后缀写为.lua;（注意要用其他的编辑器把编码格式从“UTF-8 BOM”改成 “UTF-8”或“GB2312”(中文编码)，否则会抛异常） 注意：在创建Lua文件之后，在VS里面将该文件的“复制到输出路径”设置为“如果较新则复制”，否则也会抛异常。（无法找到该文件） 示例：MyLua.lua脚本 1234567name = "Yangjie"address = "HuNan"age = 19function Fun() print("Lua脚本内的方法")end C#执行脚本 123456789lua.DoFile("MyLua.lua");string name = lua.GetString("name");string address = lua.GetString("address");Double age = lua.GetNumber("age");Console.WriteLine(name + ".." + address + ".." + age.ToString());LuaFunction luaFunction = lua.GetFunction("Fun");luaFunction.Call(); Lua调用Charp对于C#的项目来说，Lua脚本是作为资源存在资源路径下，我们可以对Lua脚本的进行热更新。而Lua脚本就需要访问C#脚本。在Lua中调用C#脚本需要使用luanet.dll这个类库。 使用步骤： 导入luanet.dll：require &quot;luanet&quot; 获取程序集：luanet.load_assembly(&quot;程序集名&quot;) 获取类型：变量名 = luanet.import_type(&quot;程序集名.类名&quot;) 示例Calc.cs（C#中创建一个类，省略了一些代码） 12345678910111213class Calc&#123; public static string name = "Calc计算器类"; public static int Jia(int a, int b) &#123; return a + b; &#125; public static void Show() &#123; Console.WriteLine("这是Calc内的方法"); &#125;&#125; LuaUpdate.lua脚本 123456require "luanet" -- 导入luanet.dllluanet.load_assembly("LuaThree") -- 导入程序集Calc = luanet.import_type("LuaThree.Calc") -- 导入类print(Calc.Jia(10, 20)) print(Calc.name) Program.cs（只保留了核心代码） 123456Lua lua = new Lua();lua.DoFile("LuaUpdate.lua");// 输出结果：// 30// 这是Calc内的方法 Lua内方法C#的类库导入步骤和上面的几乎类似，比如我想导入Console 12345require "luanet" luanet.load_assembly("System")Calc = luanet.import_type("System.Console")Console.WriteLine("Lua内调用C#的类库") 其他主要资料来自擅码网Lua课程。]]></content>
       <categories>
         <category>lua</category>
       </categories>
       <tags>
+        <tag>Unity</tag>
         <tag>lua</tag>
         <tag>Charp</tag>
-        <tag>热更新</tag>
-        <tag>Unity</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Dijkstra（迪杰特斯拉算法）——查找加权图中最短（快）路径]]></title>
-    <url>%2F2018%2F04%2F22%2FDijkstra%EF%BC%88%E8%BF%AA%E6%9D%B0%E7%89%B9%E6%96%AF%E6%8B%89%E7%AE%97%E6%B3%95%EF%BC%89%E2%80%94%E2%80%94%E6%9F%A5%E6%89%BE%E5%8A%A0%E6%9D%83%E5%9B%BE%E4%B8%AD%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%2F</url>
+    <title><![CDATA[迪杰特斯拉算法(Dijkstra)]]></title>
+    <url>%2Fpost%2FDijkstra's-algorithm-use-python.html</url>
     <content type="text"><![CDATA[迪克斯特拉算法（英语：Dijkstra’s algorithm）是采用了「广度优先搜索」解决在“加权图”中最短路径的问题 理解迪克斯特拉算法使用「广度优先搜索」算法，可以对「非加权图」查词最短路径 但是对于「加权图」的最短路径问题，则需要使用「迪克斯特拉算法」 这个图包括四个顶点（起点、A、B、终点），以及连接这些点的边，边上的数字是一点的另一点的「花销」，或者叫做权重。权重越大，花销就越大，反之，花销就越小。要找到从「起点」到「终点」的最短路径，需要在所有路径中找到「总权重」最小的一条路径。下图是我们任意寻找的一条路径，我们可以用迪克斯特拉算法在所有的路径中找出最短（优）的那条路径。 实现迪克斯特拉算法的步骤 找出“最便宜”的节点（花销最低），即可在最短时间内到达的节点。 更新该节点的邻居的开销。 重复这个过程，直到对图中的每个节点都这样做了。 计算最终路径。 代码实现迪克斯特拉算法需要实现找到图2的最短路径 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667# 创建一个散列表来模拟路径图graph = &#123;&#125;# 一条路径采用了两个散列表，例如["start"]表示自身节点、["a"]表示邻居节点， 6 表示自身节点前往邻居节点的花销graph["start"] = &#123;&#125;graph["start"]["a"] = 6graph["start"]["b"] = 2graph["a"] = &#123;&#125;graph["a"]["fin"] = 1graph["b"] = &#123;&#125;graph["b"]["a"] = 3graph["b"]["fin"] = 5graph["fin"] = &#123;&#125;# 创建节点的开销：表示从「起点」出发到该节点需要的“时间”，对于非起始节点的「子节点」我们并不知道它的花销，假设它为无穷大infinity = float("inf") # 表示无穷大costs = &#123;&#125;costs["a"] = 6costs["b"] = 2costs["fin"] = infinity# 创建父节点的散列表parents = &#123;&#125;parents["a"] = "start"parents["b"] = "start"parents["fin"] = None# 记录处理过的节点processed = []# 查找开销最低的节点def find_lowest_const_node(costs): lowest_const = float("inf") lowest_const_node = None for node in costs: cost = costs[node] if cost &lt; lowest_const and node not in processed: # 如果当前节点开销更低且为处理过 lowest_const = cost # 将其视为开销最低的节点 lowest_const_node = node return lowest_const_nodenode = find_lowest_const_node(costs) # 在未处理的节点中找出花销最小的节点while node is not None: # 这个while循环在所有节点都被处理过后结束 cost = costs[node] neighbors = graph[node] for n in neighbors.keys(): # 遍历当前节点的所有邻居 new_cost = cost + neighbors[n] if costs[n] &gt; new_cost: # 如果当前节点前往该邻居更近 costs[n] = new_cost # 则更新该邻居的开销 parents[n] = node # 同时将该邻居的父节点设置为当前节点 processed.append(node) # 将当前节点标记为处理过 node = find_lowest_const_node(costs) # 找出接下来要处理的排名，并循环# 用于显示输出效果 for key,value in costs.items(): print(key + ":" + str(value)) print("\n-----------------\n")for key,value in parents.items(): print(key + ":" + value) 运行结果： 「终点」的父节点是「a」、「a」的父节点是「b」、「b」的父节点是「start」，这样就把这个加权图的最短路径给找出来了。 小结 广度优先搜索用于在非加权图中查找最短路径。 狄克斯特拉算法用于在加权图中查找最短路径。 仅当权重为正时狄克斯特拉算法才管用。 如果图中包含负权边，请使用贝尔曼-福德算法。 参考资料 《算法图解》第7章节]]></content>
       <categories>
         <category>Python</category>
@@ -162,7 +156,7 @@
   </entry>
   <entry>
     <title><![CDATA[[生存之战]_背包合成模块制作总结]]></title>
-    <url>%2F2018%2F04%2F13%2F%E7%94%9F%E5%AD%98%E4%B9%8B%E6%88%98-%E8%83%8C%E5%8C%85%E5%90%88%E6%88%90%E6%A8%A1%E5%9D%97%E5%88%B6%E4%BD%9C%E6%80%BB%E7%BB%93%2F</url>
+    <url>%2Fpost%2Fthe-inventory-module-of-war-game.html</url>
     <content type="text"><![CDATA[断断续续花了半个月的时间，把《生存之战》背包系统大概做出来了。这也相当于一个大项目的一个较为完整的模块，现在整理一下，也方便以后回顾。 成品 项目介绍 整体上这属于一个背包系统，包括1的「背包模块」和2「合成模块」 背包模块背包模块比较简单，由一个整体的背景，背包背景子层生成固定数量的背包框，背包物体动态生成，数据是从Json的数据进行解析。 合成模块合成模块相对比较复杂一点，整个上分为3个相对独立的部分（2.1和2.3在搭建UI层次的时候可以先分为一个，然后在拆分成2.1 和 2.3） 2.1是合成的类型，比如武器类可以有弓箭、长矛；而建筑类可以有窗户、门。 2.2是具体的合成物品的种类，比如上面提到的弓箭、长矛等。 2.3是某个物品的合成图谱，也就是说合成这个物品需要哪些原材料，在合成之前需要把原材料从背包模块拖拽到对应的图谱位置。 2.4是进行合成的具体区域，当某个物品的合成图谱全部被填充好之后，才可以进行合成。 搭建UI布局这里的UI布局是“死”的UI，先把整个的UI布局确定好，后面再根据这个UI布局进行灵活的“动态生成”，“逻辑控制”。搭建UI布局要注意的点： “大元素套小元素”，相对大的元素与覆盖在它表面的相对小的元素形成父子关系。这也是在Web开发中常常会使用到的「Div + CSS」布局的思路。 重复的子元素（比如合成图谱分类的Tab、各种的物品框）才表格布局的方法，先手动复制多个元素调试到适合的布局，再将这个元素制作成一个「预制体」，最后在代码中动态生成。 代码部分M.V.C架构介绍在以前的案例制作中，常常会把「数据控制」「UI控制」「逻辑控制」放到一个Manager的控制脚本中，这样做的问题时，单个脚本的代码量非常庞大，管理起来不方便。因此，我们可以把UI相关的脚本分为三块： 数据控制[Model] (对XML、Json 读取，存储，更新…) 界面控制[View] (组件查找，UI 数据更新…) 整体逻辑[Controller] (循环生成子元素，UI 的事件处理，商品购买…) 迷你版MVC迷你版MVC 主要应用在UI 功能模块的Panel 上，也就是模块的整体控制。 XxxxPanelView.cs XxxxPanelController.cs XxxxPanelModel.cs 而Panel 的子级物体还是单个脚本控制，叫做XxxxItemController.cs，因为子级物体逻辑相对简单，可以先不分层。 使用迷你版MVC的注意事项 创建好MVC的三个脚本挂载到XxxPanel之后，「Controller脚本」要分别持有「View脚本」「Model脚本的引用」。因为「Controller脚本」处于主导地位。「View脚本」与「Model脚本」不直接通信。 Model脚本把加载好的数据以字段封装成属性的方式公开，Controller脚本可以调用，View的设置UI的方法也公开，通用供Controller脚本使用。 View 和Model 脚本当中的初始化操作需要放到Awake 方法内，Controller的初始化放到Start 方法内。目的是为了Controller 控制界面和数据的时候，这两个脚本必须已经初始化完毕。 脚本分析 从上面的脚本关系图可以看出，整体上有两个「MVC框架」，因为我们之前已经把背包系统分为了两个模块，背包模块和合成模块，所以使用两个「MVC」分别对背包模块和合成模块进行控制： 背包模块 InventoryPanelController.cs InventoryPanelView.cs InventoryPanelModel.cs 合成模块 CraftingPanelController.cs CraftingPanelView.cs CraftingPanelModel.cs 背包模块背包模块比较简单： View层查找相关组件，并加载（Resources）生成UI所需的预制体供Controller层使用； Model层从Json文件中解析出生成背包物体所需要的数据，并公开相应的方法让Controller使用这些数据；注意这里还创建想背包物体的「数据实体类」InventoryItem.cs Controller层负责调用View层和Model层的数据，循环生成UI物体 合成模块合成模块相对于背包模块来说复杂一些，主要体现在Controller脚本中有几个子类物体的控制脚本。主要是因为北城模块的UI层次就很复杂，但是合成模块的MVC职责分工和背包模块的MVC的职责分工是一样的。 需要注意的是，「CraftingPanelController.cs」负责总的逻辑控制，而它的子物体的控制脚本只需要负责公开方法供它使用就可以的。 如果生成子类物体的时候想要初始化它的控制脚本的数据，可以在子类的控制脚本定义一个初始化的方法Init（），在生成子类的之后就调用它的子类控制脚本的初始化方法，并传递必要的数据。 模块间进行通信两个模块进行通信，可以先把两个MVC的「Controller脚本」封装成单例，然后通过XxxxPanelController.Instance.方法名()的方式进行通信。 需要注意的是，模块与模块之间，最好只是两个Controller层通信，比如：》 InventoryItemController.cs想要调用CarftingPanelController.cs的方法则可以先在InventoryPanelController.cs声明一个公开的方法去调用CarftingPanelContoller的方法 然后InventoryItemController.cs再去调用那个公开的方法。 这样做的目的是单一“脚本的职责”，减少脚本的耦合 工具类在上面的脚本关系图中，最右边有两个工具类，分别是ResourcesTools.cs和JsonTools.cs，这两个脚本是在脚本编写过程中抽离出来的（在实际开发过程中，这些工具类是事先已经提供好的，可以直接进行使用，一般是“主程”编写好的），它与游戏逻辑没有直接业务关系。但是游戏逻辑需要使用到这些工具类。工具类的特点： 工具类的实现有两种语法格式：密封类，结构体；最常用的还是密封类（sealed）格式； 工具类内的成员全部用static 静态关键字修饰； 工具类不需要实例对象，使用格式是：工具类名.字段名/属性名/方法名/； 工具类就是一个普通的C#类，不需要继承Mono 行为类。 其他 项目文件：链接: https://pan.baidu.com/s/1yeGrQNXHshJfAWG9N9gzhA 密码: wfnk]]></content>
       <categories>
         <category>Unity</category>
@@ -175,20 +169,19 @@
   </entry>
   <entry>
     <title><![CDATA[Python-简单的递归]]></title>
-    <url>%2F2018%2F04%2F02%2FPython-%E7%AE%80%E5%8D%95%E7%9A%84%E9%80%92%E5%BD%92%2F</url>
+    <url>%2Fpost%2Frecursion-algorithm-with-python.html</url>
     <content type="text"><![CDATA[什么是递归，就是自身调用自身，比如一个函数在它自己的函数体类条用它自身称为递归调用。 递归什么是递归，就是自身调用自身，比如一个函数在它自己的函数体类条用它自身成为递归调用。 “庙里的老和尚”的故事可以用来理解这种模式 从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？“从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？‘从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？……’” ——维基百科 递归函数使用递归函数的关键： 找出基线条件，退出递归函数 缩小问题的规模 用递归来求和 用循环来求和 12345def sum(arr): total = 0 for x in arr: total += x return total 用递归的求和 1234567def sum(arr): if arr == []: return 0 return list[0]+sum(list[1:]) print(sum([12,4,17,9])) # 输入结果：42 用递归来计算列表的长度1234567def countElem(arr): if arr==[]: return 0 return 1+countElem(arr[1:]) print(countElem([12,4,17,9]))# 输出结果：4 用递归来找出最大元素1234567def maxElem(arr): if len(arr) == 1: return arr[0] return arr[0] if arr[0] &gt; maxElem(arr[1:]) else maxElem(arr[1:])print(maxElem([12,4,17,9]))# 输出结果：17 理解return-if-else：这是Python支持的一种语法。 1return "a" if 1&lt;2 else "b" 在这里1&lt;2是判断条件，如果条件成立则返回“a”，如果条件不成立则返回“b” 快速排序（quick）1234567891011def quicksort(array): if len(array) &lt; 2: return array else: pivot = array[0] # 递归条件 less = [i for i in array[1:] if i &lt;= pivot] greater = [i for i in array[1:] if i &gt; pivot] return quicksort(less) + [pivot] + quicksort(greater) print(quicksort([12,4,17,9])) # 输出结果：[4, 9, 12, 17] 基线条件：2行：当数组为空或者只包含一个元素，这样最后只需要原样恢复数组，不用再进行排序 pivot是基准值，用于对其他的数进行分类 less存储的是比pivot小的数组成的数组 greater存储的是比pivot大的数组成的数组 快速排序的算法复杂度O(n * Log n) 参考资料 递归算法详解]]></content>
       <categories>
         <category>Python</category>
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>递归</tag>
-        <tag>算法</tag>
+        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[迪米特原则]]></title>
-    <url>%2F2018%2F03%2F26%2F%E8%BF%AA%E7%B1%B3%E7%89%B9%E5%8E%9F%E5%88%99%2F</url>
+    <url>%2Fpost%2Flaw-of-demeter.html</url>
     <content type="text"><![CDATA[迪米特原则也叫最小知道原则 定义： 一个对象应该对其他对象保持最少的了解。 如果两个类不必彼此直接通信，那么这两个类就不应当发生直接的相互作用。如果其中一个类需要调用另外一个类的某一个方法的话，可以通过第三者转发这个调用。 一个对象应当对其他对象有尽可能少的了解。 迪米特原则的切入点 在类的结构设计上，每一个类都应当尽量降低成员的访问权限。 Unity 项目开发，不要使用public 公开字段，然后面板拖拽资源赋值这种方式。应该把字段全部private 修饰，然后public 属性公开调用。 迪米特原则主要是强调了类与类之间的松耦合 类与类之间的耦合度越低，越有利于代码的复用，一个处于低耦合的类被修改了，不会对有关系的类造成影响 参考资料 迪米特原则]]></content>
       <categories>
         <category>OOP</category>
@@ -200,7 +193,7 @@
   </entry>
   <entry>
     <title><![CDATA[依赖倒置原则]]></title>
-    <url>%2F2018%2F03%2F26%2F%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99%2F</url>
+    <url>%2Fpost%2Fdependence-inversion-principle.html</url>
     <content type="text"><![CDATA[针对抽象编程，不要针对实现编程； 官方定义 A. High-level modules should not depend on low-level modules. Both should depend on abstractions. B. Abstractions should not depend on details. Details should depend on abstractions. 高层次的模块不应该依赖于低层次的模块，两者都应该依赖于抽象接口)。 模块间的依赖是通过抽象发生，实现类之间不发生直接的依赖关系，其依赖关系是通过接口或抽象类产生的。 抽象接口不应该依赖于具体实现。而具体实现则应该依赖于抽象接口。 理解参考擅码网的讲解 PHP中的依赖倒置原则 代码逻辑并不是直接操控数据库，而是通过一个抽象的PDO类来进行增删改查，这样的好处是如果要更改使用的数据库类型，比如原本是使用「MySQL」，现在要改成「SQLite」，只需要对PDO类更改操作数据库的逻辑，而关键的「代码逻辑」不需要发生任何变化。 Unity引擎的依赖倒置Unity引擎的跨平台性很强 早期开发游戏 Android 平台的游戏，需要使用Eclipse 开发，只能运行于Android 平台； IOS 平台的游戏，需要使用XCode 开发，只能运行于IOS 平台； 因为编写这些游戏时，使用的代码，都是各个平台提供的针对性的API。 高层依赖于底层：开发游戏需要依赖于该平台的底层API。 Unity开发游戏 使用C#开发一个版本，稍作调整就能发布到N 个平台。在我们发布成不同平台的游戏的时候，Unity 本身就做了一个“对接”的任务，把我们的代码里面的API，对接到该平台上相应的API。 高层和底层都依赖于抽象：我们的游戏是依赖Unity 的，各个平台的API 也是Unity 完成对接任务的。]]></content>
       <categories>
         <category>OOP</category>
@@ -212,7 +205,7 @@
   </entry>
   <entry>
     <title><![CDATA[开闭原则]]></title>
-    <url>%2F2018%2F03%2F26%2F%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99%2F</url>
+    <url>%2Fpost%2Fopen-closed-princicle.html</url>
     <content type="text"><![CDATA[开闭原则 规定“软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的” 定义：软件实体应该对扩展开放，对修改关闭，其含义是说一个软件实体应该通过扩展来实现变化，而不是通过修改已有的代码来实现变化。 面对需求，对程序的改动应该是以增加新代码的方式解决，而不是更改旧的代码。 在实际开发过程中，开发的某个功能，可能因为需求有变化，要重新构建新的代码。但是原来的代码也不能删掉，如果之后需求再发生变化，又要换到之前的代码，则只需要简单更换一个业务逻辑即可。 开放封闭原则，其中的封闭不是绝对的封闭。]]></content>
       <categories>
         <category>OOP</category>
@@ -223,8 +216,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用Jieba库制作统计《水浒传》角色的出现次数]]></title>
-    <url>%2F2018%2F03%2F25%2F%E4%BD%BF%E7%94%A8Jieba%E5%BA%93%E5%88%B6%E4%BD%9C%E7%BB%9F%E8%AE%A1%E3%80%8A%E6%B0%B4%E6%B5%92%E4%BC%A0%E3%80%8B%E8%A7%92%E8%89%B2%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%2F</url>
+    <title><![CDATA[使用Jieba库制作统计水浒传角色的词频]]></title>
+    <url>%2Fpost%2Frole-name-count-in-shuihu-use-Jieba.html</url>
     <content type="text"><![CDATA[这是学习Python一个星期依赖独立制作的一个比较小的案例脚本，计算一段文本的「词频」 案例介绍统计出某一文本中词条的词频。这个案例我是用水浒传文本来统计出每一名角色(108将)出现的次数 案例知识点 使用Jieba模块分词 使用json模块将字典导出成json文本 Python的IO操作 案例准备 Windows 10 Python 3.6 安装好JieBa库 《水浒传》.txt文本 水浒108将.txt文本 项目文件结构12345.├── namerate.json├── RoleCount.py├── role.txt└── shuihu.txt 安装JieBa库 jieba 是一个python实现的分词库，对中文有着很强大的分词能力。 Git链接：https://github.com/fxsjy/jieba 1py -3 -m pip install Jieba 处理素材文本“水浒传.txt”不需要额外处理，但是“108将”需要使用「正则表达式」进行处理，处理结果最后应该是，每一行文本只有一个将领的名字。 实验脚本12345678910111213141516171819202122232425262728293031323334353637383940414243444546# -*- coding: utf-8 -*-import jiebaimport json# 108将字典roles = &#123;&#125;# 存储水浒所有的文本shuihu_str = ''# 导入文件的名字filename = 'namerate.json'# 把108将添加到jieba词库中去def AddWords(): for name in roles: jieba.add_word(name)# 打开role文本，创建字典with open("role.txt", 'r', encoding='UTF-8') as file_Object: for name in file_Object: roles[name.strip()] = 0AddWords()# 打开shuihu文本，存储到shuihu_str变量中去with open("shuihu.txt", 'r', encoding='UTF-8') as file_Object: lines = file_Object.readlines() for line in lines: shuihu_str += line.strip()# 分词匹配seg_list = jieba.cut(shuihu_str, cut_all=False)for word in seg_list: for role in roles: if(role == word): roles[role] += 1 breakprint("匹配完毕")with open(filename, 'w') as f_obj: f_obj.write(json.dumps(roles, ensure_ascii=False))# 在Cmd窗口输出字典for key, value in roles.items(): print(key) 案例制作总结这个项目遇到的最大的问题是“中文字符”的编码问题，比如在30行open的文本无法与str相加，可能是字符编码不相同，存储字典到.json的中文字符也是乱码的。]]></content>
       <categories>
         <category>Python</category>
@@ -239,7 +232,7 @@
   </entry>
   <entry>
     <title><![CDATA[使用bat脚本一键部署Hexo文章]]></title>
-    <url>%2F2018%2F03%2F25%2F%E4%BD%BF%E7%94%A8bat%E8%84%9A%E6%9C%AC%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2Hexo%E6%96%87%E7%AB%A0%2F</url>
+    <url>%2Fpost%2Fcreate-new-article-with-bat.html</url>
     <content type="text"><![CDATA[使用「Alt Run」和「Bat」脚本实现写Hexo文档的一键部署 每次用Hexo写文章，都需要先打开Cmd窗口转到D盘的Hexo的路径下，然后运行hexo new **，再定位到_post路径用「Typor」打开，最后还要使用hexo g hexo s等命令去部署，写一篇文档之前要浪费这样时间，尤其是复杂的操作降低了写作的积极性。为了减少操作，想到可以用脚本来代替自己的手动操作。最后使用alt run来打开脚本，更加快捷。 配置准备 Win10 操作系统 Hexo 博客 ALT Run：快速启动软件 编写的Bat脚本 编写脚本 一键创建文章 创建Hexo文章.bat 123456@echo offset /p name=input pages name:echo name:%name%echo please waithexo new %name% &amp;&amp; call 1.bat %name%pause 2行：从cmd窗口获取文章的名字 5行：创建从窗口获取的名字，同时调用1.bat这个脚本 1.bat脚本 12345start /min /w mshta vbscript:setTimeout("window.close()",1000)echo The InputValue is %1set name=%1echo %name%start /d "D:\Program Files\Typora\Typora.exe" Typora.exe "D:\Hexo\blog\source\_posts\%name%.md" 1行：延迟1秒执行 3行：「继承 创建hexo文章.bat」的变量 5行：使用D盘的「Typora.exe」MarkDown编辑器打开刚才创建好的文章 发布到本地服务器 发布到本地服务器.bat 123start hexo_g.batstart /min /w mshta vbscript:setTimeout("window.close()",3000)start hexo_s.bat hexo_g.bat 1hexo g hexo_s.bat 1hexo s 发布GitHub Page 发布到github.bat 123start clean.batstart /min /w mshta vbscript:setTimeout("window.close()",1200)start hexo_d.bat clean.bat 12345@echo offecho cleanecho Please waithexo cleanexit hexo_d.bat 1234@echo offecho postting.....hexo g -dpause 搭配AltRun快速启动什么，AltRun都不知道是什么，那还不快去了解一下，当然也可以使用其他的快速启动软件，或者把这些脚本的快捷键放到系统环境中，使用Win + Q启动。 在AltRun用到的热键： new：创建文章，并使用Typora打开 start：生成静态网页，并打开本地hexo服务器 post：用hexo clean清除public文件夹，并且发布到「github page」中去 参考资料： 使用bat批处理脚本优化hexo的使用体验 AltRun快速启动工具]]></content>
       <categories>
         <category>Hexo</category>
@@ -249,8 +242,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Python案例学习——图片转字符画]]></title>
-    <url>%2F2018%2F03%2F23%2FPython%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB%2F</url>
+    <title><![CDATA[使用Pillow对图片转为字符画]]></title>
+    <url>%2Fpost%2Fpython-learning-use-pillow.html</url>
     <content type="text"><![CDATA[这个案例来自实验楼的学习案例 实验知识点 pillow 库的使用 argparse 库的使用 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#-*- coding:utf-8 -*-from PIL import Imageimport argparse# 创建一个解析对象parser = argparse.ArgumentParser()# 向对象中添加要关注的命令行参数和选项parser.add_argument('file') #输入文件parser.add_argument('-o', '--output') #输出文件parser.add_argument('--width', type = int, default = 80) #输出字符画宽parser.add_argument('--height', type = int, default = 73) #输出字符画高#获取参数args = parser.parse_args()# 定义变量存储parser对象获取到的参数IMG = args.fileWIDTH = args.widthHEIGHT = args.heightOUTPUT = args.outputascii_char = list("$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1&#123;&#125;[]?-_+~&lt;&gt;i!lI;:,\"^`'. ")# 将256灰度映射到70个字符上def get_char(r,g,b,alpha = 256): if alpha == 0: return ' ' length = len(ascii_char) gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b) unit = (256.0 + 1)/length return ascii_char[int(gray/unit)]# 下面一行代码表示模拟程序的入口if __name__ == '__main__': im = Image.open(IMG) im = im.resize((WIDTH,HEIGHT), Image.NEAREST) txt = "" for i in range(HEIGHT): for j in range(WIDTH): txt += get_char(*im.getpixel((j,i))) # 实参前面使用*号表示传递元组 txt += '\n' print txt #字符画输出到文件 if OUTPUT: with open(OUTPUT,'w') as f: f.write(txt) else: with open("output.txt",'w') as f: f.write(txt) 参考资料： Python 图片转字符画 用Python处理图像——PIL]]></content>
       <categories>
         <category>Python</category>
@@ -262,7 +255,7 @@
   </entry>
   <entry>
     <title><![CDATA[Python模块之命令行解析工具-argparse]]></title>
-    <url>%2F2018%2F03%2F23%2FPython%E6%A8%A1%E5%9D%97%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7-argparse%2F</url>
+    <url>%2Fpost%2Fpythone-argparse-tools.html</url>
     <content type="text"><![CDATA[如果设计的软件需要命令行参数（比如需要调用程序时附加一些参数，文件、字符或数字）就需要argparse模块，该模块是Python的标准库中的模块。 使用方法12345678import argparse # 首先导入该模块；parser = argparse.ArgumentParser() # 然后创建一个解析对象# 然后向该对象中添加你要关注的命令行参数和选项，每一个add_argument方法对应一个你要关注的参数或选项；parser.add_argument() # 最后调用parse_args()方法进行解析；解析成功之后即可使用 args = parser.parse_args() 案例1234567891011import sysimport argparseif __name__ == "__main__": parser = argparse.ArgumentParser() parser.add_argument("-m", type = int) parser.add_argument("-n", type = int) args = parser.parse_args() print "%d ^ %d = %d" % (args.m, args.n, args.m ** args.n) 分析： 在两条parser.add.argument方法中，接受运行的参数设置 -m后面的参数赋值给args.m -n后面的参数赋值给args.n 运行结果： 参考资料 https://blog.csdn.net/gatieme/article/details/45917173]]></content>
       <categories>
         <category>Python</category>
@@ -270,12 +263,11 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>模块</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[Python环境搭建]]></title>
-    <url>%2F2018%2F03%2F23%2FPython%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
+    <url>%2Fpost%2Fpyton-env-build.html</url>
     <content type="text"><![CDATA[最近的在学Python，在搭建Python环境的时候遇到了很多困惑，这里整理总结一下留做以后参考，这篇文档是在Windows的环境下进行的 一台电脑可以安装多个Python吗答案是肯定的，我在电脑同时安装了两个版本的Python，分别是 Python 3.6.4 Python 2.7.14 先在python.org下载两个版本的安装包 安装在硬盘的不同路径中，比如我把Python 3.6安装在默认位置 把Python 2.7安装在D盘的路径下，并且在安装的时候勾选「Add to Path」添加路径到系统环境变量中去。​同时安装Python 3和Python 2如何快捷切换打开cmd窗口直接运行Python默认打开的Python 2但是我如果想使用Python 3怎么办？ Windows 上的 Python 自带启动器 py.exe，默认安装到系统盘的Windows文件夹里。如果你同时安装了 Python 2 和 Python 3，用的时候直接在终端里输入： 1py -3 就是打开的Python 3 的 REPL(控制台)同理如果你运行1py -3 #打开的是Python 3 而如果直接运行Py，默认打开的是Python 3，就是系统盘Windows文件下那个py.exe. 如果运行Python，则打开的Python 2,可能是因为后来安装了Python 2把Python 3给覆盖了。为了避免每次运行都需要通过py -2或py -3的方式启动，在编写Python程序的时候，可以在代码的前面加入声明说明该文件是由Python 2启动还是Python 3启动：12#! python2 #用Python2启动#! python3 #用Python3启动 其他方法： 改名：把Python 2版本中的文件名改成Python2，则默认运行的Python 3的版本 这样修改了名字的那个python对应的pip将无法使用。 在同一台电脑下如何进行 Python 2 与 3 的切换？——知乎Python和pip的关系什么刚开始，安装好Python 3之后，要导入第三方的库，别人的教程里面有很多pip命令，只是依葫芦画瓢，不懂是什么意思。后来要导入如一个turlte， 这是一个绘制图像的库。1pip install turtle #使用的Python 3 的pip工具 但是，提示错误Command &quot;python setup.py egg_info&quot;应该是安装脚本中脚本错误的啥的，具体也不清楚，想着再用Python 2试一下，这时候就完全懵逼不知道怎么来操作了。随后在网上了解了一下：pip就是Python的一个包管理工具 pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包。当然，Python也有其他的包管理工具，比如还有easy_install，这是Python 2.7中的默认包管理工具，现在pip已经基本取代了easy_install，如果要需要pip在老版本的Python 2.7 中则需要手动安装，在Scripts文件夹内运行cmd命令1easy_install pip 安装好pip后如何使用每个版本的Python都有自己的pip工具，如果电脑上只有一个存在一个版本的「Python」时，可以直接使用pip1pip install &lt;包名&gt; 但如果同时存在多个版本的Python，使用pip命令时就需要指明Python的版本，比如要给Python 3下载导入模块则需要「Python 3」的pip：1py -3 -m pip install &lt;包名&gt; pip的常用命令 列出已经安装的包，列出所有的包是pip list 1pip freeze 在线安装包： 1pip install &lt;包名&gt; 本地安装包 1pip install &lt;目录&gt;/&lt;文件名&gt; 卸载包 1pip uninstall &lt;包名&gt; 升级包 1pip install -U &lt;包名&gt; pip常用命令 更换pypi镜像国内pypi镜像 豆瓣：https://pypi.douban.com/simple 中国科学技术大学：https://mirrors.ustc.edu.cn/pypi/web/simple/ 清华大学TUNA： https://pypi.tuna.tsinghua.edu.cn/simple https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/指定单次安装源12# pip install &lt;包名&gt; -i &lt;pypi源地址&gt;pip install &lt;包名&gt; https://pypi.tuna.tsinghua.edu.cn/simple/ 指定全局安装源 在unix和macos，配置文件为：$HOME/.pip/pip.conf 在windows上，先打开「appdate」文件夹后，在地址栏输入%appdate%，如果没有，则新建一个命名为pip的文件夹，然后创建文件pip.ini，打开文件输入下面的内容后保存1234[global]timeout = 6000index-url = https://pypi.tuna.tsinghua.edu.cn/simpletrusted-host = pypi.tuna.tsinghua.edu.cn 使用pip安装的module的路径我的Python 2.7是安装在D盘的，这些module路径就是：1D:\Program Files\Python 2.7\Lib\site-packages Python 包管理工具解惑]]></content>
       <categories>
         <category>Python</category>
@@ -287,7 +279,7 @@
   </entry>
   <entry>
     <title><![CDATA[Lambda表达式]]></title>
-    <url>%2F2018%2F03%2F17%2F%E3%80%8C%E5%9F%BA%E7%A1%80%E3%80%8DLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
+    <url>%2Fpost%2Flambda-expression.html</url>
     <content type="text"><![CDATA[1. Lambda表达式概念官方概念 Lambda 表达式是一种可用于创建 委托 或 表达式目录树 类型的 匿名函数 。 通过使用 lambda 表达式，可以写入可作为参数传递或作为函数调用值返回的本地函数。 Lambda 表达式，是一种代码的语法格式； Lambda 表达式是对匿名方法语法格式的进一步简化； Lambda 表达式可以理解成是匿名方法的升级版。 【方法的三种表现形式】普通方法–&gt; 匿名方法–&gt; Lambda 表达式越往后越抽象，越往后理解成本也就越高。 2. Lambda表达式的语法 语法格式 委托类型变量= （[参数列表]）=&gt; { 方法体; }; 语法格式分析 1234567891011121314151617181920212223242526272829303132333435363738using System.Collections;using System.Collections.Generic;using UnityEngine;public delegate void ShowDelegate(); //无参.public delegate void NameDelegate(string name); //有参.public class LambdaTest : MonoBehaviour &#123; public ShowDelegate showDel; public NameDelegate nameDel; void Start () &#123; showDel = Hello; showDel += delegate() &#123; Debug.Log("MKCODE"); &#125;; showDel += () =&gt; &#123; Debug.Log("擅码网"); &#125;; //语法分析1 showDel(); //-----------------Lambda语法分析----------------------- nameDel = (string name) =&gt; &#123; Debug.Log("我的名字是:" + name); &#125;; nameDel += (string name) =&gt; &#123; Debug.Log("My Name Is" + name); &#125;; nameDel += name =&gt; &#123; Debug.Log("你是:" + name); &#125;; //语法分析2 nameDel += info =&gt; Debug.Log("Hello:" + info); //语法分析3 nameDel("LKK"); &#125; private void Hello()&#123; Debug.Log("Monkey"); &#125;&#125; =&gt; 是Lambda 表达式特有符号，读音是：goes to 如果没有参数列表，（）也不能省略，如：（）=&gt; 如果参数列表中只有一个参数，（）可以省略 如果方法体内只有一句代码，可以省略代码块符号，也就是不用写{ }]]></content>
       <categories>
         <category>Unity</category>
@@ -295,6 +287,30 @@
       <tags>
         <tag>Lambda</tag>
         <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Lambda表达式]]></title>
+    <url>%2Fpost%2Flambda-expression.html</url>
+    <content type="text"><![CDATA[1. Lambda表达式概念官方概念 Lambda 表达式是一种可用于创建 委托 或 表达式目录树 类型的 匿名函数 。 通过使用 lambda 表达式，可以写入可作为参数传递或作为函数调用值返回的本地函数。 Lambda 表达式，是一种代码的语法格式； Lambda 表达式是对匿名方法语法格式的进一步简化； Lambda 表达式可以理解成是匿名方法的升级版。 【方法的三种表现形式】普通方法–&gt; 匿名方法–&gt; Lambda 表达式越往后越抽象，越往后理解成本也就越高。 2. Lambda表达式的语法 语法格式 委托类型变量= （[参数列表]）=&gt; { 方法体; }; 语法格式分析 1234567891011121314151617181920212223242526272829303132333435363738using System.Collections;using System.Collections.Generic;using UnityEngine;public delegate void ShowDelegate(); //无参.public delegate void NameDelegate(string name); //有参.public class LambdaTest : MonoBehaviour &#123; public ShowDelegate showDel; public NameDelegate nameDel; void Start () &#123; showDel = Hello; showDel += delegate() &#123; Debug.Log("MKCODE"); &#125;; showDel += () =&gt; &#123; Debug.Log("擅码网"); &#125;; //语法分析1 showDel(); //-----------------Lambda语法分析----------------------- nameDel = (string name) =&gt; &#123; Debug.Log("我的名字是:" + name); &#125;; nameDel += (string name) =&gt; &#123; Debug.Log("My Name Is" + name); &#125;; nameDel += name =&gt; &#123; Debug.Log("你是:" + name); &#125;; //语法分析2 nameDel += info =&gt; Debug.Log("Hello:" + info); //语法分析3 nameDel("LKK"); &#125; private void Hello()&#123; Debug.Log("Monkey"); &#125;&#125; =&gt; 是Lambda 表达式特有符号，读音是：goes to 如果没有参数列表，（）也不能省略，如：（）=&gt; 如果参数列表中只有一个参数，（）可以省略 如果方法体内只有一句代码，可以省略代码块符号，也就是不用写{ }]]></content>
+      <categories>
+        <category>Unity</category>
+      </categories>
+      <tags>
+        <tag>Lambda</tag>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo文件目录]]></title>
+    <url>%2Fpost%2Fhexo-basic.html</url>
+    <content type="text"><![CDATA[刚接触到Hexo，已经被Hexo的简洁性和部署网站的便捷性所惊叹到了，但是Hexo的一些概念在大脑中还不是很清晰，在网上也没有找到一篇特别好的文章来介绍总结。因此本文作为个人使用Hexo认识的比较重要概念的的一些总结。 创建好Hexo后的路径树12345678910111213.├── _config.yml├── package.json|── public├── scaffolds├── source| ├── _drafts| └── _posts| ├── categories| └── tags└── themes |_ next(主题的名字) |_config.yml config.yml配置文件，采用yml的格式 root目录下的_config.yml:站点配置文件 应用的某个主题（如NexT）下的_config.yml:主题配置文件 public文件夹这个文件夹存放的是当我们使用命令hexo g命令后，自动生成的一些html文件, 这些文件都是要上传到远程服务器中。 source文件夹 _posts：保存markdown的源文件 _categories：使用命令hexo new page categories创建分类分页自动生成的文件夹； _tags：同上，这里创建标签分页； 如何创建分页!]]></content>
+      <categories>
+        <category>Computer skills</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>技巧</tag>
       </tags>
   </entry>
 </search>
