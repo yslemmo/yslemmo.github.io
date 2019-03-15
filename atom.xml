@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yslemmo.github.io/"/>
-  <updated>2019-02-11T12:51:40.527Z</updated>
+  <updated>2019-03-15T03:20:41.893Z</updated>
   <id>http://yslemmo.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>降噪耳机Bose-QC-30使用体验</title>
+    <link href="http://yslemmo.github.io/post/Bose-QC-30.html"/>
+    <id>http://yslemmo.github.io/post/Bose-QC-30.html</id>
+    <published>2019-03-14T22:53:46.000Z</published>
+    <updated>2019-03-15T03:20:41.893Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是我买的第一款“主动降噪”耳机，本文谈谈对 QC-30 这款产品的使用体验。</p><a id="more"></a><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>在买一款耳机之前，买过至少10条以上还不错的耳机。目前还在使用的有，1条小米平头耳机、2条“入耳式耳机”（分别是AKG和小米活塞耳机）、一个不知名的运动耳机、一个头戴式耳机（Sony 1Abt）。我并不是一个耳机发烧友，有HIFI音质没有很大的追求，但喜欢在不同的使用场景下使用合适的耳机。</p><p>18年底到19年初，这段期间听了比较多的播客，就一直想买一款“分体式耳机”，也就是商家标称的“真·无线耳机”。以AirPorts为参考，考虑过”<a href="http://item.mi.com/product/9016.html" target="_blank" rel="noopener">小米AirDots</a>“、”<a href="http://item.mi.com/product/9209.html" target="_blank" rel="noopener">小米蓝牙耳机Air</a>“，另外还有 QCY T1，漫步者 W2等小众品牌，但考虑到颜值问题，还是优先考虑小米的两款。（值得一提的时候，小米AirDots就是Qcy T1的贴牌产品，只是换了外观设计）。但小米的这两款蓝牙耳机一直买不到，无论是线上还是在小米之家，后来想着就入手一款降噪耳机。</p><p>目前，主流的降噪耳机分3种，一种是”分体式耳机“，一种是”项圈式耳机“，一种是头戴式耳机（Sony WH-1000XM3、Bose Qc35）。考虑到自己已经有一款”头戴式耳机“，”分体式耳机“感觉性价比不是很高，就只有”项圈式降噪耳机“了，千元以后的有”Sony Wi-1000x“、”Bose Qc-30”，百元以内的有“DyPlay ANC30（279）”。前几天晚上，逛闲鱼的时候发现有人在卖全新未拆封的 QC-30 ，直接砍了50元后，以1200元的价格买了。</p><h1 id="外观与佩戴"><a href="#外观与佩戴" class="headerlink" title="外观与佩戴"></a>外观与佩戴</h1><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190315074148.png" alt=""></p><p>Bose QC-30 的简单一点描述就是一个”项圈“，采用半圈形的结构，让耳机直接挂在脖子上，能在一定程度上提升耳机的佩戴舒适度。项圈部分采用”类肤质“的材料、耳塞外部是金属材料、按键控制是硬塑料，鲨鱼鳍耳塞是软硅胶材质的。整体来看，产品在设计风格、材料选择方面都比较协调，统一。再说一说细节部分，仔细看耳机，我都不敢相信这做工是2000价位的耳机，与Sony的做工（细节把控）有点差距，如项圈有些部分的胶并没有粘好，使用一段时间或出汗可能会导致脱胶、鼓包等问题。</p><p>因为耳式项圈部分采用了类肤质的材料，所以直接把耳机与皮肤接触并没有什么不适，长时间佩戴甚至会忽视它的存在。当穿上有领的衣服时，项圈还可以直接放在领子的外面。佩戴上另一个非常难受的问题，项圈戴久之后，项圈的位置会变歪，对强迫症来说非常难受呀！不得不过几十分钟就要把它手动放正。</p><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/photo_2019-03-15_08-00-40.jpg" alt=""></p><p>另外一个关键的问题时耳塞的的舒适度。得益于Bose 独家的<code>鲨鱼鳍耳塞</code>，半入耳式的设计能让做到长时间佩戴都很舒适，而且怎么甩耳机都不会从耳朵里溜出来。解决了平头耳机容易掉，耳塞式耳机的堵耳，头戴式耳机夹眼镜夹耳等问题。</p><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190315080958.png" alt=""></p><h1 id="连接耳机"><a href="#连接耳机" class="headerlink" title="连接耳机"></a>连接耳机</h1><p>QC-30支持蓝牙4.2连接，不支持LDAC以及aptX。蓝牙连接设备没什么好说的，QC-30还支持NFC连接的，但经过我多次测验，无论是通过手机NFC还是 Sony-A30 的 NFC 都无法正常连接，只能通过手动点击蓝牙连接。当然，耳机开机时如果手机的蓝牙时打开的，耳机会自动连接手机，连接的速度还是挺快的。</p><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190315093655.png" alt=""></p><p>连接好APP后，可以拖动中间的滑动条调节降噪的等级，支持11级调节。左下角的连接蓝牙标志可以进行蓝牙连接，往右边的是Bose 音乐分享功能，介绍说时能在两台Bose设备之间无线传输音频，可惜我只有一台 Bose设备，最右边的时蓝牙当前的剩余电量。最下面的播放播放控制，这个控制可以接管连接上设备的音频控制权。比如 网易云音乐 或是 Spotify 播放音乐，或是连接上的其他播放器（Sony-A30）也可以控制。</p><p>Bose-QC-30 可以同时连接两台设备，但是使用体验并不是很好。</p><ul><li>同时连接 Sony-A30 和手机，并使用 Sony-A30 播放音乐时，如果手机上要播放音频，需要先暂停 Sony-A30上的播放，否则手机播放没有声音。</li><li><del>同时连接 PC 和手机，使用 PC 播放音乐，如果手机接到任何通知或要播放声音，会中断当前音乐的播放，过一会又继续播放。</del></li></ul><p>注意：在使用 Win10 连接耳机时，需要先连接手机，打开 Bose Connect ，点击蓝牙-连接新设备，再使用 Win10 搜索蓝牙设备连接 Bose QuietControl 30。</p><h1 id="降噪和音质"><a href="#降噪和音质" class="headerlink" title="降噪和音质"></a>降噪和音质</h1><h2 id="降噪表现"><a href="#降噪表现" class="headerlink" title="降噪表现"></a>降噪表现</h2><p>降噪是这款耳机最主要的功能，降噪分为两种。一种是被动降噪，一种是主动降噪。对于第一种，更恰当地说是隔音，戴海绵耳塞、头戴耳机式。</p><blockquote><p>被动式降噪耳机利用物理特性将外部噪声与耳朵隔绝开，主要通过隔声材料阻挡噪声，对高频率声音非常有效，一般可使噪声降低大约为15-20dB。</p></blockquote><p>而主动降噪不只是简单地物理材料隔音</p><blockquote><p> 主动降噪的原理在于首先要收集噪音的波型特点，然后<strong>通过内置的处理芯片运算出反相的波，再通过高还原度扬声器相抵消。</strong>所以主动降噪系统必备的设备有拾音器、处理芯片、扬声器，每一个部分都要保证高质量才能达到最终的效果，故成本上就要比传统非降噪设备高。</p></blockquote><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/ce0BPVeFZzz5g.jpg" alt=""></p><p>Bose QC-30 一个特色式支持11档地”可控降噪“，可以满足在不同场景地使用需求。在嘈杂的食堂、公交、地铁上可以将降噪全开。而在需要与人交谈的时候，可以把通过线控的方式将降噪级别降低，当前我还是建议把耳机取下来再与人交谈，一是方便，二是对别人的尊重。</p><p>将降噪开到最高时，即使播放音乐，也会感觉少了很多嘈杂的声音，这些声音在没有戴降噪耳机之前不会有明显的感觉，当我把降噪耳机取下来之后，各种中频、低频的噪音”扑耳而来“，用了降噪耳机之后怕是再也回不去不用降噪耳机的时候了。</p><p>对人声的降噪情况，如果有人在你身边讲话时，还是可以清楚听清说话的声音，但是人声会有明显的变化。</p><p>Bose QC 30 并没有明显的底噪（电流声），如果旁边有手机或其他设备在充电可以听到明显的电流声。如果衣服摩擦耳机的线，会有一点点的听诊器效应。</p><p>总的来说，QC30的降噪表现还是延续了Bose家族一如既往的高水准，比市面上很多同类型的降噪耳机效果要更优秀一些。对近距离的高频噪音和人声不能屏蔽掉，但开启降噪再用小音量放一些音乐就可以做好普通耳机需要很大音量才能隔绝噪音的效果。</p><h2 id="音乐表现"><a href="#音乐表现" class="headerlink" title="音乐表现"></a>音乐表现</h2><p>到了玄学的音效的环境，对于音质不是特别敏感的耳朵来说，Bose QC30 的音效还是能过的去的。网上的评测大都说不如 ”Sony WI-1000x“听感好，我没有自己听过“Sony Wi-1000x”，所以不好下判断。更何况音质这东西见仁见智，耳朵适应一段时间一般都会适应。</p><p>（各频段音乐表现待一段时间的使用之后再补充）</p><h1 id="续航表现"><a href="#续航表现" class="headerlink" title="续航表现"></a>续航表现</h1><p>官方参数：充满电可以使用10个小时，充满电需要2个小时。</p><hr><p>参考：</p><ul><li><p><a href="https://www.bose.cn/zh_cn/products/headphones/earphones/quietcontrol-30.html#v=qc30_black" target="_blank" rel="noopener">Bose-QC-30_官方介绍</a></p></li><li><p><a href="https://www.bilibili.com/video/av41982410?from=search&amp;seid=13107583089083392405" target="_blank" rel="noopener">平价真无线耳机们到底好用不好用【值不值得买第307期】</a></p></li><li><a href="http://sound.zol.com.cn/439/4392078.html" target="_blank" rel="noopener">破解”听不见”的秘密 降噪耳机技术浅谈</a></li><li><a href="">BOSE QC30无线消噪耳机体验</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是我买的第一款“主动降噪”耳机，本文谈谈对 QC-30 这款产品的使用体验。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="新玩具" scheme="http://yslemmo.github.io/categories/%E6%96%B0%E7%8E%A9%E5%85%B7/"/>
+    
+    
+      <category term="耳机" scheme="http://yslemmo.github.io/tags/%E8%80%B3%E6%9C%BA/"/>
+    
+      <category term="体验" scheme="http://yslemmo.github.io/tags/%E4%BD%93%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>20190129_《故事》摘抄</title>
+    <link href="http://yslemmo.github.io/post/Story-Notes.html"/>
+    <id>http://yslemmo.github.io/post/Story-Notes.html</id>
+    <published>2019-02-19T10:24:11.000Z</published>
+    <updated>2019-02-19T13:46:33.575Z</updated>
+    
+    <content type="html"><![CDATA[<p>罗伯特·麦基的《故事》中摘录的笔记</p><a id="more"></a><h1 id="Part-1-故事"><a href="#Part-1-故事" class="headerlink" title="Part 1 故事"></a>Part 1 故事</h1><ul><li>故事是人生必需的设备。</li><li>娱乐即使沉浸于故事的仪式之中，达到一种知识上和情感上令人满足的目的。</li><li>凡是优秀的电影、小说、戏剧，都能通过其各不相同的喜剧和悲剧色彩来达到娱乐的目的，给观众一种具有感染力的生活模式。（电子游戏亦是如此）</li><li>故事并不是对现实的逃避，而是一种载体，承载着我们去追寻显示、尽最大的努力挖掘出混乱人生的真谛。</li><li>故事艺术是世界上主导的文化力量，而电影艺术则是这一辉煌事业的主导媒体。</li><li>创作者的技巧并不是什么手艺的东西，只不过是他对所遇到的每一部小说、电影或戏剧中故事要素的无意识吸收。</li><li>创造故事必须深入地挖掘生活，找到新地见解、新版本的价值和意义，然后创造出一个故事载体。</li><li>一个好故事使一部好影片成为可能，如果故事不能成立，那么影片必将成为灾难。</li><li>所有的故事，无论真诚还是虚假，明智还是愚蠢，都会忠实地映现出作者本人，暴露出其人性…..或人性地缺乏。</li><li>每一门艺术都是由其根本形式决定地。故事地普遍形式使其作品成为一个故事，而不是肖像画或艺术拼贴。</li><li>一个作家必须掌握故事形式，但形式并不是“公式”，故事是丰富多彩、纷繁复杂、神妙莫测的。</li></ul><h2 id="故事是生活的比喻"><a href="#故事是生活的比喻" class="headerlink" title="故事是生活的比喻"></a>故事是生活的比喻</h2><ul><li><p>一个讲故事的人即是一个生活诗人，一个艺术家，将日常生活事件、内在生活和外在生活、梦想和现实转化为一首诗，一首以事件而不是以语言作为韵律的诗<br>一个长达两小时的比喻，告诉观众:生活就像是这样！因此，<strong>故事必须抽象于生活，提取其精华，但又不能成为生活的抽象化，以致失却实际生活的原味。故事必须像生活，但又不能一成不变地照搬生活，以致除了市井乡民都能一目了然的生活之外便别无深度和意味。</strong></p></li><li><p>电影美学是表达故事生动内容的手段，其本身绝不能成为目的。</p></li></ul><h1 id="Part-2-：故事的要素"><a href="#Part-2-：故事的要素" class="headerlink" title="Part 2 ：故事的要素"></a>Part 2 ：故事的要素</h1><blockquote><p>​    <strong>节拍</strong>构成场景，<strong>场景</strong>构成序列，<strong>序列</strong>构成幕，<strong>幕</strong>构建成故事，最后达到<strong>高潮</strong>。</p></blockquote><p><code>节拍</code>是场景里面最小的结构成分。</p><p><code>场景</code>是再某一相对连续的时空中，通过冲突表现出来的一段动作，这个动作至少是让人生的生活负荷发生转折。<strong>理想的场景是一个故事事件。</strong></p><p><code>序列</code>是一系列场景——一般是两到五个，每一个场景的冲击力呈递增趋于，直到最后到达顶峰。</p><p><code>幕</code>是一系列序列的组合，以一个高潮场景为顶点，导致价值的重大转折。</p><p><code>高潮</code>：故事是一系列幕的组合，渐次构成一个最后的幕高潮。引发出<strong>绝对不可逆转的变化。</strong></p><p>总结：场景导致较小而有意义的变化，序列中的终结场景的变化更强劲、具有决定性的变化，而幕导致的价值转折比场景和序列中的冲击力更强。场景、序列、幕中的变化都是可以逆转的，但是最后一幕的高潮是不可逆转的。</p><h2 id="故事三角"><a href="#故事三角" class="headerlink" title="故事三角"></a>故事三角</h2><p>故事经典设计：</p><blockquote><p>经典设计是指围绕一个主动主人公构建的故事，主人公为了追求自己的欲望，与主要来自外界的对抗力量进行抗争，通过连续的时间、在一个连贯而具有因果关联的虚构现实里，到达一个表现绝对、而变化不可逆转的闭合式结局。</p></blockquote><p>我们的故事大部分都是这样的经典设计的。被麦基成为<code>大情节</code>故事，但是这种形式并不是故事讲述形态的极限。与之不同的，有<code>小情节</code>和<code>反情节</code>，如图：</p><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190219205455.png" alt=""></p><p><strong>最小主义</strong>是指作者从经典设计的成分开始，对它们进行削减—对大情节的突出特性进行精炼、浓缩、删节或修剪。<strong>小情节并不意味着无情节</strong>，其故事必须像大情节一样给予精美的处理。确切地说，最小主义的情节处理是要在简约、精炼的前提下保持经典的精华，使影片仍然能够满足观众。</p><p><strong>反情节</strong>是反小说（新小说）和荒诞派戏剧的电影翻版。反结构变体并没有削减经典，而是反其道而行，否认传统形式，以利用甚至嘲弄形式原理的要义。反情节的制造者对欲语还休的描写方法或暗度陈仓式的收敛几乎没有兴趣；相反，为了昭示他的“革命”雄心，他的影片倾向于过度铺陈和自我意识的大肆渲染。</p><h3 id="闭合式结局-VS-开放式结局"><a href="#闭合式结局-VS-开放式结局" class="headerlink" title="闭合式结局 VS 开放式结局"></a>闭合式结局 VS 开放式结局</h3><blockquote><p>如果一个表达绝对而不可逆转变化的故事高潮，回答了故事讲述过程中所提出的所有问题并满足了所有观众情感，则被称为<strong>闭合式结局。</strong></p></blockquote><blockquote><p>一个故事高潮如果留下一两个未解答的问题和一些没被满足的情感，则被称为<strong>开放式结局。</strong></p></blockquote><h3 id="外在冲突-VS-内在冲突"><a href="#外在冲突-VS-内在冲突" class="headerlink" title="外在冲突 VS 内在冲突"></a>外在冲突 VS 内在冲突</h3><blockquote><p>大情节强调<strong>外在冲突</strong>。尽管人物常常具有强烈的内心冲突，但重点却落在他们与人际关系、社会机构或自然界力量的斗争上。</p></blockquote><blockquote><p>在小情节中，主人公也许与家庭、社会和环境具有强烈的外在冲突，但其重点却集结在他与自己思想情感有意或无意的角斗里。(<strong>内在冲突</strong>即内心冲突)</p></blockquote><h3 id="单一主人公-VS-多重主人公"><a href="#单一主人公-VS-多重主人公" class="headerlink" title="单一主人公 VS 多重主人公"></a>单一主人公 VS 多重主人公</h3><blockquote><p>如果是单一主人公，则影片中所有的事件变化都围绕主角。</p></blockquote><blockquote><p>如果作者将影片分解成若干较小的次情节，每一个次情节都有一个单一主人公。</p></blockquote><h3 id="主动主人公-VS-被动主人公"><a href="#主动主人公-VS-被动主人公" class="headerlink" title="主动主人公 VS 被动主人公"></a>主动主人公 VS 被动主人公</h3><blockquote><p><strong>主动主人公</strong>在欲望追求中采取行动时，与他周围的人和世界发生直接冲突。</p></blockquote><blockquote><p><strong>被动主人公</strong>表面消极被动，而在内心追求欲望时，与其自身性格的方方面面发生冲突。</p></blockquote><h3 id="线性时间-VS-非线性时间"><a href="#线性时间-VS-非线性时间" class="headerlink" title="线性时间 VS 非线性时间"></a>线性时间 VS 非线性时间</h3><blockquote><p>无论有无闪回，一个故事的事件如果被安排成一个观众能够跟踪的时间顺序，那么这个故事便是按照线性时间来讲述的。</p></blockquote><blockquote><p>如果一个故事在时间中随意跳跃，从而模糊了时间的连续性，以致观众无从判断什么发生在前什么发生在后，那么这个故事便是按照非线性时间来讲述的。</p></blockquote><h3 id="因果-VS-巧合"><a href="#因果-VS-巧合" class="headerlink" title="因果 VS 巧合"></a>因果 VS 巧合</h3><p>大情节因果性强，反情节常常以巧合代替因果，强调宇宙万物的随意碰撞。</p><h3 id="连贯现实-VS-非连管现实"><a href="#连贯现实-VS-非连管现实" class="headerlink" title="连贯现实 VS 非连管现实"></a>连贯现实 VS 非连管现实</h3><blockquote><p>连贯现实是确立人物及其世界之间互动模式的虚拟背景，在整个讲述过程中，这些互动模式一直保持着连贯性，从而创造出意义。</p></blockquote><blockquote><p>非连贯现实是混合了多种互动模式的背景，其中故事章节不连贯地从一个“现实”跳向另一个“现实”，以营造出一种荒诞感。</p></blockquote><hr><p>未完….</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;罗伯特·麦基的《故事》中摘录的笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
+    
+    
+      <category term="movie" scheme="http://yslemmo.github.io/tags/movie/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Scrapy爬虫抓取并下载豆瓣图片</title>
@@ -214,11 +260,11 @@
       <category term="Unity" scheme="http://yslemmo.github.io/categories/Unity/"/>
     
     
+      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    
       <category term="xLua" scheme="http://yslemmo.github.io/tags/xLua/"/>
     
       <category term="Untiy" scheme="http://yslemmo.github.io/tags/Untiy/"/>
-    
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
@@ -270,9 +316,9 @@
     
       <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
     
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
-    
       <category term="Lua" scheme="http://yslemmo.github.io/tags/Lua/"/>
+    
+      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
       <category term="SimpleFramwork" scheme="http://yslemmo.github.io/tags/SimpleFramwork/"/>
     
@@ -451,58 +497,6 @@
       <category term="OOP六大原则" scheme="http://yslemmo.github.io/tags/OOP%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
     
       <category term="Design Pattern" scheme="http://yslemmo.github.io/tags/Design-Pattern/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Jieba库制作统计水浒传角色的词频</title>
-    <link href="http://yslemmo.github.io/post/role-name-count-in-shuihu-use-Jieba.html"/>
-    <id>http://yslemmo.github.io/post/role-name-count-in-shuihu-use-Jieba.html</id>
-    <published>2018-03-25T05:38:17.000Z</published>
-    <updated>2019-02-11T13:33:01.761Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是学习Python一个星期依赖独立制作的一个比较小的案例脚本，计算一段文本的「词频」</p><a id="more"></a><h1 id="案例介绍"><a href="#案例介绍" class="headerlink" title="案例介绍"></a>案例介绍</h1><p>统计出某一文本中词条的词频。这个案例我是用水浒传文本来统计出每一名角色(108将)出现的次数</p><h1 id="案例知识点"><a href="#案例知识点" class="headerlink" title="案例知识点"></a>案例知识点</h1><ul><li>使用<code>Jieba模块</code>分词</li><li>使用<code>json模块</code>将字典导出成<code>json文本</code></li><li>Python的<code>IO操作</code></li></ul><h1 id="案例准备"><a href="#案例准备" class="headerlink" title="案例准备"></a>案例准备</h1><ul><li>Windows 10</li><li>Python 3.6</li><li>安装好JieBa库</li><li>《水浒传》.txt文本</li><li>水浒108将.txt文本</li></ul><h2 id="项目文件结构"><a href="#项目文件结构" class="headerlink" title="项目文件结构"></a>项目文件结构</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── namerate.json</span><br><span class="line">├── RoleCount.py</span><br><span class="line">├── role.txt</span><br><span class="line">└── shuihu.txt</span><br></pre></td></tr></table></figure><h2 id="安装JieBa库"><a href="#安装JieBa库" class="headerlink" title="安装JieBa库"></a>安装JieBa库</h2><blockquote><p>jieba 是一个python实现的分词库，对中文有着很强大的分词能力。</p><p>Git链接：<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">https://github.com/fxsjy/jieba</a></p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py -3 -m pip install Jieba</span><br></pre></td></tr></table></figure><h2 id="处理素材文本"><a href="#处理素材文本" class="headerlink" title="处理素材文本"></a>处理素材文本</h2><p>“水浒传.txt”不需要额外处理，但是“108将”需要使用「正则表达式」进行处理，处理结果最后应该是，每一行文本只有一个将领的名字。</p><h1 id="实验脚本"><a href="#实验脚本" class="headerlink" title="实验脚本"></a>实验脚本</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># 108将字典</span></span><br><span class="line">roles = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 存储水浒所有的文本</span></span><br><span class="line">shuihu_str = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入文件的名字</span></span><br><span class="line">filename = <span class="string">'namerate.json'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把108将添加到jieba词库中去</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AddWords</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> roles:</span><br><span class="line">        jieba.add_word(name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开role文本，创建字典</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"role.txt"</span>, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> file_Object:</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> file_Object:</span><br><span class="line">        roles[name.strip()] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">AddWords()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开shuihu文本，存储到shuihu_str变量中去</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"shuihu.txt"</span>, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> file_Object:</span><br><span class="line">    lines = file_Object.readlines()</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        shuihu_str += line.strip()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分词匹配</span></span><br><span class="line">seg_list = jieba.cut(shuihu_str, cut_all=<span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> seg_list:</span><br><span class="line">    <span class="keyword">for</span> role <span class="keyword">in</span> roles:</span><br><span class="line">        <span class="keyword">if</span>(role == word):</span><br><span class="line">            roles[role] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"匹配完毕"</span>)</span><br><span class="line"><span class="keyword">with</span> open(filename, <span class="string">'w'</span>) <span class="keyword">as</span> f_obj:</span><br><span class="line">    f_obj.write(json.dumps(roles, ensure_ascii=<span class="keyword">False</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在Cmd窗口输出字典</span></span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> roles.items():</span><br><span class="line">    print(key)</span><br></pre></td></tr></table></figure><h1 id="案例制作总结"><a href="#案例制作总结" class="headerlink" title="案例制作总结"></a>案例制作总结</h1><p>这个项目遇到的最大的问题是“中文字符”的编码问题，比如在<code>30行</code>open的文本无法与str相加，可能是字符编码不相同，存储字典到<code>.json</code>的中文字符也是乱码的。    </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是学习Python一个星期依赖独立制作的一个比较小的案例脚本，计算一段文本的「词频」&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://yslemmo.github.io/categories/Python/"/>
-    
-      <category term="Module" scheme="http://yslemmo.github.io/categories/Python/Module/"/>
-    
-    
-      <category term="Python" scheme="http://yslemmo.github.io/tags/Python/"/>
-    
-      <category term="案例" scheme="http://yslemmo.github.io/tags/%E6%A1%88%E4%BE%8B/"/>
-    
-      <category term="Module" scheme="http://yslemmo.github.io/tags/Module/"/>
-    
-      <category term="自然语言处理" scheme="http://yslemmo.github.io/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用bat脚本一键部署Hexo文章</title>
-    <link href="http://yslemmo.github.io/post/create-new-article-with-bat.html"/>
-    <id>http://yslemmo.github.io/post/create-new-article-with-bat.html</id>
-    <published>2018-03-25T04:01:38.000Z</published>
-    <updated>2019-02-11T13:17:19.493Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用「Alt Run」和「Bat」脚本实现写Hexo文档的一键部署</p><a id="more"></a><p>每次用Hexo写文章，都需要先打开<code>Cmd</code>窗口转到D盘的Hexo的路径下，然后运行<code>hexo new **</code>，再定位到<code>_post</code>路径用「Typor」打开，最后还要使用<code>hexo g</code> <code>hexo s</code>等命令去部署，写一篇文档之前要浪费这样时间，尤其是复杂的操作降低了写作的积极性。为了减少操作，想到可以用脚本来代替自己的手动操作。最后使用alt run来打开脚本，更加快捷。</p><h1 id="配置准备"><a href="#配置准备" class="headerlink" title="配置准备"></a>配置准备</h1><ul><li>Win10 操作系统</li><li>Hexo 博客</li><li>ALT Run：快速启动软件</li><li>编写的Bat脚本</li></ul><h1 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h1><p><img src="http://blog-1258616090.cos.ap-chengdu.myqcloud.com/18-3-25/27235033.jpg" alt=""></p><h2 id="一键创建文章"><a href="#一键创建文章" class="headerlink" title="一键创建文章"></a>一键创建文章</h2><ol><li>创建Hexo文章.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> /p name=input pages name:</span><br><span class="line"><span class="built_in">echo</span> name:%name%</span><br><span class="line"><span class="built_in">echo</span> please <span class="built_in">wait</span></span><br><span class="line">hexo new %name% &amp;&amp; call 1.bat %name%</span><br><span class="line">pause</span><br></pre></td></tr></table></figure><ul><li>2行：从cmd窗口获取文章的名字</li><li>5行：创建从窗口获取的名字，同时调用<code>1.bat</code>这个脚本</li></ul><ol start="2"><li>1.bat脚本</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start /min /w mshta vbscript:setTimeout(<span class="string">"window.close()"</span>,1000)</span><br><span class="line"><span class="built_in">echo</span> The InputValue is %1</span><br><span class="line"><span class="built_in">set</span> name=%1</span><br><span class="line"><span class="built_in">echo</span> %name%</span><br><span class="line">start /d <span class="string">"D:\Program Files\Typora\Typora.exe"</span> Typora.exe  <span class="string">"D:\Hexo\blog\source\_posts\%name%.md"</span></span><br></pre></td></tr></table></figure><ul><li>1行：延迟1秒执行</li><li>3行：「继承 创建hexo文章.bat」的变量</li><li>5行：使用D盘的「Typora.exe」MarkDown编辑器打开刚才创建好的文章</li></ul><h2 id="发布到本地服务器"><a href="#发布到本地服务器" class="headerlink" title="发布到本地服务器"></a>发布到本地服务器</h2><ol><li>发布到本地服务器.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start hexo_g.bat</span><br><span class="line">start /min /w mshta vbscript:setTimeout(<span class="string">"window.close()"</span>,3000)</span><br><span class="line">start hexo_s.bat</span><br></pre></td></tr></table></figure><ol start="2"><li>hexo_g.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><ol start="3"><li>hexo_s.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><h2 id="发布GitHub-Page"><a href="#发布GitHub-Page" class="headerlink" title="发布GitHub Page"></a>发布GitHub Page</h2><ol><li>发布到github.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start clean.bat</span><br><span class="line">start /min /w mshta vbscript:setTimeout(<span class="string">"window.close()"</span>,1200)</span><br><span class="line">start hexo_d.bat</span><br></pre></td></tr></table></figure><ol start="2"><li>clean.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> clean</span><br><span class="line"><span class="built_in">echo</span> Please <span class="built_in">wait</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure><ol start="3"><li>hexo_d.bat</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> postting.....</span><br><span class="line">hexo g -d</span><br><span class="line">pause</span><br></pre></td></tr></table></figure><h2 id="搭配AltRun快速启动"><a href="#搭配AltRun快速启动" class="headerlink" title="搭配AltRun快速启动"></a>搭配AltRun快速启动</h2><p>什么，AltRun都不知道是什么，那还不快去了解一下，当然也可以使用其他的快速启动软件，或者把这些脚本的快捷键放到系统环境中，使用<code>Win + Q</code>启动。</p><p><img src="http://blog-1258616090.cos.ap-chengdu.myqcloud.com/18-3-25/61506301.jpg" alt=""></p><p>在AltRun用到的热键：</p><ul><li>new：创建文章，并使用Typora打开</li><li>start：生成静态网页，并打开本地hexo服务器</li><li>post：用<code>hexo clean</code>清除public文件夹，并且发布到「github page」中去</li></ul><h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><ul><li><a href="https://xiaomuins.github.io/2017/04/17/%E4%BD%BF%E7%94%A8bat%E6%89%B9%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96hexo%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" target="_blank" rel="noopener">使用bat批处理脚本优化hexo的使用体验</a></li><li><a href="https://xbeta.info/altrun.htm" target="_blank" rel="noopener">AltRun快速启动工具</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;使用「Alt Run」和「Bat」脚本实现写Hexo文档的一键部署&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://yslemmo.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yslemmo.github.io/tags/Hexo/"/>
     
   </entry>
   
