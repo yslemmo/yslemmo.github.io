@@ -115,12 +115,12 @@
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="上一篇笔记我直接自己写了一个Python来抓取豆瓣图片，为了让我更加熟悉Scrapy，我又用Scrapy做了一遍。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211194221.png">
-<meta property="og:updated_time" content="2019-02-11T12:51:40.527Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211194221.png">
+<meta property="og:updated_time" content="2019-03-18T10:49:03.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Scrapy爬虫抓取并下载豆瓣图片">
 <meta name="twitter:description" content="上一篇笔记我直接自己写了一个Python来抓取豆瓣图片，为了让我更加熟悉Scrapy，我又用Scrapy做了一遍。">
-<meta name="twitter:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211194221.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211194221.png">
 
 
 
@@ -414,12 +414,24 @@
                 
               
 
-              <time title="创建时间：2019-02-11 19:16:24 / 修改时间：20:51:40" itemprop="dateCreated datePublished" datetime="2019-02-11T19:16:24+08:00">2019-02-11</time>
+              <time title="创建时间：2019-02-11 19:16:24" itemprop="dateCreated datePublished" datetime="2019-02-11T19:16:24+08:00">2019-02-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-18 18:49:03" itemprop="dateModified" datetime="2019-03-18T18:49:03+08:00">2019-03-18</time>
               
             
           </span>
@@ -502,7 +514,7 @@
         <p>上一篇笔记我直接自己写了一个Python来抓取豆瓣图片，为了让我更加熟悉<code>Scrapy</code>，我又用Scrapy做了一遍。</p>
 <a id="more"></a>
 <h1 id="网站分析"><a href="#网站分析" class="headerlink" title="网站分析"></a>网站分析</h1><p>直接参考上一篇的目标和网站分析。</p>
-<h1 id="工具分析"><a href="#工具分析" class="headerlink" title="工具分析"></a>工具分析</h1><p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211194221.png" alt=""></p>
+<h1 id="工具分析"><a href="#工具分析" class="headerlink" title="工具分析"></a>工具分析</h1><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190211194221.png" alt=""></p>
 <p>需要添加一个自己的下载图片的<code>Item Pipeline</code>。</p>
 <h1 id="爬虫程序"><a href="#爬虫程序" class="headerlink" title="爬虫程序"></a>爬虫程序</h1><h2 id="创建一个新的Scrapy项目"><a href="#创建一个新的Scrapy项目" class="headerlink" title="创建一个新的Scrapy项目"></a>创建一个新的Scrapy项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject db_img_crawler</span><br><span class="line">scrapy genspider dbimg htpp://douban.com</span><br></pre></td></tr></table></figure>
 <h2 id="编写items-py"><a href="#编写items-py" class="headerlink" title="编写items.py"></a>编写items.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImagesItem</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    image_title = scrapy.Field()  <span class="comment"># 图片的标题</span></span><br><span class="line">    image_url = scrapy.Field()	  <span class="comment"># 图片的地址</span></span><br></pre></td></tr></table></figure>
@@ -578,7 +590,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/Story-Book-Notes.html" rel="prev" title="「故事」读书笔记">
+              <a href="/post/Story-Notes.html" rel="prev" title="「故事」读书笔记">
                 「故事」读书笔记 <i class="fa fa-chevron-right"></i>
               </a>
             

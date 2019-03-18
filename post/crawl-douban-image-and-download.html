@@ -115,16 +115,16 @@
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="使用Python抓取和周迅有关的图片并下载到本地。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211120554.png">
-<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211121129.png">
-<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211122017.png">
-<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211122906.png">
-<meta property="og:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211190516.png">
-<meta property="og:updated_time" content="2019-02-11T12:51:05.713Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211120554.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211121129.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211122017.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211122906.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211190516.png">
+<meta property="og:updated_time" content="2019-03-18T10:49:03.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抓取豆瓣搜索到的图片">
 <meta name="twitter:description" content="使用Python抓取和周迅有关的图片并下载到本地。">
-<meta name="twitter:image" content="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211120554.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/20190211120554.png">
 
 
 
@@ -418,12 +418,24 @@
                 
               
 
-              <time title="创建时间：2019-02-11 12:01:02 / 修改时间：20:51:05" itemprop="dateCreated datePublished" datetime="2019-02-11T12:01:02+08:00">2019-02-11</time>
+              <time title="创建时间：2019-02-11 12:01:02" itemprop="dateCreated datePublished" datetime="2019-02-11T12:01:02+08:00">2019-02-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-18 18:49:03" itemprop="dateModified" datetime="2019-03-18T18:49:03+08:00">2019-03-18</time>
               
             
           </span>
@@ -505,15 +517,15 @@
       
         <p>使用Python抓取和周迅有关的图片并下载到本地。<br><a id="more"></a></p>
 <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>豆瓣搜索“周迅”的相关图片，并且下载到本地</p>
-<p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211120554.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190211120554.png" alt=""></p>
 <h1 id="网站分析"><a href="#网站分析" class="headerlink" title="网站分析"></a>网站分析</h1><p>豆瓣图片是通过<code>Ajax</code>动态加载的，按F12打开Chrome浏览器的开发者工具，图片是通过GET来请求的，请求地址：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.douban.com/j/search_photo?q=%E5%91%A8%E8%BF%85&amp;<span class="built_in">limit</span>=20&amp;start=0</span><br></pre></td></tr></table></figure>
 <p>其中：【q=：关键字| limit=：一次请求的数量（修改了也没用） | start=：请求的开始位置（偏移量）】。<br>点开Preview，看到网站给我们发送了一个20个长度的<code>json数据包</code></p>
-<p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211121129.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190211121129.png" alt=""></p>
 <p>点开第一个，这里面有几个key，我们需要的是图片的<code>url</code>，另外还可以存储图片的<code>title</code>。这里面可以看到有两个url，分别是<code>scr</code>和<code>url</code>。</p>
-<p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211122017.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190211122017.png" alt=""></p>
 <p>把它们全部在地址栏打开，发现这个<code>scr</code>链接是图片的缩略图地址，这个<code>url</code>链接是图片post的主页地址。这两个都不是我们想要的，但是可以右键看一下图片的真实地址</p>
-<p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211122906.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190211122906.png" alt=""></p>
 <p>复制出来图片的地址，观察到图片的命名就是上面接受的<code>id值</code>，这样我们就可以通过获取每张图片的id值来组拼出图片的下载地址了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://img3.doubanio.com/view/photo/l/public/p637462204.webp</span><br></pre></td></tr></table></figure>
 <h1 id="完整的爬取"><a href="#完整的爬取" class="headerlink" title="完整的爬取"></a>完整的爬取</h1><p>定义Header，图片的存储地址，保存抓取到的图片item</p>
@@ -543,7 +555,7 @@
 <ol start="2">
 <li>启动爬虫</li>
 </ol>
-<p><img src="https://blog-1258616090.cos.ap-chengdu.myqcloud.com/20190211190516.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190211190516.png" alt=""></p>
 
       
     </div>
