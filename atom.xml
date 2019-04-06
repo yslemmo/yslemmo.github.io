@@ -17,13 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>20190406_在NAS上搭建FTP服务</title>
+    <title>在NAS上搭建FTP服务</title>
     <link href="http://yslemmo.github.io/post/Build-Ftp-Server-On-NAS.html"/>
     <id>http://yslemmo.github.io/post/Build-Ftp-Server-On-NAS.html</id>
     <published>2019-04-06T15:02:51.000Z</published>
     <updated>2019-04-06T15:02:51.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前在家的时候，多设备之前共享文件是直接访问NAS，很方便。但目前在学校的校园网环境下，虽说可以远程登陆NAS来传输文件，但是两端的设备都需要先登陆NAS，再找到指定路径，再上传/下载。所以一般我要多设备同步文件，一般是通过QQ、微信和Telegram来发送。</p><p>今天突然想起来可以使用「FTP服务」来同步文件，首先想到的是在「VPS」上搭「FTP服务」，但是有几个问题：一是连接速度和流量限制的问题，毕竟VPS在海外，会浪费VPS的流量；二是VPS的存储容量有限；还有就是资料安全性的问题，如果要更换VPS了，这些资料还要下载下来。</p><p>记起来QNAP是支持搭建FTP服务的，本来NAS上存放的就是一些文件，安全性和速度都比VPS上好一些。</p><h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ul><li>网络环境为公网IP（<em>如果没有需要需要「内网穿透」服务</em>）</li><li>路由器支持DDNS和端口转发（<em>一般的路由器都支持</em>）</li><li>支持搭建FTP服务的NAS</li></ul><h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><h2 id="QNAP中打开「FTP服务」"><a href="#QNAP中打开「FTP服务」" class="headerlink" title="QNAP中打开「FTP服务」"></a>QNAP中打开「FTP服务」</h2><p>登陆NAS后，操作流程：点击【控制台】-&gt;【网络&amp;文件服务】-&gt;【FTP】</p><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040609.png" alt=""></p><ul><li>把「启动FTP服务器功能」勾选上</li><li>协议类型：FTP</li><li>端口：默认是21</li><li>Unicode支持：默认是关闭的，使用的 FTP 软件不支持 Unicode 的话，请将 Unicode 支持设成”否”</li><li>允许匿名：如果不允许匿名，则需要NAS用户名和密码来登陆</li><li>连接：按字面意思设置即可，一般为默认</li><li>高级设置-设置根目录：FTP连接的路径地址</li></ul><h2 id="路由器设置"><a href="#路由器设置" class="headerlink" title="路由器设置"></a>路由器设置</h2><ol><li><p>设置DDNS</p><p>设置路由器的远程管理的时候，我已经设置过DDNS了，如图：</p></li></ol><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040628.png" alt=""></p><ol start="2"><li><p>添加端口转发</p><p>注意：服务器IP是指NAS的内部IP地址，我已经在「DHCP」中将NAS的ip地址固定了</p><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040631.png" alt=""></p></li></ol><h1 id="连接FTP服务"><a href="#连接FTP服务" class="headerlink" title="连接FTP服务"></a>连接FTP服务</h1><h2 id="Windows连接FTP服务"><a href="#Windows连接FTP服务" class="headerlink" title="Windows连接FTP服务"></a>Windows连接FTP服务</h2><ol><li>Windows可以直接在「资源管理器-此电脑」右键中「添加一个网络位置」，网络地址填：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://ip地址或动态域名地址/子路径</span><br></pre></td></tr></table></figure><p>再填用户名和密码，通过这种方式可以像使用自己的磁盘一样使用，但是不用直接双击直接打开文件，需要先复制到本地路径，它的速度取决于两端的上传和下载速度。</p><ol start="2"><li><p>使用FTP连接软件</p><p>如Total Command、FlashFXP等等</p></li></ol><h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><p>连接方式和Windos类似，都需要FTP服务器地址、用户名和密码。</p><ol><li>Android可以使用「Solid Explorer」。</li><li>IOS可以使用「Documents（Readdle公司）」</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前在家的时候，多设备之前共享文件是直接访问NAS，很方便。但目前在学校的校园网环境下，虽说可以远程登陆NAS来传输文件，但是两端的设备都需要先登陆NAS，再找到指定路径，再上传/下载。所以一般我要多设备同步文件，一般是通过QQ、微信和Telegram来发送。</p><p>今天突然想起来可以使用「FTP服务」来同步文件，首先想到的是在「VPS」上搭「FTP服务」，但是有几个问题：一是连接速度和流量限制的问题，毕竟VPS在海外，会浪费VPS的流量；二是VPS的存储容量有限；还有就是资料安全性的问题，如果要更换VPS了，这些资料还要下载下来。</p><p>记起来QNAP是支持搭建FTP服务的，本来NAS上存放的就是一些文件，安全性和速度都比VPS上好一些。</p><h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ul><li>网络环境为公网IP（<em>如果没有需要需要「内网穿透」服务</em>）</li><li>路由器支持DDNS和端口转发（<em>一般的路由器都支持</em>）</li><li>支持搭建FTP服务的NAS</li></ul><h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><h2 id="QNAP中打开「FTP服务」"><a href="#QNAP中打开「FTP服务」" class="headerlink" title="QNAP中打开「FTP服务」"></a>QNAP中打开「FTP服务」</h2><p>登陆NAS后，操作流程：点击【控制台】-&gt;【网络&amp;文件服务】-&gt;【FTP】</p><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040609.png" alt=""></p><ul><li>把「启动FTP服务器功能」勾选上</li><li>协议类型：FTP</li><li>端口：默认是21</li><li>Unicode支持：默认是关闭的，使用的 FTP 软件不支持 Unicode 的话，请将 Unicode 支持设成”否”</li><li>允许匿名：如果不允许匿名，则需要NAS用户名和密码来登陆</li><li>连接：按字面意思设置即可，一般为默认</li><li>高级设置-设置根目录：FTP连接的路径地址</li></ul><h2 id="路由器设置"><a href="#路由器设置" class="headerlink" title="路由器设置"></a>路由器设置</h2><ol><li><p>设置DDNS<br>设置路由器的远程管理的时候，我已经设置过DDNS了，如图：<br><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040628.png" alt=""></p></li><li><p>添加端口转发<br>注意：服务器IP是指NAS的内部IP地址，我已经在「DHCP」中将NAS的ip地址固定了<br><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040631.png" alt=""></p></li></ol><h1 id="连接FTP服务"><a href="#连接FTP服务" class="headerlink" title="连接FTP服务"></a>连接FTP服务</h1><h2 id="Windows连接FTP服务"><a href="#Windows连接FTP服务" class="headerlink" title="Windows连接FTP服务"></a>Windows连接FTP服务</h2><ol><li>Windows可以直接在「资源管理器-此电脑」右键中「添加一个网络位置」，网络地址填：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://ip地址或动态域名地址/子路径</span><br></pre></td></tr></table></figure><p>再填用户名和密码，通过这种方式可以像使用自己的磁盘一样使用，但是不用直接双击直接打开文件，需要先复制到本地路径，它的速度取决于两端的上传和下载速度。</p><ol start="2"><li>使用FTP连接软件<br>如Total Command、FlashFXP等等</li></ol><h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><p>连接方式和Windos类似，都需要FTP服务器地址、用户名和密码。</p><ol><li>Android可以使用「Solid Explorer」。</li><li>IOS可以使用「Documents（Readdle公司）」</li></ol>]]></content>
     
     <summary type="html">
     
@@ -31,6 +31,12 @@
     
     </summary>
     
+      <category term="computer skills" scheme="http://yslemmo.github.io/categories/computer-skills/"/>
+    
+    
+      <category term="文件管理" scheme="http://yslemmo.github.io/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="ftp" scheme="http://yslemmo.github.io/tags/ftp/"/>
     
   </entry>
   

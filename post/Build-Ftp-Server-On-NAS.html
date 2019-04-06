@@ -108,8 +108,9 @@
 
 
   <meta name="description" content="更快捷地实现多设备传输文件的问题">
+<meta name="keywords" content="文件管理,ftp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20190406_在NAS上搭建FTP服务">
+<meta property="og:title" content="在NAS上搭建FTP服务">
 <meta property="og:url" content="http://yslemmo.github.io/post/Build-Ftp-Server-On-NAS.html">
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="更快捷地实现多设备传输文件的问题">
@@ -119,7 +120,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/2019040631.png">
 <meta property="og:updated_time" content="2019-04-06T15:02:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20190406_在NAS上搭建FTP服务">
+<meta name="twitter:title" content="在NAS上搭建FTP服务">
 <meta name="twitter:description" content="更快捷地实现多设备传输文件的问题">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/2019040609.png">
 
@@ -140,7 +141,7 @@
   };
 </script>
 
-  <title>20190406_在NAS上搭建FTP服务 | Lemmo's Blog</title>
+  <title>在NAS上搭建FTP服务 | Lemmo's Blog</title>
   
 
 
@@ -389,7 +390,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">20190406_在NAS上搭建FTP服务
+          <h1 class="post-title" itemprop="name headline">在NAS上搭建FTP服务
 
               
             
@@ -421,6 +422,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-skills/" itemprop="url" rel="index"><span itemprop="name">computer skills</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -500,15 +519,9 @@
 <li>高级设置-设置根目录：FTP连接的路径地址</li>
 </ul>
 <h2 id="路由器设置"><a href="#路由器设置" class="headerlink" title="路由器设置"></a>路由器设置</h2><ol>
-<li><p>设置DDNS</p>
-<p>设置路由器的远程管理的时候，我已经设置过DDNS了，如图：</p>
+<li><p>设置DDNS<br>设置路由器的远程管理的时候，我已经设置过DDNS了，如图：<br><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040628.png" alt=""></p>
 </li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040628.png" alt=""></p>
-<ol start="2">
-<li><p>添加端口转发</p>
-<p>注意：服务器IP是指NAS的内部IP地址，我已经在「DHCP」中将NAS的ip地址固定了</p>
-<p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040631.png" alt=""></p>
+<li><p>添加端口转发<br>注意：服务器IP是指NAS的内部IP地址，我已经在「DHCP」中将NAS的ip地址固定了<br><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019040631.png" alt=""></p>
 </li>
 </ol>
 <h1 id="连接FTP服务"><a href="#连接FTP服务" class="headerlink" title="连接FTP服务"></a>连接FTP服务</h1><h2 id="Windows连接FTP服务"><a href="#Windows连接FTP服务" class="headerlink" title="Windows连接FTP服务"></a>Windows连接FTP服务</h2><ol>
@@ -517,9 +530,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://ip地址或动态域名地址/子路径</span><br></pre></td></tr></table></figure>
 <p>再填用户名和密码，通过这种方式可以像使用自己的磁盘一样使用，但是不用直接双击直接打开文件，需要先复制到本地路径，它的速度取决于两端的上传和下载速度。</p>
 <ol start="2">
-<li><p>使用FTP连接软件</p>
-<p>如Total Command、FlashFXP等等</p>
-</li>
+<li>使用FTP连接软件<br>如Total Command、FlashFXP等等</li>
 </ol>
 <h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><p>连接方式和Windos类似，都需要FTP服务器地址、用户名和密码。</p>
 <ol>
@@ -546,6 +557,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文件管理/" rel="tag"><i class="fa fa-tag"></i> 文件管理</a>
+          
+            <a href="/tags/ftp/" rel="tag"><i class="fa fa-tag"></i> ftp</a>
+          
+        </div>
       
 
       
@@ -685,7 +704,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -778,7 +799,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

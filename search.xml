@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[20190406_在NAS上搭建FTP服务]]></title>
+    <title><![CDATA[在NAS上搭建FTP服务]]></title>
     <url>%2Fpost%2FBuild-Ftp-Server-On-NAS.html</url>
-    <content type="text"><![CDATA[前言之前在家的时候，多设备之前共享文件是直接访问NAS，很方便。但目前在学校的校园网环境下，虽说可以远程登陆NAS来传输文件，但是两端的设备都需要先登陆NAS，再找到指定路径，再上传/下载。所以一般我要多设备同步文件，一般是通过QQ、微信和Telegram来发送。 今天突然想起来可以使用「FTP服务」来同步文件，首先想到的是在「VPS」上搭「FTP服务」，但是有几个问题：一是连接速度和流量限制的问题，毕竟VPS在海外，会浪费VPS的流量；二是VPS的存储容量有限；还有就是资料安全性的问题，如果要更换VPS了，这些资料还要下载下来。 记起来QNAP是支持搭建FTP服务的，本来NAS上存放的就是一些文件，安全性和速度都比VPS上好一些。 环境准备 网络环境为公网IP（如果没有需要需要「内网穿透」服务） 路由器支持DDNS和端口转发（一般的路由器都支持） 支持搭建FTP服务的NAS 开始搭建QNAP中打开「FTP服务」登陆NAS后，操作流程：点击【控制台】-&gt;【网络&amp;文件服务】-&gt;【FTP】 把「启动FTP服务器功能」勾选上 协议类型：FTP 端口：默认是21 Unicode支持：默认是关闭的，使用的 FTP 软件不支持 Unicode 的话，请将 Unicode 支持设成”否” 允许匿名：如果不允许匿名，则需要NAS用户名和密码来登陆 连接：按字面意思设置即可，一般为默认 高级设置-设置根目录：FTP连接的路径地址 路由器设置 设置DDNS 设置路由器的远程管理的时候，我已经设置过DDNS了，如图： 添加端口转发 注意：服务器IP是指NAS的内部IP地址，我已经在「DHCP」中将NAS的ip地址固定了 连接FTP服务Windows连接FTP服务 Windows可以直接在「资源管理器-此电脑」右键中「添加一个网络位置」，网络地址填： 1ftp://ip地址或动态域名地址/子路径 再填用户名和密码，通过这种方式可以像使用自己的磁盘一样使用，但是不用直接双击直接打开文件，需要先复制到本地路径，它的速度取决于两端的上传和下载速度。 使用FTP连接软件 如Total Command、FlashFXP等等 移动端连接方式和Windos类似，都需要FTP服务器地址、用户名和密码。 Android可以使用「Solid Explorer」。 IOS可以使用「Documents（Readdle公司）」]]></content>
+    <content type="text"><![CDATA[前言之前在家的时候，多设备之前共享文件是直接访问NAS，很方便。但目前在学校的校园网环境下，虽说可以远程登陆NAS来传输文件，但是两端的设备都需要先登陆NAS，再找到指定路径，再上传/下载。所以一般我要多设备同步文件，一般是通过QQ、微信和Telegram来发送。 今天突然想起来可以使用「FTP服务」来同步文件，首先想到的是在「VPS」上搭「FTP服务」，但是有几个问题：一是连接速度和流量限制的问题，毕竟VPS在海外，会浪费VPS的流量；二是VPS的存储容量有限；还有就是资料安全性的问题，如果要更换VPS了，这些资料还要下载下来。 记起来QNAP是支持搭建FTP服务的，本来NAS上存放的就是一些文件，安全性和速度都比VPS上好一些。 环境准备 网络环境为公网IP（如果没有需要需要「内网穿透」服务） 路由器支持DDNS和端口转发（一般的路由器都支持） 支持搭建FTP服务的NAS 开始搭建QNAP中打开「FTP服务」登陆NAS后，操作流程：点击【控制台】-&gt;【网络&amp;文件服务】-&gt;【FTP】 把「启动FTP服务器功能」勾选上 协议类型：FTP 端口：默认是21 Unicode支持：默认是关闭的，使用的 FTP 软件不支持 Unicode 的话，请将 Unicode 支持设成”否” 允许匿名：如果不允许匿名，则需要NAS用户名和密码来登陆 连接：按字面意思设置即可，一般为默认 高级设置-设置根目录：FTP连接的路径地址 路由器设置 设置DDNS设置路由器的远程管理的时候，我已经设置过DDNS了，如图： 添加端口转发注意：服务器IP是指NAS的内部IP地址，我已经在「DHCP」中将NAS的ip地址固定了 连接FTP服务Windows连接FTP服务 Windows可以直接在「资源管理器-此电脑」右键中「添加一个网络位置」，网络地址填： 1ftp://ip地址或动态域名地址/子路径 再填用户名和密码，通过这种方式可以像使用自己的磁盘一样使用，但是不用直接双击直接打开文件，需要先复制到本地路径，它的速度取决于两端的上传和下载速度。 使用FTP连接软件如Total Command、FlashFXP等等 移动端连接方式和Windos类似，都需要FTP服务器地址、用户名和密码。 Android可以使用「Solid Explorer」。 IOS可以使用「Documents（Readdle公司）」]]></content>
+      <categories>
+        <category>computer skills</category>
+      </categories>
+      <tags>
+        <tag>文件管理</tag>
+        <tag>ftp</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[「风中有朵雨做的云」观后]]></title>
