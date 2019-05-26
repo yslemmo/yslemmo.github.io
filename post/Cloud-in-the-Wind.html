@@ -443,6 +443,18 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/post/Cloud-in-the-Wind.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/Cloud-in-the-Wind.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -509,9 +521,9 @@
 </ul>
 <p>因为剧情比较复杂，这里就不再详细梳理了。接下来的故事是以“杨家栋”开始调查唐坠楼案而展开，因为唐坠楼案后的利益关系，姜紫成对杨家栋调查这一案件而不断阻挠，最后找出了片头出现的「无名女尸案」和「唐坠楼案」。</p>
 <p>从类型的角度的看，这是一部典型的「悬疑片」，故事情节一开始就设立了 导致唐奕杰坠楼案凶手的身份的「悬念」，叙事剪辑方式很多样，主要是过去（2006）之前，现在（2012）的不同时空间的碎片化的交错闪回，这样的好处是使整个影片的节奏非常快，能方便地铺悬疑点。叙事效率非常高，几乎没有多余的画面和情节。「过去」和「现在」两个时空去采取「时间-地点」的字幕信息去交代，这样使时故事的清晰度不高，对观众的要求也比较高。</p>
-<h1 id="摄影和剪辑"><a href="#摄影和剪辑" class="headerlink" title="摄影和剪辑"></a>摄影和剪辑</h1><p>「风雨云」摄影和剪辑也让我很享受。娄烨导演一贯的手持摄影的方式，一方面再生理上让人感觉不舒服，另一方却大大增强的真实感。尤其是一开始的城关村的骚乱场面太精彩了，由一系列俯拍、跟随、交叉、穿越的镜头组成，这个看起来像是长镜头的拼切镜头带领我们去感觉广州城中村拆迁的环境现状，各处的残楼瓦砾，瓦砾上居民晾晒的衣服，骚乱中拥挤的人群，挖掘机推到墙壁和电线杆的轰隆声，给人一种强烈的压抑感，而这一种压抑感、压迫感和整个影片所要展现的基调是一致的。</p>
+<h1 id="摄影和剪辑"><a href="#摄影和剪辑" class="headerlink" title="摄影和剪辑"></a>摄影和剪辑</h1><p>「风雨云」摄影和剪辑也让我很享受。娄烨导演一贯的手持摄影的方式，一方面在生理上让人感觉不舒服，另一方却大大增强的真实感。尤其是一开始的城关村的骚乱场面太精彩了，由一系列俯拍、跟随、交叉、穿越的镜头组成，这个看起来像是长镜头的拼切镜头带领我们去感觉广州城中村拆迁的环境现状，各处的残楼瓦砾，瓦砾上居民晾晒的衣服，骚乱中拥挤的人群，挖掘机推到墙壁和电线杆的轰隆声，给人一种强烈的压抑感，而这一种压抑感、压迫感和整个影片所要展现的基调是一致的。</p>
 <p>让我印象非常深刻的还有几个场景，杨家栋在城中村被陷害杀人的逃跑镜头，这组镜头充分展现了城中村特有的潮湿、逼仄的环境，之前我也在广州城中村住过一段时间，这组镜头完全勾起了我在楼房与楼房之间行走那种压抑的感觉。另外两场车内争斗戏也非常出彩，就不再具体叙述了。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>在「风雨云」中，娄烨试图将商业片和艺术片进行容易，从这点上说，他做的很不错。片中塑造的悬疑元素、出彩的动作设计能牢牢吸引观众。整个影片的布景、光影、声音的处理都体现出娄烨的专业性的艺术追求。电影外的事情无须多言。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>在「风雨云」中，娄烨试图将商业片和艺术片进行融合，从这点上说，他做的很不错。片中塑造的悬疑元素、出彩的动作设计能牢牢吸引观众。整个影片的布景、光影、声音的处理都体现出娄烨的专业性的艺术追求，电影外的事情无须多言。</p>
 <blockquote>
 <p>电影会帮我们记住，我们和我们的时代。</p>
 </blockquote>
@@ -584,6 +596,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -1002,6 +1018,35 @@
 
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '5AExWnFvlFpGvTaRhV9L8BHg-gzGzoHsz',
+    appKey: 'Tm7XTJMITUsAGEiayg4mzyue',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
 
 
   

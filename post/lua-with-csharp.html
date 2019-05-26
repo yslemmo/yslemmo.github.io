@@ -108,7 +108,7 @@
 
 
   <meta name="description" content="Lua与C#的交互">
-<meta name="keywords" content="lua,Charp,Unity">
+<meta name="keywords" content="Unity,lua,Charp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lua与Charp交互">
 <meta property="og:url" content="http://yslemmo.github.io/post/lua-with-csharp.html">
@@ -459,6 +459,18 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/post/lua-with-csharp.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/lua-with-csharp.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -583,11 +595,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
+          
             <a href="/tags/lua/" rel="tag"><i class="fa fa-tag"></i> lua</a>
           
             <a href="/tags/Charp/" rel="tag"><i class="fa fa-tag"></i> Charp</a>
-          
-            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
           
         </div>
       
@@ -633,6 +645,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -1051,6 +1067,35 @@
 
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '5AExWnFvlFpGvTaRhV9L8BHg-gzGzoHsz',
+    appKey: 'Tm7XTJMITUsAGEiayg4mzyue',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
 
 
   
