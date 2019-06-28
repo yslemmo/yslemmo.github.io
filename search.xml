@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[快速迁移系统]]></title>
+    <url>%2Fpost%2FMove-System.html</url>
+    <content type="text"><![CDATA[前言我的笔记本内置的固态是三星的一款M.2的SSD，但是是SATA协议的，因此只有500M/S的速率，但是另外空出来的一个插槽支持NVME协议。618的时候在京东上买了Intel 760P，装上之后才发现，这个插槽虽然支持NVME协议，但是只有2个通道，所以应该是PCIE * 2，速度只能达到正常速度的一半（读写都在1700M/S左右），后来想想买都买了懒得换了，至少比SATA的快。 装上固态，迁移系统装固态没啥好写的，这里说一下装固态期间发生的一个小插曲。话说去取快递那天中午是刚参加完毕业典礼回来，下午还要去修改论文。因此想趁着中午的时候，就把固态装上测试一下，用买固态附送的小螺丝刀三五下就把外壳取下来，但取固态插槽那颗螺丝的时候给我整懵逼了，刚扭了一下螺丝就滑丝了。当时就在吐槽，机械革命你踏马为什么多此一举在这放一颗螺丝，放的话为什么不放一颗质量好一点的螺丝，吐槽归吐槽，还是要想办法把螺丝取下来，然后我就用小刀一点点给这颗螺丝刻凹槽，然后用一字起把这颗螺丝刀取出来了，最后换上买固态附送的螺丝。 Fine，装上固态之后，测了一下速便感觉一切索然无味。 直到今天，才想着把系统迁移到这块NVME的固态上，那么究竟用什么工具来迁移呢？其实很简单，大部分的磁盘工具都支持「磁盘克隆」，比如傲梅分区助手、DiskGenius。而我使用的是因特尔数据迁移软件（Intel Data Migration Software），软件界面如下图所示： 这里有很多工具可以使用，但目前只需要使用第一个工具——「复制磁盘」，该工具的介绍为: 该实用程序可帮助您将操作系统、应用程序和数据复制到新磁盘。新磁盘将与旧磁盘完全相同，而且会保留系统可启动性。 进入工具后，在向导窗口根据步骤一步一步来操作就可以了，第一步是选择源磁盘，第二步选择目标磁盘，大概10分钟左右就可以全部完成（取决去你的两块硬盘的速度） 克隆完成后，在资源管理器看不到目标磁盘，为了等会开机后区分新旧磁盘，可以在当前系统桌面上随便创建一个问题，比如创建一个txt文件。一些准备就绪之后，关机，再直接开机，发现桌面上没有刚才创建的那个txt文件，说明当前的系统已经是克隆后的系统，另外新硬盘的盘符也会与旧硬盘的盘符交换了，也不用自己取手动变更盘符了。]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>SSD</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「我不知道该说什么，关于死亡还是爱情」书评]]></title>
     <url>%2Fpost%2FVoices-from-Chernobyl.html</url>
     <content type="text"><![CDATA[Title 我不知道该说什么，关于死亡还是爱情 Author [白俄罗斯]S.A.阿列克谢耶维奇 Edition 花城出版社 Release Date 2014-06 ISBN 9787536071377 近期HBO的美剧《Chernobyl》的播出再次引起了我们对发生了三十多年前的那场悲剧的关注，由于前几年读也阅读了一本记录了切尔诺贝利的书，因此旧文重发，注意这本书还有另一个翻译版本——《切尔诺贝利的悲鸣》。以下部分为原文： 我从未读过如此悲伤的文字，切尔诺贝利——这里所遇到在灾难是我从未看到的或者知道的，我只能用然人间地狱来称呼这里。 背景切尔诺贝利是前苏联的一部分，属于白俄罗斯的领土。在1986年切尔诺贝利核电站四号反应堆发生大爆炸，这次灾难所释放出的辐射线剂量是投在广岛的原子弹的400倍以上。因这次事件死亡的人物不计其数，现在在这个只有一千多万人的小国中每五个人就有一个住在辐射区，总数为二百一十万，其中七十万是儿童。在受灾最重的地区死亡率比出生率高了20%！ 这里的一切都是真实发生的，书中的每一段文字都是作者 S.A.阿列克谢列维奇走访受灾群众口述而成的。 国家的英雄消防员瓦西里是最先进入爆炸核电站的人员之一，几个小时后他便被救护车送回来了，14天后由于大量辐射死于器官衰竭。“他是被自己的内脏呛到的，稍微咳嗽一下，他的肺和肝都可能随时从嘴巴里跑出来。”，讲述这个故事的人是他的妻子，那个时候她正怀有4个月的身孕，对于一般的人来说，原本这个时候正是她人生中最幸福的时刻，但却不得不面对这样的现实。对于吸收了1600伦琴辐射的丈夫（400伦琴就可致死），她选择的不是逃避，她骗了所有人，甚至不顾肚子里面的孩子偷偷跑到隔离间去照顾他，他全身溃烂，衣服沾到身上，妻子一点一点的帮他清理，给他喂药，陪着他说话。 什么是爱情，我没有经历过。但我想为了心中的挚爱就算是冒着生命危险也在所不惜，如果面对如此情形，我会如何选择呢？是转身离开把他和他的记忆留在记忆深处，开始一段新的生活。还是默默陪伴在她的身边，就算是死亡也在所不惜。 在这里，和瓦西里一样的年轻人不断从各地赶来。他们被叫做是国家的英雄，而国家给他们的任务却是用“铲子对抗原子”，多么荒谬的事情，他们在几百伦琴辐射工作，没有任何有效的保护装备。在年轻人中流传着一个笑话，一个美国机器人上屋顶作业五分钟，然后就发生故障了。日本机器人也上去作业了五分钟，然后也发生故障了。俄罗斯机器人来了，一上去就是两个小时！这时扩音器里传来了命令：“二等兵伊凡诺夫！再过两个小时，你就可以下来休息，抽根烟了。” 他们是国家的绿色机器人，在他们死亡时留给家人的只有刻有马克思、列宁头像的奖章。而国家给他们承诺的房子、车子消失了。 无处不在的污染切尔诺贝利是最可怕的战争，你无处可逃，地下、水里，空中都躲不了。牛奶，事物，土地中都含有大量的辐射。母亲在家门口哺乳，就像是切尔诺贝利的圣母，但她的母乳里却含有大量的铯元素，相当于是另一种凶猛的毒药，但是母亲是不自知的。 切尔诺贝利的人民，他们都不知道发生了什么。政府给他们的回复是“情势稳定”，一切还是和爆炸以前的一样。他们依然坚守在自己的土地上，对于他们来说，少了政府的管制倒也自由些了。而正是由于政府的愚弄和科学家的沉默让更多的切尔诺贝利的居民生活在辐射之中。 切尔诺贝利的人突然有一天，你变成了切尔诺贝利人，变成了某种特殊的物种，大家对你感兴趣，却没有人真正愿意了解你。 如果仅仅只是这样，那也并不糟糕，让人感到痛心的是，切尔诺贝利的人们不仅要背负辐射的污染，更要背负人心的疏离。 他们坐火车的时候，当得知他们是从切尔诺贝利来的，乘务员不愿意供给他们餐具和被子，周围的人也一下子保持沉默和疏离。上学的孩子一旦被得知是切尔诺贝利人，所有的小孩都排斥他，疏远他，不愿意更他交朋友，更不愿意亲近他。 而更让人感到荒诞的是，从切尔诺贝利事件中的幸存者，在面对爱情和婚姻时，遭到拒绝的理由却是：“你不能生孩子，生小孩对你来说是罪恶的。爱一个人对你来说都是一种罪恶”。亲历的讲述者说，你知道生小孩可能是一种罪吗？我以前从来没听过这种事。 受到核污染之后的好几年里，很多人并不愿意离开切尔诺贝利，他们知道自己无时无刻不遭受着污染，但是他们不愿离开，而这其中的原因是，因为在切尔诺贝利没有人会以怪异的眼光来看待你，也不会遭到他人的疏离、冷遇和提防。“至少当我拿自家的苹果给对方吃时，他会很高兴坦然的接受，而不是在转身就把这苹果处理掉。” 让人感到痛心的是，切尔诺贝利的核污染现在仍然在继续，战争的伤痛总有停止的那一天，但是核辐射带来的污染却是无止境，也无从消灭。当我们在享受科技带来的便捷的同时，也不应忘却科技曾带给我们的灾难！]]></content>
@@ -30,8 +41,8 @@
         <category>reading-list</category>
       </categories>
       <tags>
-        <tag>包刚升</tag>
         <tag>政治</tag>
+        <tag>包刚升</tag>
         <tag>民主</tag>
       </tags>
   </entry>
@@ -158,9 +169,9 @@
         <category>Unity</category>
       </categories>
       <tags>
-        <tag>热更新</tag>
         <tag>xLua</tag>
         <tag>Untiy</tag>
+        <tag>热更新</tag>
       </tags>
   </entry>
   <entry>
@@ -186,8 +197,8 @@
       </categories>
       <tags>
         <tag>Unity</tag>
-        <tag>Lua</tag>
         <tag>热更新</tag>
+        <tag>Lua</tag>
         <tag>SimpleFramwork</tag>
       </tags>
   </entry>
@@ -332,7 +343,7 @@
   <entry>
     <title><![CDATA[Python环境搭建]]></title>
     <url>%2Fpost%2Fpyton-env-build.html</url>
-    <content type="text"><![CDATA[最近的在学Python，在搭建Python环境的时候遇到了很多困惑，这里整理总结一下留做以后参考，这篇文档是在Windows的环境下进行的 一台电脑可以安装多个Python吗答案是肯定的，我在电脑同时安装了两个版本的Python，分别是 Python 3.6.4 Python 2.7.14 先在python.org下载两个版本的安装包 安装在硬盘的不同路径中，比如我把Python 3.6安装在默认位置 把Python 2.7安装在D盘的路径下，并且在安装的时候勾选「Add to Path」添加路径到系统环境变量中去。​同时安装Python 3和Python 2如何快捷切换打开cmd窗口直接运行Python默认打开的Python 2但是我如果想使用Python 3怎么办？ Windows 上的 Python 自带启动器 py.exe，默认安装到系统盘的Windows文件夹里。如果你同时安装了 Python 2 和 Python 3，用的时候直接在终端里输入： 1py -3 就是打开的Python 3 的 REPL(控制台)同理如果你运行1py -3 #打开的是Python 3 而如果直接运行Py，默认打开的是Python 3，就是系统盘Windows文件下那个py.exe. 如果运行Python，则打开的Python 2,可能是因为后来安装了Python 2把Python 3给覆盖了。为了避免每次运行都需要通过py -2或py -3的方式启动，在编写Python程序的时候，可以在代码的前面加入声明说明该文件是由Python 2启动还是Python 3启动：12#! python2 #用Python2启动#! python3 #用Python3启动 其他方法： 改名：把Python 2版本中的文件名改成Python2，则默认运行的Python 3的版本 这样修改了名字的那个python对应的pip将无法使用。 在同一台电脑下如何进行 Python 2 与 3 的切换？——知乎Python和pip的关系什么刚开始，安装好Python 3之后，要导入第三方的库，别人的教程里面有很多pip命令，只是依葫芦画瓢，不懂是什么意思。后来要导入如一个turlte， 这是一个绘制图像的库。1pip install turtle #使用的Python 3 的pip工具 但是，提示错误Command &quot;python setup.py egg_info&quot;应该是安装脚本中脚本错误的啥的，具体也不清楚，想着再用Python 2试一下，这时候就完全懵逼不知道怎么来操作了。随后在网上了解了一下：pip就是Python的一个包管理工具 pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包。当然，Python也有其他的包管理工具，比如还有easy_install，这是Python 2.7中的默认包管理工具，现在pip已经基本取代了easy_install，如果要需要pip在老版本的Python 2.7 中则需要手动安装，在Scripts文件夹内运行cmd命令1easy_install pip 安装好pip后如何使用每个版本的Python都有自己的pip工具，如果电脑上只有一个存在一个版本的「Python」时，可以直接使用pip1pip install &lt;包名&gt; 但如果同时存在多个版本的Python，使用pip命令时就需要指明Python的版本，比如要给Python 3下载导入模块则需要「Python 3」的pip：1py -3 -m pip install &lt;包名&gt; pip的常用命令 列出已经安装的包，列出所有的包是pip list 1pip freeze 在线安装包： 1pip install &lt;包名&gt; 本地安装包 1pip install &lt;目录&gt;/&lt;文件名&gt; 卸载包 1pip uninstall &lt;包名&gt; 升级包 1pip install -U &lt;包名&gt; pip常用命令 更换pypi镜像国内pypi镜像 豆瓣：https://pypi.douban.com/simple 中国科学技术大学：https://mirrors.ustc.edu.cn/pypi/web/simple/ 清华大学TUNA： https://pypi.tuna.tsinghua.edu.cn/simple https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/指定单次安装源12# pip install &lt;包名&gt; -i &lt;pypi源地址&gt;pip install &lt;包名&gt; https://pypi.tuna.tsinghua.edu.cn/simple/ 指定全局安装源 在unix和macos，配置文件为：$HOME/.pip/pip.conf 在windows上，先打开「appdate」文件夹后，在地址栏输入%appdate%，如果没有，则新建一个命名为pip的文件夹，然后创建文件pip.ini，打开文件输入下面的内容后保存1234[global]timeout = 6000index-url = https://pypi.tuna.tsinghua.edu.cn/simpletrusted-host = pypi.tuna.tsinghua.edu.cn 使用pip安装的module的路径我的Python 2.7是安装在D盘的，这些module路径就是：1D:\Program Files\Python 2.7\Lib\site-packages Python 包管理工具解惑]]></content>
+    <content type="text"><![CDATA[最近的在学Python，在搭建Python环境的时候遇到了很多困惑，这里整理总结一下留做以后参考，这篇文档是在Windows的环境下进行的 一台电脑可以安装多个Python吗答案是肯定的，我在电脑同时安装了两个版本的Python，分别是 Python 3.6.4 Python 2.7.14 先在python.org下载两个版本的安装包 安装在硬盘的不同路径中，比如我把Python 3.6安装在默认位置 把Python 2.7安装在D盘的路径下，并且在安装的时候勾选「Add to Path」添加路径到系统环境变量中去。​同时安装Python 3和Python 2如何快捷切换打开cmd窗口直接运行Python默认打开的Python 2但是我如果想使用Python 3怎么办？ Windows 上的 Python 自带启动器 py.exe，默认安装到系统盘的Windows文件夹里。如果你同时安装了 Python 2 和 Python 3，用的时候直接在终端里输入： 1py -3 就是打开的Python 3 的 REPL(控制台)同理如果你运行1py -3 #打开的是Python 3 而如果直接运行Py，默认打开的是Python 3，就是系统盘Windows文件下那个py.exe. 如果运行Python，则打开的Python 2,可能是因为后来安装了Python 2把Python 3给覆盖了。为了避免每次运行都需要通过py -2或py -3的方式启动，在编写Python程序的时候，可以在代码的前面加入声明说明该文件是由Python 2启动还是Python 3启动：12#! python2 #用Python2启动#! python3 #用Python3启动 其他方法： 改名：把Python 2版本中的文件名改成Python2，则默认运行的Python 3的版本 这样修改了名字的那个python对应的pip将无法使用。 在同一台电脑下如何进行 Python 2 与 3 的切换？——知乎Python和pip的关系什么刚开始，安装好Python 3之后，要导入第三方的库，别人的教程里面有很多pip命令，只是依葫芦画瓢，不懂是什么意思。后来要导入如一个turlte， 这是一个绘制图像的库。1pip install turtle #使用的Python 3 的pip工具 但是，提示错误Command &quot;python setup.py egg_info&quot;应该是安装脚本中脚本错误的啥的，具体也不清楚，想着再用Python 2试一下，这时候就完全懵逼不知道怎么来操作了。随后在网上了解了一下：pip就是Python的一个包管理工具 pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包。当然，Python也有其他的包管理工具，比如还有easy_install，这是Python 2.7中的默认包管理工具，现在pip已经基本取代了easy_install，如果要需要pip在老版本的Python 2.7 中则需要手动安装，在Scripts文件夹内运行cmd命令1easy_install pip 安装好pip后如何使用每个版本的Python都有自己的pip工具，如果电脑上只有一个存在一个版本的「Python」时，可以直接使用pip1pip install &lt;包名&gt; 但如果同时存在多个版本的Python，使用pip命令时就需要指明Python的版本，比如要给Python 3下载导入模块则需要「Python 3」的pip：1py -3 -m pip install &lt;包名&gt; pip的常用命令 列出已经安装的包，列出所有的包是pip list 1pip freeze 在线安装包： 1pip install &lt;包名&gt; 本地安装包 1pip install &lt;目录&gt;/&lt;文件名&gt; 卸载包 1pip uninstall &lt;包名&gt; 升级包 1pip install -U &lt;包名&gt; pip常用命令 更换pypi镜像国内pypi镜像 豆瓣：https://pypi.douban.com/simple 中国科学技术大学：https://mirrors.ustc.edu.cn/pypi/web/simple/ 清华大学TUNA： https://pypi.tuna.tsinghua.edu.cn/simple https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/指定单次安装源12# pip install &lt;包名&gt; -i &lt;pypi源地址&gt;pip install &lt;包名&gt; https://pypi.tuna.tsinghua.edu.cn/simple/ 指定全局安装源 在unix和macos，配置文件为：$HOME/.pip/pip.conf 在windows上，配置文件为：%APPDATA%\pip\pip.ini 打开CMD，输入 echo %APPDATA% 的路径为C:\Users\Lemmo\AppData\Roaming 先打开%APPDATA%文件夹后，打开pip文件夹，如果没有则新建一个命名为pip的文件夹，然后创建文件pip.ini，打开文件输入下面的内容后保存 1234[global]timeout = 6000index-url = https://pypi.tuna.tsinghua.edu.cn/simpletrusted-host = pypi.tuna.tsinghua.edu.cn 使用pip安装的module的路径我的Python 2.7是安装在D盘的，这些module路径就是：1D:\Program Files\Python 2.7\Lib\site-packages Python 包管理工具解惑]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -403,8 +414,8 @@
         <category>Computer skills</category>
       </categories>
       <tags>
-        <tag>技巧</tag>
         <tag>Hexo</tag>
+        <tag>技巧</tag>
       </tags>
   </entry>
   <entry>

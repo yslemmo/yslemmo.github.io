@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yslemmo.github.io/"/>
-  <updated>2019-05-29T16:36:20.000Z</updated>
+  <updated>2019-06-28T08:32:05.000Z</updated>
   <id>http://yslemmo.github.io/</id>
   
   <author>
@@ -17,13 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>快速迁移系统</title>
+    <link href="http://yslemmo.github.io/post/Move-System.html"/>
+    <id>http://yslemmo.github.io/post/Move-System.html</id>
+    <published>2019-06-28T08:32:05.000Z</published>
+    <updated>2019-06-28T08:32:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我的笔记本内置的固态是三星的一款M.2的SSD，但是是SATA协议的，因此只有500M/S的速率，但是另外空出来的一个插槽支持NVME协议。618的时候在京东上买了<code>Intel 760P</code>，装上之后才发现，这个插槽虽然支持NVME协议，但是只有2个通道，所以应该是PCIE * 2，速度只能达到正常速度的一半（读写都在1700M/S左右），后来想想买都买了懒得换了，至少比SATA的快。</p><h1 id="装上固态，迁移系统"><a href="#装上固态，迁移系统" class="headerlink" title="装上固态，迁移系统"></a>装上固态，迁移系统</h1><p>装固态没啥好写的，这里说一下装固态期间发生的一个小插曲。话说去取快递那天中午是刚参加完毕业典礼回来，下午还要去修改论文。因此想趁着中午的时候，就把固态装上测试一下，用买固态附送的小螺丝刀三五下就把外壳取下来，但取固态插槽那颗螺丝的时候给我整懵逼了，刚扭了一下螺丝就滑丝了。当时就在吐槽，机械革命你踏马为什么多此一举在这放一颗螺丝，放的话为什么不放一颗质量好一点的螺丝，吐槽归吐槽，还是要想办法把螺丝取下来，然后我就用小刀一点点给这颗螺丝刻凹槽，然后用一字起把这颗螺丝刀取出来了，最后换上买固态附送的螺丝。</p><p>Fine，装上固态之后，测了一下速便感觉一切索然无味。</p><p>直到今天，才想着把系统迁移到这块NVME的固态上，那么究竟用什么工具来迁移呢？其实很简单，大部分的磁盘工具都支持「磁盘克隆」，比如傲梅分区助手、DiskGenius。而我使用的是<code>因特尔数据迁移软件（Intel Data Migration Software）</code>，软件界面如下图所示：</p><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019062817.png" alt=""></p><p>这里有很多工具可以使用，但目前只需要使用第一个工具——「复制磁盘」，该工具的介绍为:</p><blockquote><p>该实用程序可帮助您将操作系统、应用程序和数据复制到新磁盘。新磁盘将与旧磁盘完全相同，而且会保留系统可启动性。</p></blockquote><p>进入工具后，在向导窗口根据步骤一步一步来操作就可以了，第一步是选择源磁盘，第二步选择目标磁盘，大概10分钟左右就可以全部完成（取决去你的两块硬盘的速度）</p><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/20190628175801.png" alt=""></p><p>克隆完成后，在资源管理器看不到<code>目标磁盘</code>，为了等会开机后区分新旧磁盘，可以在当前系统桌面上随便创建一个问题，比如创建一个txt文件。一些准备就绪之后，关机，再直接开机，发现桌面上没有刚才创建的那个txt文件，说明当前的系统已经是克隆后的系统，另外新硬盘的盘符也会与旧硬盘的盘符交换了，也不用自己取手动变更盘符了。</p>]]></content>
+    
+    <summary type="html">
+    
+      使用「因特尔数据迁移软件」的克隆磁盘的功能快速迁移系统
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yslemmo.github.io/categories/Hardware/"/>
+    
+    
+      <category term="SSD" scheme="http://yslemmo.github.io/tags/SSD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>「我不知道该说什么，关于死亡还是爱情」书评</title>
     <link href="http://yslemmo.github.io/post/Voices-from-Chernobyl.html"/>
     <id>http://yslemmo.github.io/post/Voices-from-Chernobyl.html</id>
     <published>2019-05-29T16:36:20.000Z</published>
     <updated>2019-05-29T16:36:20.000Z</updated>
     
-    <content type="html"><![CDATA[<table><thead><tr><th style="text-align:left"></th><th style="text-align:left"></th></tr></thead><tbody><tr><td style="text-align:left">Title</td><td style="text-align:left">我不知道该说什么，关于死亡还是爱情</td></tr><tr><td style="text-align:left">Author</td><td style="text-align:left">[白俄罗斯]S.A.阿列克谢耶维奇</td></tr><tr><td style="text-align:left">Edition</td><td style="text-align:left">花城出版社</td></tr><tr><td style="text-align:left">Release Date</td><td style="text-align:left">2014-06</td></tr><tr><td style="text-align:left">ISBN</td><td style="text-align:left">9787536071377</td></tr></tbody></table><p>近期HBO的美剧《Chernobyl》的播出再次引起了我们对发生了三十多年前的那场悲剧的关注，由于前几年读也阅读了一本记录了切尔诺贝利的书，因此旧文重发，注意这本书还有另一个翻译版本——《切尔诺贝利的悲鸣》。<strong>以下部分为原文：</strong></p><p>我从未读过如此悲伤的文字，切尔诺贝利——这里所遇到在灾难是我从未看到的或者知道的，我只能用然人间地狱来称呼这里。</p><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h1><p>切尔诺贝利是前苏联的一部分，属于白俄罗斯的领土。在1986年切尔诺贝利核电站四号反应堆发生大爆炸，这次灾难所释放出的辐射线剂量是投在广岛的原子弹的400倍以上。因这次事件死亡的人物不计其数，现在在这个只有一千多万人的小国中每五个人就有一个住在辐射区，总数为二百一十万，其中七十万是儿童。在受灾最重的地区死亡率比出生率高了20%！</p><p>这里的一切都是真实发生的，书中的每一段文字都是作者 <strong>S.A.阿列克谢列维奇</strong>走访受灾群众口述而成的。</p><h1 id="国家的英雄"><a href="#国家的英雄" class="headerlink" title="国家的英雄"></a><strong>国家的英雄</strong></h1><p>消防员瓦西里是最先进入爆炸核电站的人员之一，几个小时后他便被救护车送回来了，14天后由于大量辐射死于器官衰竭。“他是被自己的内脏呛到的，稍微咳嗽一下，他的肺和肝都可能随时从嘴巴里跑出来。”，讲述这个故事的人是他的妻子，那个时候她正怀有4个月的身孕，对于一般的人来说，原本这个时候正是她人生中最幸福的时刻，但却不得不面对这样的现实。对于吸收了1600伦琴辐射的丈夫（400伦琴就可致死），她选择的不是逃避，她骗了所有人，甚至不顾肚子里面的孩子偷偷跑到隔离间去照顾他，他全身溃烂，衣服沾到身上，妻子一点一点的帮他清理，给他喂药，陪着他说话。</p><p>什么是爱情，我没有经历过。但我想为了心中的挚爱就算是冒着生命危险也在所不惜，如果面对如此情形，我会如何选择呢？是转身离开把他和他的记忆留在记忆深处，开始一段新的生活。还是默默陪伴在她的身边，就算是死亡也在所不惜。</p><p>在这里，和瓦西里一样的年轻人不断从各地赶来。他们被叫做是国家的英雄，而国家给他们的任务却是用“铲子对抗原子”，多么荒谬的事情，他们在几百伦琴辐射工作，没有任何有效的保护装备。在年轻人中流传着一个笑话，一个美国机器人上屋顶作业五分钟，然后就发生故障了。日本机器人也上去作业了五分钟，然后也发生故障了。俄罗斯机器人来了，一上去就是两个小时！这时扩音器里传来了命令：“二等兵伊凡诺夫！再过两个小时，你就可以下来休息，抽根烟了。”</p><p>他们是国家的绿色机器人，在他们死亡时留给家人的只有刻有马克思、列宁头像的奖章。而国家给他们承诺的房子、车子消失了。</p><h1 id="无处不在的污染"><a href="#无处不在的污染" class="headerlink" title="无处不在的污染"></a><strong>无处不在的污染</strong></h1><p>切尔诺贝利是最可怕的战争，你无处可逃，地下、水里，空中都躲不了。牛奶，事物，土地中都含有大量的辐射。母亲在家门口哺乳，就像是切尔诺贝利的圣母，但她的母乳里却含有大量的铯元素，相当于是另一种凶猛的毒药，但是母亲是不自知的。</p><p>切尔诺贝利的人民，他们都不知道发生了什么。政府给他们的回复是“情势稳定”，一切还是和爆炸以前的一样。他们依然坚守在自己的土地上，对于他们来说，少了政府的管制倒也自由些了。而正是由于政府的愚弄和科学家的沉默让更多的切尔诺贝利的居民生活在辐射之中。</p><h1 id="切尔诺贝利的人"><a href="#切尔诺贝利的人" class="headerlink" title="切尔诺贝利的人"></a><strong>切尔诺贝利的人</strong></h1><p>突然有一天，你变成了切尔诺贝利人，变成了某种特殊的物种，大家对你感兴趣，却没有人真正愿意了解你。</p><p>如果仅仅只是这样，那也并不糟糕，让人感到痛心的是，切尔诺贝利的人们不仅要背负辐射的污染，更要背负人心的疏离。 </p><p>他们坐火车的时候，当得知他们是从切尔诺贝利来的，乘务员不愿意供给他们餐具和被子，周围的人也一下子保持沉默和疏离。上学的孩子一旦被得知是切尔诺贝利人，所有的小孩都排斥他，疏远他，不愿意更他交朋友，更不愿意亲近他。</p><p>而更让人感到荒诞的是，从切尔诺贝利事件中的幸存者，在面对爱情和婚姻时，遭到拒绝的理由却是：<strong>“你不能生孩子，生小孩对你来说是罪恶的。爱一个人对你来说都是一种罪恶”</strong>。亲历的讲述者说，你知道生小孩可能是一种罪吗？我以前从来没听过这种事。</p><p>受到核污染之后的好几年里，很多人并不愿意离开切尔诺贝利，他们知道自己无时无刻不遭受着污染，但是他们不愿离开，而这其中的原因是，因为在切尔诺贝利没有人会以怪异的眼光来看待你，也不会遭到他人的疏离、冷遇和提防。<strong>“至少当我拿自家的苹果给对方吃时，他会很高兴坦然的接受，而不是在转身就把这苹果处理掉。”</strong></p><p>让人感到痛心的是，切尔诺贝利的核污染现在仍然在继续，战争的伤痛总有停止的那一天，但是核辐射带来的污染却是无止境，也无从消灭。当我们在享受科技带来的便捷的同时，也不应忘却科技曾带给我们的灾难！</p>]]></content>
+    <content type="html"><![CDATA[<table><thead><tr><th style="text-align:left"></th><th style="text-align:left"></th></tr></thead><tbody><tr><td style="text-align:left">Title</td><td style="text-align:left">我不知道该说什么，关于死亡还是爱情</td></tr><tr><td style="text-align:left">Author</td><td style="text-align:left">[白俄罗斯]S.A.阿列克谢耶维奇</td></tr><tr><td style="text-align:left">Edition</td><td style="text-align:left">花城出版社</td></tr><tr><td style="text-align:left">Release Date</td><td style="text-align:left">2014-06</td></tr><tr><td style="text-align:left">ISBN</td><td style="text-align:left">9787536071377</td></tr></tbody></table><p>近期HBO的美剧《Chernobyl》的播出再次引起了我们对发生了三十多年前的那场悲剧的关注，由于前几年读也阅读了一本记录了切尔诺贝利的书，因此旧文重发，注意这本书还有另一个翻译版本——《切尔诺贝利的悲鸣》。<strong>以下部分为原文：</strong></p><p>我从未读过如此悲伤的文字，切尔诺贝利——这里所遇到在灾难是我从未看到的或者知道的，我只能用然人间地狱来称呼这里。</p><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h1><p>切尔诺贝利是前苏联的一部分，属于白俄罗斯的领土。在1986年切尔诺贝利核电站四号反应堆发生大爆炸，这次灾难所释放出的辐射线剂量是投在广岛的原子弹的400倍以上。因这次事件死亡的人物不计其数，现在在这个只有一千多万人的小国中每五个人就有一个住在辐射区，总数为二百一十万，其中七十万是儿童。在受灾最重的地区死亡率比出生率高了20%！</p><p>这里的一切都是真实发生的，书中的每一段文字都是作者 <strong>S.A.阿列克谢列维奇</strong>走访受灾群众口述而成的。</p><h1 id="国家的英雄"><a href="#国家的英雄" class="headerlink" title="国家的英雄"></a><strong>国家的英雄</strong></h1><p>消防员瓦西里是最先进入爆炸核电站的人员之一，几个小时后他便被救护车送回来了，14天后由于大量辐射死于器官衰竭。“他是被自己的内脏呛到的，稍微咳嗽一下，他的肺和肝都可能随时从嘴巴里跑出来。”，讲述这个故事的人是他的妻子，那个时候她正怀有4个月的身孕，对于一般的人来说，原本这个时候正是她人生中最幸福的时刻，但却不得不面对这样的现实。对于吸收了1600伦琴辐射的丈夫（400伦琴就可致死），她选择的不是逃避，她骗了所有人，甚至不顾肚子里面的孩子偷偷跑到隔离间去照顾他，他全身溃烂，衣服沾到身上，妻子一点一点的帮他清理，给他喂药，陪着他说话。</p><p>什么是爱情，我没有经历过。但我想为了心中的挚爱就算是冒着生命危险也在所不惜，如果面对如此情形，我会如何选择呢？是转身离开把他和他的记忆留在记忆深处，开始一段新的生活。还是默默陪伴在她的身边，就算是死亡也在所不惜。</p><p>在这里，和瓦西里一样的年轻人不断从各地赶来。他们被叫做是国家的英雄，而国家给他们的任务却是用“铲子对抗原子”，多么荒谬的事情，他们在几百伦琴辐射工作，没有任何有效的保护装备。在年轻人中流传着一个笑话，一个美国机器人上屋顶作业五分钟，然后就发生故障了。日本机器人也上去作业了五分钟，然后也发生故障了。俄罗斯机器人来了，一上去就是两个小时！这时扩音器里传来了命令：“二等兵伊凡诺夫！再过两个小时，你就可以下来休息，抽根烟了。”</p><p>他们是国家的绿色机器人，在他们死亡时留给家人的只有刻有马克思、列宁头像的奖章。而国家给他们承诺的房子、车子消失了。</p><h1 id="无处不在的污染"><a href="#无处不在的污染" class="headerlink" title="无处不在的污染"></a><strong>无处不在的污染</strong></h1><p>切尔诺贝利是最可怕的战争，你无处可逃，地下、水里，空中都躲不了。牛奶，事物，土地中都含有大量的辐射。母亲在家门口哺乳，就像是切尔诺贝利的圣母，但她的母乳里却含有大量的铯元素，相当于是另一种凶猛的毒药，但是母亲是不自知的。</p><p>切尔诺贝利的人民，他们都不知道发生了什么。政府给他们的回复是“情势稳定”，一切还是和爆炸以前的一样。他们依然坚守在自己的土地上，对于他们来说，少了政府的管制倒也自由些了。而正是由于政府的愚弄和科学家的沉默让更多的切尔诺贝利的居民生活在辐射之中。</p><h1 id="切尔诺贝利的人"><a href="#切尔诺贝利的人" class="headerlink" title="切尔诺贝利的人"></a><strong>切尔诺贝利的人</strong></h1><p>突然有一天，你变成了切尔诺贝利人，变成了某种特殊的物种，大家对你感兴趣，却没有人真正愿意了解你。</p><p>如果仅仅只是这样，那也并不糟糕，让人感到痛心的是，切尔诺贝利的人们不仅要背负辐射的污染，更要背负人心的疏离。 </p><p>他们坐火车的时候，当得知他们是从切尔诺贝利来的，乘务员不愿意供给他们餐具和被子，周围的人也一下子保持沉默和疏离。上学的孩子一旦被得知是切尔诺贝利人，所有的小孩都排斥他，疏远他，不愿意更他交朋友，更不愿意亲近他。</p><p>而更让人感到荒诞的是，从切尔诺贝利事件中的幸存者，在面对爱情和婚姻时，遭到拒绝的理由却是：<strong>“你不能生孩子，生小孩对你来说是罪恶的。爱一个人对你来说都是一种罪恶”</strong>。亲历的讲述者说，你知道生小孩可能是一种罪吗？我以前从来没听过这种事。</p><p>受到核污染之后的好几年里，很多人并不愿意离开切尔诺贝利，他们知道自己无时无刻不遭受着污染，但是他们不愿离开，而这其中的原因是，因为在切尔诺贝利没有人会以怪异的眼光来看待你，也不会遭到他人的疏离、冷遇和提防。<strong>“至少当我拿自家的苹果给对方吃时，他会很高兴坦然的接受，而不是在转身就把这苹果处理掉。”</strong></p><p>让人感到痛心的是，切尔诺贝利的核污染现在仍然在继续，战争的伤痛总有停止的那一天，但是核辐射带来的污染却是无止境，也无从消灭。当我们在享受科技带来的便捷的同时，也不应忘却科技曾带给我们的灾难！</p><p><img src="https://raw.githubusercontent.com/yslemmo/Images/master/2019060434.png" alt=""></p>]]></content>
     
     <summary type="html">
     
@@ -78,9 +100,9 @@
       <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
     
     
-      <category term="包刚升" scheme="http://yslemmo.github.io/tags/%E5%8C%85%E5%88%9A%E5%8D%87/"/>
-    
       <category term="政治" scheme="http://yslemmo.github.io/tags/%E6%94%BF%E6%B2%BB/"/>
+    
+      <category term="包刚升" scheme="http://yslemmo.github.io/tags/%E5%8C%85%E5%88%9A%E5%8D%87/"/>
     
       <category term="民主" scheme="http://yslemmo.github.io/tags/%E6%B0%91%E4%B8%BB/"/>
     
@@ -334,11 +356,11 @@
       <category term="Unity" scheme="http://yslemmo.github.io/categories/Unity/"/>
     
     
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
-    
       <category term="xLua" scheme="http://yslemmo.github.io/tags/xLua/"/>
     
       <category term="Untiy" scheme="http://yslemmo.github.io/tags/Untiy/"/>
+    
+      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
@@ -390,9 +412,9 @@
     
       <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
     
-      <category term="Lua" scheme="http://yslemmo.github.io/tags/Lua/"/>
-    
       <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    
+      <category term="Lua" scheme="http://yslemmo.github.io/tags/Lua/"/>
     
       <category term="SimpleFramwork" scheme="http://yslemmo.github.io/tags/SimpleFramwork/"/>
     
@@ -475,30 +497,6 @@
       <category term="UI" scheme="http://yslemmo.github.io/tags/UI/"/>
     
       <category term="Project" scheme="http://yslemmo.github.io/tags/Project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python-简单的递归</title>
-    <link href="http://yslemmo.github.io/post/recursion-algorithm-with-python.html"/>
-    <id>http://yslemmo.github.io/post/recursion-algorithm-with-python.html</id>
-    <published>2018-04-02T04:11:05.000Z</published>
-    <updated>2019-02-11T13:26:10.837Z</updated>
-    
-    <content type="html"><![CDATA[<p>什么是递归，就是自身调用自身，比如一个函数在它自己的函数体类条用它自身称为递归调用。</p><a id="more"></a><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>什么是递归，就是自身调用自身，比如一个函数在它自己的函数体类条用它自身成为递归调用。</p><p>“庙里的老和尚”的故事可以用来理解这种模式</p><blockquote><p>从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？“从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？‘从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？……’” ——<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92" target="_blank" rel="noopener">维基百科</a></p></blockquote><h1 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h1><p>使用递归函数的关键：</p><ol><li><strong>找出基线条件，退出递归函数</strong></li><li><strong>缩小问题的规模</strong></li></ol><h2 id="用递归来求和"><a href="#用递归来求和" class="headerlink" title="用递归来求和"></a>用递归来求和</h2><ul><li>用循环来求和</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(arr)</span>:</span></span><br><span class="line">total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> arr:</span><br><span class="line">        total += x</span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure><ul><li>用递归的求和</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(arr)</span>:</span>  </span><br><span class="line">    <span class="keyword">if</span> arr == []:  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>  </span><br><span class="line">    <span class="keyword">return</span> list[<span class="number">0</span>]+sum(list[<span class="number">1</span>:]) </span><br><span class="line"></span><br><span class="line">print(sum([<span class="number">12</span>,<span class="number">4</span>,<span class="number">17</span>,<span class="number">9</span>])) </span><br><span class="line"><span class="comment"># 输入结果：42</span></span><br></pre></td></tr></table></figure><h2 id="用递归来计算列表的长度"><a href="#用递归来计算列表的长度" class="headerlink" title="用递归来计算列表的长度"></a>用递归来计算列表的长度</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countElem</span><span class="params">(arr)</span>:</span>  </span><br><span class="line">    <span class="keyword">if</span> arr==[]:  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>+countElem(arr[<span class="number">1</span>:])  </span><br><span class="line"></span><br><span class="line">print(countElem([<span class="number">12</span>,<span class="number">4</span>,<span class="number">17</span>,<span class="number">9</span>]))</span><br><span class="line"><span class="comment"># 输出结果：4</span></span><br></pre></td></tr></table></figure><h2 id="用递归来找出最大元素"><a href="#用递归来找出最大元素" class="headerlink" title="用递归来找出最大元素"></a>用递归来找出最大元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxElem</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(arr) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> arr[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> arr[<span class="number">0</span>] <span class="keyword">if</span> arr[<span class="number">0</span>] &gt; maxElem(arr[<span class="number">1</span>:]) <span class="keyword">else</span> maxElem(arr[<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line">print(maxElem([<span class="number">12</span>,<span class="number">4</span>,<span class="number">17</span>,<span class="number">9</span>]))</span><br><span class="line"><span class="comment"># 输出结果：17</span></span><br></pre></td></tr></table></figure><ul><li>理解<code>return-if-else</code>：这是Python支持的一种语法。</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">"a"</span> <span class="keyword">if</span> <span class="number">1</span>&lt;<span class="number">2</span> <span class="keyword">else</span> <span class="string">"b"</span></span><br></pre></td></tr></table></figure><ul><li>在这里<code>1&lt;2</code>是判断条件，如果条件成立则返回“a”，如果条件不成立则返回“b”</li></ul><h2 id="快速排序（quick）"><a href="#快速排序（quick）" class="headerlink" title="快速排序（quick）"></a>快速排序（quick）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(array) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> array </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pivot = array[<span class="number">0</span>] <span class="comment"># 递归条件</span></span><br><span class="line">        less = [i <span class="keyword">for</span> i <span class="keyword">in</span> array[<span class="number">1</span>:] <span class="keyword">if</span> i &lt;= pivot]</span><br><span class="line">        greater = [i <span class="keyword">for</span> i <span class="keyword">in</span> array[<span class="number">1</span>:] <span class="keyword">if</span> i &gt; pivot]</span><br><span class="line">        <span class="keyword">return</span> quicksort(less) + [pivot] + quicksort(greater)</span><br><span class="line">    </span><br><span class="line"> print(quicksort([<span class="number">12</span>,<span class="number">4</span>,<span class="number">17</span>,<span class="number">9</span>]))</span><br><span class="line"> <span class="comment"># 输出结果：[4, 9, 12, 17]</span></span><br></pre></td></tr></table></figure><ul><li>基线条件：<code>2行</code>：当数组为空或者只包含一个元素，这样最后只需要原样恢复数组，不用再进行排序</li><li><code>pivot</code>是基准值，用于对其他的数进行分类</li><li><code>less</code>存储的是比<code>pivot</code>小的数组成的数组</li><li><code>greater</code>存储的是比<code>pivot</code>大的数组成的数组</li><li>快速排序的算法复杂度<code>O(n * Log n)</code></li></ul><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul><li><a href="https://chenqx.github.io/2014/09/29/Algorithm-Recursive-Programming/" target="_blank" rel="noopener">递归算法详解</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;什么是递归，就是自身调用自身，比如一个函数在它自己的函数体类条用它自身称为递归调用。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://yslemmo.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://yslemmo.github.io/tags/Python/"/>
-    
-      <category term="algorithm" scheme="http://yslemmo.github.io/tags/algorithm/"/>
     
   </entry>
   

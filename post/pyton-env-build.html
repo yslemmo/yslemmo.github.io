@@ -117,7 +117,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/68355344.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/yslemmo/Images/master/27598511.jpg">
-<meta property="og:updated_time" content="2019-03-18T10:49:03.914Z">
+<meta property="og:updated_time" content="2019-06-22T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python环境搭建">
 <meta name="twitter:description" content="最近的在学Python，在搭建Python环境的时候遇到了很多困惑，这里整理总结一下留做以后参考，这篇文档是在Windows的环境下进行的">
@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-18 18:49:03" itemprop="dateModified" datetime="2019-03-18T18:49:03+08:00">2019-03-18</time>
+                <time title="修改时间：2019-06-23 00:00:00" itemprop="dateModified" datetime="2019-06-23T00:00:00+08:00">2019-06-23</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -546,7 +546,8 @@
 </li>
 </ul>
 <h4 id="其他方法："><a href="#其他方法：" class="headerlink" title="其他方法："></a>其他方法：</h4><ul>
-<li>改名：把Python 2版本中的文件名改成<code>Python2</code>，则默认运行的<code>Python 3</code>的版本<blockquote>
+<li><p>改名：把Python 2版本中的文件名改成<code>Python2</code>，则默认运行的<code>Python 3</code>的版本</p>
+<blockquote>
 <p>这样修改了名字的那个python对应的pip将无法使用。</p>
 </blockquote>
 </li>
@@ -587,8 +588,15 @@
 </li>
 </ul>
 <h4 id="指定全局安装源"><a href="#指定全局安装源" class="headerlink" title="指定全局安装源"></a>指定全局安装源</h4><ul>
-<li>在unix和macos，配置文件为：$HOME/.pip/pip.conf</li>
-<li>在windows上，先打开「appdate」文件夹后，在地址栏输入<code>%appdate%</code>，如果没有，则新建一个命名为<code>pip</code>的文件夹，然后创建文件<code>pip.ini</code>，打开文件输入下面的内容后保存<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">global</span>]</span><br><span class="line">timeout = <span class="number">6000</span></span><br><span class="line">index-url = https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">trusted-host = pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
+<li><p>在unix和macos，配置文件为：$HOME/.pip/pip.conf</p>
+</li>
+<li><p>在windows上，配置文件为：%APPDATA%\pip\pip.ini</p>
+<blockquote>
+<p>打开CMD，输入 <code>echo %APPDATA%</code> 的路径为<code>C:\Users\Lemmo\AppData\Roaming</code></p>
+</blockquote>
+</li>
+<li><p>先打开<code>%APPDATA%</code>文件夹后，打开<code>pip</code>文件夹，如果没有则新建一个命名为<code>pip</code>的文件夹，然后创建文件<code>pip.ini</code>，打开文件输入下面的内容后保存</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">global</span>]</span><br><span class="line">timeout = <span class="number">6000</span></span><br><span class="line">index-url = https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">trusted-host = pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="使用pip安装的module的路径"><a href="#使用pip安装的module的路径" class="headerlink" title="使用pip安装的module的路径"></a>使用pip安装的module的路径</h3><p>我的<code>Python 2.7</code>是安装在D盘的，这些module路径就是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Program Files\Python 2.7\Lib\site-packages</span><br></pre></td></tr></table></figure></p>
@@ -722,7 +730,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -773,7 +781,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -878,7 +888,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -960,7 +972,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">65k</span>
   
 
   
@@ -969,7 +981,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:57</span>
+    <span title="站点阅读时长">1:59</span>
   
 </div>
 
