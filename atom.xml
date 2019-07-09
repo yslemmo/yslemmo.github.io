@@ -5,9 +5,9 @@
   <subtitle>一个人的碎碎念</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yslemmo.github.io/"/>
+  <link href="http://lemmo.xyz/"/>
   <updated>2019-06-29T04:58:06.000Z</updated>
-  <id>http://yslemmo.github.io/</id>
+  <id>http://lemmo.xyz/</id>
   
   <author>
     <name>lemmo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Win10 家庭版启动组策略组件</title>
-    <link href="http://yslemmo.github.io/post/win10-home-gpedit.html"/>
-    <id>http://yslemmo.github.io/post/win10-home-gpedit.html</id>
+    <link href="http://lemmo.xyz/post/win10-home-gpedit.html"/>
+    <id>http://lemmo.xyz/post/win10-home-gpedit.html</id>
     <published>2019-06-29T04:58:06.000Z</published>
     <updated>2019-06-29T04:58:06.000Z</updated>
     
@@ -31,19 +31,19 @@
     
     </summary>
     
-      <category term="Computer skills" scheme="http://yslemmo.github.io/categories/Computer-skills/"/>
+      <category term="Computer skills" scheme="http://lemmo.xyz/categories/Computer-skills/"/>
     
     
-      <category term="gpedit" scheme="http://yslemmo.github.io/tags/gpedit/"/>
+      <category term="gpedit" scheme="http://lemmo.xyz/tags/gpedit/"/>
     
-      <category term="system" scheme="http://yslemmo.github.io/tags/system/"/>
+      <category term="system" scheme="http://lemmo.xyz/tags/system/"/>
     
   </entry>
   
   <entry>
     <title>快速迁移系统</title>
-    <link href="http://yslemmo.github.io/post/Move-System.html"/>
-    <id>http://yslemmo.github.io/post/Move-System.html</id>
+    <link href="http://lemmo.xyz/post/Move-System.html"/>
+    <id>http://lemmo.xyz/post/Move-System.html</id>
     <published>2019-06-28T08:32:05.000Z</published>
     <updated>2019-06-28T08:32:05.000Z</updated>
     
@@ -55,17 +55,17 @@
     
     </summary>
     
-      <category term="Hardware" scheme="http://yslemmo.github.io/categories/Hardware/"/>
+      <category term="Hardware" scheme="http://lemmo.xyz/categories/Hardware/"/>
     
     
-      <category term="SSD" scheme="http://yslemmo.github.io/tags/SSD/"/>
+      <category term="SSD" scheme="http://lemmo.xyz/tags/SSD/"/>
     
   </entry>
   
   <entry>
     <title>「我不知道该说什么，关于死亡还是爱情」书评</title>
-    <link href="http://yslemmo.github.io/post/Voices-from-Chernobyl.html"/>
-    <id>http://yslemmo.github.io/post/Voices-from-Chernobyl.html</id>
+    <link href="http://lemmo.xyz/post/Voices-from-Chernobyl.html"/>
+    <id>http://lemmo.xyz/post/Voices-from-Chernobyl.html</id>
     <published>2019-05-29T16:36:20.000Z</published>
     <updated>2019-05-29T16:36:20.000Z</updated>
     
@@ -77,17 +77,17 @@
     
     </summary>
     
-      <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
+      <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
-      <category term="纪实" scheme="http://yslemmo.github.io/tags/%E7%BA%AA%E5%AE%9E/"/>
+      <category term="纪实" scheme="http://lemmo.xyz/tags/%E7%BA%AA%E5%AE%9E/"/>
     
   </entry>
   
   <entry>
     <title>「中国国家治理的制度逻辑」读书笔记</title>
-    <link href="http://yslemmo.github.io/post/The-Institutional-Logic-of-Governance-In-China.html"/>
-    <id>http://yslemmo.github.io/post/The-Institutional-Logic-of-Governance-In-China.html</id>
+    <link href="http://lemmo.xyz/post/The-Institutional-Logic-of-Governance-In-China.html"/>
+    <id>http://lemmo.xyz/post/The-Institutional-Logic-of-Governance-In-China.html</id>
     <published>2019-05-29T09:57:27.000Z</published>
     <updated>2019-05-29T09:57:27.000Z</updated>
     
@@ -99,17 +99,17 @@
     
     </summary>
     
-      <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
+      <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
-      <category term="政治" scheme="http://yslemmo.github.io/tags/%E6%94%BF%E6%B2%BB/"/>
+      <category term="政治" scheme="http://lemmo.xyz/tags/%E6%94%BF%E6%B2%BB/"/>
     
   </entry>
   
   <entry>
     <title>「民主的逻辑」读书笔记</title>
-    <link href="http://yslemmo.github.io/post/Democracy-Logic.html"/>
-    <id>http://yslemmo.github.io/post/Democracy-Logic.html</id>
+    <link href="http://lemmo.xyz/post/Democracy-Logic.html"/>
+    <id>http://lemmo.xyz/post/Democracy-Logic.html</id>
     <published>2019-05-25T12:02:07.000Z</published>
     <updated>2019-05-25T15:30:00.000Z</updated>
     
@@ -121,21 +121,21 @@
     
     </summary>
     
-      <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
+      <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
-      <category term="政治" scheme="http://yslemmo.github.io/tags/%E6%94%BF%E6%B2%BB/"/>
+      <category term="政治" scheme="http://lemmo.xyz/tags/%E6%94%BF%E6%B2%BB/"/>
     
-      <category term="包刚升" scheme="http://yslemmo.github.io/tags/%E5%8C%85%E5%88%9A%E5%8D%87/"/>
+      <category term="包刚升" scheme="http://lemmo.xyz/tags/%E5%8C%85%E5%88%9A%E5%8D%87/"/>
     
-      <category term="民主" scheme="http://yslemmo.github.io/tags/%E6%B0%91%E4%B8%BB/"/>
+      <category term="民主" scheme="http://lemmo.xyz/tags/%E6%B0%91%E4%B8%BB/"/>
     
   </entry>
   
   <entry>
     <title>在NAS上搭建FTP服务</title>
-    <link href="http://yslemmo.github.io/post/Build-Ftp-Server-On-NAS.html"/>
-    <id>http://yslemmo.github.io/post/Build-Ftp-Server-On-NAS.html</id>
+    <link href="http://lemmo.xyz/post/Build-Ftp-Server-On-NAS.html"/>
+    <id>http://lemmo.xyz/post/Build-Ftp-Server-On-NAS.html</id>
     <published>2019-04-06T15:02:51.000Z</published>
     <updated>2019-04-06T15:02:51.000Z</updated>
     
@@ -147,19 +147,19 @@
     
     </summary>
     
-      <category term="computer skills" scheme="http://yslemmo.github.io/categories/computer-skills/"/>
+      <category term="computer skills" scheme="http://lemmo.xyz/categories/computer-skills/"/>
     
     
-      <category term="文件管理" scheme="http://yslemmo.github.io/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
+      <category term="文件管理" scheme="http://lemmo.xyz/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
     
-      <category term="ftp" scheme="http://yslemmo.github.io/tags/ftp/"/>
+      <category term="ftp" scheme="http://lemmo.xyz/tags/ftp/"/>
     
   </entry>
   
   <entry>
     <title>「风中有朵雨做的云」观后</title>
-    <link href="http://yslemmo.github.io/post/Cloud-in-the-Wind.html"/>
-    <id>http://yslemmo.github.io/post/Cloud-in-the-Wind.html</id>
+    <link href="http://lemmo.xyz/post/Cloud-in-the-Wind.html"/>
+    <id>http://lemmo.xyz/post/Cloud-in-the-Wind.html</id>
     <published>2019-04-04T11:46:43.000Z</published>
     <updated>2019-04-04T11:46:43.000Z</updated>
     
@@ -171,17 +171,17 @@
     
     </summary>
     
-      <category term="Movie" scheme="http://yslemmo.github.io/categories/Movie/"/>
+      <category term="Movie" scheme="http://lemmo.xyz/categories/Movie/"/>
     
     
-      <category term="movie" scheme="http://yslemmo.github.io/tags/movie/"/>
+      <category term="movie" scheme="http://lemmo.xyz/tags/movie/"/>
     
   </entry>
   
   <entry>
     <title>「如何聊电影」读书笔记</title>
-    <link href="http://yslemmo.github.io/post/How-to-watch-movies.html"/>
-    <id>http://yslemmo.github.io/post/How-to-watch-movies.html</id>
+    <link href="http://lemmo.xyz/post/How-to-watch-movies.html"/>
+    <id>http://lemmo.xyz/post/How-to-watch-movies.html</id>
     <published>2019-03-31T08:04:50.000Z</published>
     <updated>2019-03-31T08:04:50.000Z</updated>
     
@@ -193,17 +193,17 @@
     
     </summary>
     
-      <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
+      <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
-      <category term="movie" scheme="http://yslemmo.github.io/tags/movie/"/>
+      <category term="movie" scheme="http://lemmo.xyz/tags/movie/"/>
     
   </entry>
   
   <entry>
     <title>Unity3D音频管理器「生存之战」</title>
-    <link href="http://yslemmo.github.io/post/Unity3D-AudioManager.html"/>
-    <id>http://yslemmo.github.io/post/Unity3D-AudioManager.html</id>
+    <link href="http://lemmo.xyz/post/Unity3D-AudioManager.html"/>
+    <id>http://lemmo.xyz/post/Unity3D-AudioManager.html</id>
     <published>2019-03-23T08:10:37.000Z</published>
     <updated>2019-03-23T08:10:37.000Z</updated>
     
@@ -215,17 +215,17 @@
     
     </summary>
     
-      <category term="Unity3D" scheme="http://yslemmo.github.io/categories/Unity3D/"/>
+      <category term="Unity3D" scheme="http://lemmo.xyz/categories/Unity3D/"/>
     
     
-      <category term="Unity3D" scheme="http://yslemmo.github.io/tags/Unity3D/"/>
+      <category term="Unity3D" scheme="http://lemmo.xyz/tags/Unity3D/"/>
     
   </entry>
   
   <entry>
     <title>降噪耳机Bose-QC-30使用体验</title>
-    <link href="http://yslemmo.github.io/post/Bose-QC-30.html"/>
-    <id>http://yslemmo.github.io/post/Bose-QC-30.html</id>
+    <link href="http://lemmo.xyz/post/Bose-QC-30.html"/>
+    <id>http://lemmo.xyz/post/Bose-QC-30.html</id>
     <published>2019-03-14T22:53:46.000Z</published>
     <updated>2019-03-18T10:49:12.625Z</updated>
     
@@ -237,19 +237,19 @@
     
     </summary>
     
-      <category term="新玩具" scheme="http://yslemmo.github.io/categories/%E6%96%B0%E7%8E%A9%E5%85%B7/"/>
+      <category term="新玩具" scheme="http://lemmo.xyz/categories/%E6%96%B0%E7%8E%A9%E5%85%B7/"/>
     
     
-      <category term="耳机" scheme="http://yslemmo.github.io/tags/%E8%80%B3%E6%9C%BA/"/>
+      <category term="耳机" scheme="http://lemmo.xyz/tags/%E8%80%B3%E6%9C%BA/"/>
     
-      <category term="体验" scheme="http://yslemmo.github.io/tags/%E4%BD%93%E9%AA%8C/"/>
+      <category term="体验" scheme="http://lemmo.xyz/tags/%E4%BD%93%E9%AA%8C/"/>
     
   </entry>
   
   <entry>
     <title>「故事」读书笔记</title>
-    <link href="http://yslemmo.github.io/post/Story-Notes.html"/>
-    <id>http://yslemmo.github.io/post/Story-Notes.html</id>
+    <link href="http://lemmo.xyz/post/Story-Notes.html"/>
+    <id>http://lemmo.xyz/post/Story-Notes.html</id>
     <published>2019-02-19T10:24:11.000Z</published>
     <updated>2019-03-18T10:49:03.919Z</updated>
     
@@ -261,17 +261,17 @@
     
     </summary>
     
-      <category term="reading-list" scheme="http://yslemmo.github.io/categories/reading-list/"/>
+      <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
-      <category term="movie" scheme="http://yslemmo.github.io/tags/movie/"/>
+      <category term="movie" scheme="http://lemmo.xyz/tags/movie/"/>
     
   </entry>
   
   <entry>
     <title>使用Scrapy爬虫抓取并下载豆瓣图片</title>
-    <link href="http://yslemmo.github.io/post/crawl-douban-image-by-scrapy.html"/>
-    <id>http://yslemmo.github.io/post/crawl-douban-image-by-scrapy.html</id>
+    <link href="http://lemmo.xyz/post/crawl-douban-image-by-scrapy.html"/>
+    <id>http://lemmo.xyz/post/crawl-douban-image-by-scrapy.html</id>
     <published>2019-02-11T11:16:24.000Z</published>
     <updated>2019-03-18T10:49:03.928Z</updated>
     
@@ -283,19 +283,19 @@
     
     </summary>
     
-      <category term="Scrapy" scheme="http://yslemmo.github.io/categories/Scrapy/"/>
+      <category term="Scrapy" scheme="http://lemmo.xyz/categories/Scrapy/"/>
     
     
-      <category term="Python" scheme="http://yslemmo.github.io/tags/Python/"/>
+      <category term="Python" scheme="http://lemmo.xyz/tags/Python/"/>
     
-      <category term="Scrapy" scheme="http://yslemmo.github.io/tags/Scrapy/"/>
+      <category term="Scrapy" scheme="http://lemmo.xyz/tags/Scrapy/"/>
     
   </entry>
   
   <entry>
     <title>抓取豆瓣搜索到的图片</title>
-    <link href="http://yslemmo.github.io/post/crawl-douban-image-and-download.html"/>
-    <id>http://yslemmo.github.io/post/crawl-douban-image-and-download.html</id>
+    <link href="http://lemmo.xyz/post/crawl-douban-image-and-download.html"/>
+    <id>http://lemmo.xyz/post/crawl-douban-image-and-download.html</id>
     <published>2019-02-11T04:01:02.000Z</published>
     <updated>2019-03-18T10:49:03.928Z</updated>
     
@@ -307,17 +307,17 @@
     
     </summary>
     
-      <category term="clawl" scheme="http://yslemmo.github.io/categories/clawl/"/>
+      <category term="clawl" scheme="http://lemmo.xyz/categories/clawl/"/>
     
     
-      <category term="python" scheme="http://yslemmo.github.io/tags/python/"/>
+      <category term="python" scheme="http://lemmo.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>使用Item Pipeline把Scrapy爬取的数据存储到MongoDB</title>
-    <link href="http://yslemmo.github.io/post/Scrapy-To-MongoDB-By-Pipeline.html"/>
-    <id>http://yslemmo.github.io/post/Scrapy-To-MongoDB-By-Pipeline.html</id>
+    <link href="http://lemmo.xyz/post/Scrapy-To-MongoDB-By-Pipeline.html"/>
+    <id>http://lemmo.xyz/post/Scrapy-To-MongoDB-By-Pipeline.html</id>
     <published>2019-02-08T09:45:13.000Z</published>
     <updated>2019-02-11T13:26:52.911Z</updated>
     
@@ -329,19 +329,19 @@
     
     </summary>
     
-      <category term="Scrapy" scheme="http://yslemmo.github.io/categories/Scrapy/"/>
+      <category term="Scrapy" scheme="http://lemmo.xyz/categories/Scrapy/"/>
     
     
-      <category term="Crawler" scheme="http://yslemmo.github.io/tags/Crawler/"/>
+      <category term="Crawler" scheme="http://lemmo.xyz/tags/Crawler/"/>
     
-      <category term="MongoDB" scheme="http://yslemmo.github.io/tags/MongoDB/"/>
+      <category term="MongoDB" scheme="http://lemmo.xyz/tags/MongoDB/"/>
     
   </entry>
   
   <entry>
     <title>使用Scrapy遇到的问题汇总</title>
-    <link href="http://yslemmo.github.io/post/The-Problem-Collection-Use-Scrapy.html"/>
-    <id>http://yslemmo.github.io/post/The-Problem-Collection-Use-Scrapy.html</id>
+    <link href="http://lemmo.xyz/post/The-Problem-Collection-Use-Scrapy.html"/>
+    <id>http://lemmo.xyz/post/The-Problem-Collection-Use-Scrapy.html</id>
     <published>2019-02-07T12:31:32.000Z</published>
     <updated>2019-03-18T10:49:03.928Z</updated>
     
@@ -353,19 +353,19 @@
     
     </summary>
     
-      <category term="Scrapy" scheme="http://yslemmo.github.io/categories/Scrapy/"/>
+      <category term="Scrapy" scheme="http://lemmo.xyz/categories/Scrapy/"/>
     
     
-      <category term="Python" scheme="http://yslemmo.github.io/tags/Python/"/>
+      <category term="Python" scheme="http://lemmo.xyz/tags/Python/"/>
     
-      <category term="Debug" scheme="http://yslemmo.github.io/tags/Debug/"/>
+      <category term="Debug" scheme="http://lemmo.xyz/tags/Debug/"/>
     
   </entry>
   
   <entry>
     <title>Xlua热补丁修复</title>
-    <link href="http://yslemmo.github.io/post/xlua-hotfix.html"/>
-    <id>http://yslemmo.github.io/post/xlua-hotfix.html</id>
+    <link href="http://lemmo.xyz/post/xlua-hotfix.html"/>
+    <id>http://lemmo.xyz/post/xlua-hotfix.html</id>
     <published>2018-05-10T12:51:14.000Z</published>
     <updated>2019-03-18T10:49:03.916Z</updated>
     
@@ -377,21 +377,21 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://yslemmo.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="http://lemmo.xyz/categories/Unity/"/>
     
     
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+      <category term="xLua" scheme="http://lemmo.xyz/tags/xLua/"/>
     
-      <category term="xLua" scheme="http://yslemmo.github.io/tags/xLua/"/>
+      <category term="Untiy" scheme="http://lemmo.xyz/tags/Untiy/"/>
     
-      <category term="Untiy" scheme="http://yslemmo.github.io/tags/Untiy/"/>
+      <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
   <entry>
     <title>SimpleFrameWork框架简单介绍</title>
-    <link href="http://yslemmo.github.io/post/SimpleFrameWork-Introduction.html"/>
-    <id>http://yslemmo.github.io/post/SimpleFrameWork-Introduction.html</id>
+    <link href="http://lemmo.xyz/post/SimpleFrameWork-Introduction.html"/>
+    <id>http://lemmo.xyz/post/SimpleFrameWork-Introduction.html</id>
     <published>2018-05-07T07:18:19.000Z</published>
     <updated>2019-03-18T10:49:03.919Z</updated>
     
@@ -403,23 +403,23 @@
     
     </summary>
     
-      <category term="Unity" scheme="http://yslemmo.github.io/categories/Unity/"/>
+      <category term="Unity" scheme="http://lemmo.xyz/categories/Unity/"/>
     
-      <category term="Lua" scheme="http://yslemmo.github.io/categories/Unity/Lua/"/>
+      <category term="Lua" scheme="http://lemmo.xyz/categories/Unity/Lua/"/>
     
     
-      <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="http://lemmo.xyz/tags/Unity/"/>
     
-      <category term="ULua" scheme="http://yslemmo.github.io/tags/ULua/"/>
+      <category term="ULua" scheme="http://lemmo.xyz/tags/ULua/"/>
     
-      <category term="SimpleFramework" scheme="http://yslemmo.github.io/tags/SimpleFramework/"/>
+      <category term="SimpleFramework" scheme="http://lemmo.xyz/tags/SimpleFramework/"/>
     
   </entry>
   
   <entry>
     <title>SimpleFramwork框架下Ulua与C#的交互</title>
-    <link href="http://yslemmo.github.io/post/Ulua-And-Charp-Communicate.html"/>
-    <id>http://yslemmo.github.io/post/Ulua-And-Charp-Communicate.html</id>
+    <link href="http://lemmo.xyz/post/Ulua-And-Charp-Communicate.html"/>
+    <id>http://lemmo.xyz/post/Ulua-And-Charp-Communicate.html</id>
     <published>2018-05-07T07:09:54.000Z</published>
     <updated>2019-02-11T13:31:05.384Z</updated>
     
@@ -431,23 +431,23 @@
     
     </summary>
     
-      <category term="Lua - Ulua" scheme="http://yslemmo.github.io/categories/Lua-Ulua/"/>
+      <category term="Lua - Ulua" scheme="http://lemmo.xyz/categories/Lua-Ulua/"/>
     
     
-      <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="http://lemmo.xyz/tags/Unity/"/>
     
-      <category term="Lua" scheme="http://yslemmo.github.io/tags/Lua/"/>
+      <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+      <category term="Lua" scheme="http://lemmo.xyz/tags/Lua/"/>
     
-      <category term="SimpleFramwork" scheme="http://yslemmo.github.io/tags/SimpleFramwork/"/>
+      <category term="SimpleFramwork" scheme="http://lemmo.xyz/tags/SimpleFramwork/"/>
     
   </entry>
   
   <entry>
     <title>Lua与Charp交互</title>
-    <link href="http://yslemmo.github.io/post/lua-with-csharp.html"/>
-    <id>http://yslemmo.github.io/post/lua-with-csharp.html</id>
+    <link href="http://lemmo.xyz/post/lua-with-csharp.html"/>
+    <id>http://lemmo.xyz/post/lua-with-csharp.html</id>
     <published>2018-04-24T11:33:39.000Z</published>
     <updated>2019-03-18T10:49:03.915Z</updated>
     
@@ -459,21 +459,21 @@
     
     </summary>
     
-      <category term="lua" scheme="http://yslemmo.github.io/categories/lua/"/>
+      <category term="lua" scheme="http://lemmo.xyz/categories/lua/"/>
     
     
-      <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
+      <category term="Unity" scheme="http://lemmo.xyz/tags/Unity/"/>
     
-      <category term="lua" scheme="http://yslemmo.github.io/tags/lua/"/>
+      <category term="lua" scheme="http://lemmo.xyz/tags/lua/"/>
     
-      <category term="Charp" scheme="http://yslemmo.github.io/tags/Charp/"/>
+      <category term="Charp" scheme="http://lemmo.xyz/tags/Charp/"/>
     
   </entry>
   
   <entry>
     <title>迪杰特斯拉算法(Dijkstra)</title>
-    <link href="http://yslemmo.github.io/post/Dijkstra&#39;s-algorithm-use-python.html"/>
-    <id>http://yslemmo.github.io/post/Dijkstra&#39;s-algorithm-use-python.html</id>
+    <link href="http://lemmo.xyz/post/Dijkstra&#39;s-algorithm-use-python.html"/>
+    <id>http://lemmo.xyz/post/Dijkstra&#39;s-algorithm-use-python.html</id>
     <published>2018-04-22T07:08:45.000Z</published>
     <updated>2019-03-18T10:49:03.915Z</updated>
     
@@ -485,16 +485,16 @@
     
     </summary>
     
-      <category term="Python" scheme="http://yslemmo.github.io/categories/Python/"/>
+      <category term="Python" scheme="http://lemmo.xyz/categories/Python/"/>
     
-      <category term="Algorithm" scheme="http://yslemmo.github.io/categories/Python/Algorithm/"/>
+      <category term="Algorithm" scheme="http://lemmo.xyz/categories/Python/Algorithm/"/>
     
     
-      <category term="Python" scheme="http://yslemmo.github.io/tags/Python/"/>
+      <category term="Python" scheme="http://lemmo.xyz/tags/Python/"/>
     
-      <category term="Algorithm" scheme="http://yslemmo.github.io/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="http://lemmo.xyz/tags/Algorithm/"/>
     
-      <category term="Map" scheme="http://yslemmo.github.io/tags/Map/"/>
+      <category term="Map" scheme="http://lemmo.xyz/tags/Map/"/>
     
   </entry>
   
