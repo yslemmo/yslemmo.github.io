@@ -181,9 +181,9 @@
         <category>Unity</category>
       </categories>
       <tags>
+        <tag>热更新</tag>
         <tag>xLua</tag>
         <tag>Untiy</tag>
-        <tag>热更新</tag>
       </tags>
   </entry>
   <entry>
@@ -195,9 +195,9 @@
         <category>Lua</category>
       </categories>
       <tags>
+        <tag>Unity</tag>
         <tag>ULua</tag>
         <tag>SimpleFramework</tag>
-        <tag>Unity</tag>
       </tags>
   </entry>
   <entry>
@@ -209,8 +209,8 @@
       </categories>
       <tags>
         <tag>Unity</tag>
-        <tag>热更新</tag>
         <tag>Lua</tag>
+        <tag>热更新</tag>
         <tag>SimpleFramwork</tag>
       </tags>
   </entry>
@@ -419,15 +419,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hexo本地建站]]></title>
-    <url>%2Fpost%2Fbuild-hexo-blog.html</url>
-    <content type="text"><![CDATA[整理总结一下如何在本地安装Hexo，因为本人的电脑是Windows系统，所以以下都是在Windows环境下进行的。 安装前提 GIt Node.Js 1. 安装Git 下载Git：Git官网 安装Git 2. 安装Node.js 直接下载Node.Js的安装包 安装并Add 到Path（自动选择了） 安装Hexo 打开Node.js Command Prompt 运行命令1$ cd d:/hexo #要安装的Hexo的路径 安装hexo的命令 1$ npm install hexo-cli -g 在Blog的目录下初始化 hexo博客，名字可以是任意取 1$ hexo init blog #安装landscape的速度的比较慢 进入博客根目录，并且安装相关插件依赖等 12$ cd blog$ npm install 运行hexo的几个名字，查看效果 12hexo g #生成静态文件，汇总当前目录下生成一个新的叫做public的文件夹hexo s #启动本地的Web服务，启动完成后，可以在地址栏输入「http://127.0.0.1:4000/」查看 运行之后的效果 hexo的官方文档 如何安装主题Hexo中很有很多不同类型的主题： 一些参考 NexT.Mist：示例网站 Next官方使用文档! pure：示例网站 下载主题1git clone https://github.com/iissnan/hexo-theme-next.git themes/next themes/next为下载主题的路径 启动主题修改Hexo目录下的_config.yml配置文件中的theme属性，将其设置为next(网站应该会启动themes下的next主题) 更新12git g #生成git s #启动本地服务器]]></content>
-      <tags>
-        <tag>blog</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hexo文件目录]]></title>
     <url>%2Fpost%2Fhexo-basic.html</url>
     <content type="text"><![CDATA[刚接触到Hexo，已经被Hexo的简洁性和部署网站的便捷性所惊叹到了，但是Hexo的一些概念在大脑中还不是很清晰，在网上也没有找到一篇特别好的文章来介绍总结。因此本文作为个人使用Hexo认识的比较重要概念的的一些总结。 创建好Hexo后的路径树12345678910111213.├── _config.yml├── package.json|── public├── scaffolds├── source| ├── _drafts| └── _posts| ├── categories| └── tags└── themes |_ next(主题的名字) |_config.yml config.yml配置文件，采用yml的格式 root目录下的_config.yml:站点配置文件 应用的某个主题（如NexT）下的_config.yml:主题配置文件 public文件夹这个文件夹存放的是当我们使用命令hexo g命令后，自动生成的一些html文件, 这些文件都是要上传到远程服务器中。 source文件夹 _posts：保存markdown的源文件 _categories：使用命令hexo new page categories创建分类分页自动生成的文件夹； _tags：同上，这里创建标签分页； 如何创建分页!]]></content>
@@ -437,6 +428,15 @@
       <tags>
         <tag>Hexo</tag>
         <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo本地建站]]></title>
+    <url>%2Fpost%2Fbuild-hexo-blog.html</url>
+    <content type="text"><![CDATA[整理总结一下如何在本地安装Hexo，因为本人的电脑是Windows系统，所以以下都是在Windows环境下进行的。 安装前提 GIt Node.Js 1. 安装Git 下载Git：Git官网 安装Git 2. 安装Node.js 直接下载Node.Js的安装包 安装并Add 到Path（自动选择了） 安装Hexo 打开Node.js Command Prompt 运行命令1$ cd d:/hexo #要安装的Hexo的路径 安装hexo的命令 1$ npm install hexo-cli -g 在Blog的目录下初始化 hexo博客，名字可以是任意取 1$ hexo init blog #安装landscape的速度的比较慢 进入博客根目录，并且安装相关插件依赖等 12$ cd blog$ npm install 运行hexo的几个名字，查看效果 12hexo g #生成静态文件，汇总当前目录下生成一个新的叫做public的文件夹hexo s #启动本地的Web服务，启动完成后，可以在地址栏输入「http://127.0.0.1:4000/」查看 运行之后的效果 hexo的官方文档 如何安装主题Hexo中很有很多不同类型的主题： 一些参考 NexT.Mist：示例网站 Next官方使用文档! pure：示例网站 下载主题1git clone https://github.com/iissnan/hexo-theme-next.git themes/next themes/next为下载主题的路径 启动主题修改Hexo目录下的_config.yml配置文件中的theme属性，将其设置为next(网站应该会启动themes下的next主题) 更新12git g #生成git s #启动本地服务器]]></content>
+      <tags>
+        <tag>blog</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>

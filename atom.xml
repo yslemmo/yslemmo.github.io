@@ -380,11 +380,11 @@
       <category term="Unity" scheme="http://yslemmo.github.io/categories/Unity/"/>
     
     
+      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    
       <category term="xLua" scheme="http://yslemmo.github.io/tags/xLua/"/>
     
       <category term="Untiy" scheme="http://yslemmo.github.io/tags/Untiy/"/>
-    
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
@@ -408,11 +408,11 @@
       <category term="Lua" scheme="http://yslemmo.github.io/categories/Unity/Lua/"/>
     
     
+      <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
+    
       <category term="ULua" scheme="http://yslemmo.github.io/tags/ULua/"/>
     
       <category term="SimpleFramework" scheme="http://yslemmo.github.io/tags/SimpleFramework/"/>
-    
-      <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
     
   </entry>
   
@@ -436,9 +436,9 @@
     
       <category term="Unity" scheme="http://yslemmo.github.io/tags/Unity/"/>
     
-      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
-    
       <category term="Lua" scheme="http://yslemmo.github.io/tags/Lua/"/>
+    
+      <category term="热更新" scheme="http://yslemmo.github.io/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
       <category term="SimpleFramwork" scheme="http://yslemmo.github.io/tags/SimpleFramwork/"/>
     
