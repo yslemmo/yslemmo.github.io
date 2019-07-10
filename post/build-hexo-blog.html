@@ -108,7 +108,7 @@
 
 
   <meta name="description" content="整理总结一下如何在本地安装Hexo，因为本人的电脑是Windows系统，所以以下都是在Windows环境下进行的。">
-<meta name="keywords" content="blog,hexo">
+<meta name="keywords" content="hexo,blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo本地建站">
 <meta property="og:url" content="http://lemmo.xyz/post/build-hexo-blog.html">
@@ -439,18 +439,6 @@
           
             
             
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/post/build-hexo-blog.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/build-hexo-blog.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -572,9 +560,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag"><i class="fa fa-tag"></i> blog</a>
-          
             <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+            <a href="/tags/blog/" rel="tag"><i class="fa fa-tag"></i> blog</a>
           
         </div>
       
@@ -587,14 +575,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/post/hexo-basic.html" rel="next" title="Hexo文件目录">
+                <i class="fa fa-chevron-left"></i> Hexo文件目录
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/hexo-basic.html" rel="prev" title="Hexo文件目录">
-                Hexo文件目录 <i class="fa fa-chevron-right"></i>
+              <a href="/post/hexo-next-show-summary.html" rel="prev" title="NexT主题显示摘要">
+                NexT主题显示摘要 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -616,10 +608,6 @@
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-    </div>
 
   
 
@@ -1048,35 +1036,6 @@
 
 
   
-  
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: '8HU3PR0gPh9JMdGWeoKeORob-MdYXbMMI',
-    appKey: 'Y0NW413IzcGgY0N4zNo1N1lu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-</script>
-
-
 
 
   
