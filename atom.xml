@@ -422,11 +422,11 @@
       <category term="Unity" scheme="http://lemmo.xyz/categories/Unity/"/>
     
     
+      <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    
       <category term="xLua" scheme="http://lemmo.xyz/tags/xLua/"/>
     
       <category term="Untiy" scheme="http://lemmo.xyz/tags/Untiy/"/>
-    
-      <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
@@ -476,11 +476,11 @@
       <category term="Lua - Ulua" scheme="http://lemmo.xyz/categories/Lua-Ulua/"/>
     
     
-      <category term="Unity" scheme="http://lemmo.xyz/tags/Unity/"/>
+      <category term="Lua" scheme="http://lemmo.xyz/tags/Lua/"/>
     
       <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
-      <category term="Lua" scheme="http://lemmo.xyz/tags/Lua/"/>
+      <category term="Unity" scheme="http://lemmo.xyz/tags/Unity/"/>
     
       <category term="SimpleFramwork" scheme="http://lemmo.xyz/tags/SimpleFramwork/"/>
     
