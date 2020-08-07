@@ -31,7 +31,7 @@
     
     </summary>
     
-      <category term="readlist" scheme="http://lemmo.xyz/categories/readlist/"/>
+      <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
       <category term="政治" scheme="http://lemmo.xyz/tags/%E6%94%BF%E6%B2%BB/"/>
@@ -212,9 +212,9 @@
       <category term="reading-list" scheme="http://lemmo.xyz/categories/reading-list/"/>
     
     
-      <category term="政治" scheme="http://lemmo.xyz/tags/%E6%94%BF%E6%B2%BB/"/>
-    
       <category term="包刚升" scheme="http://lemmo.xyz/tags/%E5%8C%85%E5%88%9A%E5%8D%87/"/>
+    
+      <category term="政治" scheme="http://lemmo.xyz/tags/%E6%94%BF%E6%B2%BB/"/>
     
       <category term="民主" scheme="http://lemmo.xyz/tags/%E6%B0%91%E4%B8%BB/"/>
     
@@ -468,11 +468,11 @@
       <category term="Unity" scheme="http://lemmo.xyz/categories/Unity/"/>
     
     
+      <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    
       <category term="xLua" scheme="http://lemmo.xyz/tags/xLua/"/>
     
       <category term="Untiy" scheme="http://lemmo.xyz/tags/Untiy/"/>
-    
-      <category term="热更新" scheme="http://lemmo.xyz/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
