@@ -223,9 +223,9 @@
         <category>Unity</category>
       </categories>
       <tags>
-        <tag>热更新</tag>
         <tag>xLua</tag>
         <tag>Untiy</tag>
+        <tag>热更新</tag>
       </tags>
   </entry>
   <entry>
@@ -251,8 +251,8 @@
       </categories>
       <tags>
         <tag>Unity</tag>
-        <tag>Lua</tag>
         <tag>热更新</tag>
+        <tag>Lua</tag>
         <tag>SimpleFramwork</tag>
       </tags>
   </entry>
@@ -264,9 +264,9 @@
         <category>lua</category>
       </categories>
       <tags>
-        <tag>Unity</tag>
         <tag>lua</tag>
         <tag>Charp</tag>
+        <tag>Unity</tag>
       </tags>
   </entry>
   <entry>
@@ -439,17 +439,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hexo插件记录]]></title>
-    <url>%2Fpost%2Fhexo-plug-in-collection.html</url>
-    <content type="text"><![CDATA[记录一些常用的Hexo插件 NexT官方集成插件介绍：https://theme-next.iissnan.com/third-party-services.html 本地搜索：Local Search 安装 hexo-generator-searchdb，在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑 站点配置文件，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 编辑 主题配置文件，启用本地搜索功能： 123# Local searchlocal_search: enable: true 采坑注意：：在Next的主题配置文件中已经存在了local_search的语句了，不要重复添加，否则会报错。只需要搜索到相关位置，将false更改为true即可。搜索效果如下： 图片预览插件：FancyBoxHexo-Next主题中已经有图片预览的功能了，如果要使用，在主题的配置中文件中把FancyBox:False改为true。但是不知道什么原因，我开启之后无法打开网站。考虑到可能是没有下载FancyBox这个插件的原因。FancyBox有两个版本，FancyBox2和FancyBox3，一般来说v2版本就够用了。 下面是安装插件的步骤（参考fancybox的github地址）） 转到Next主题的目录 1$ cd themes/next 安装FancyBox到Source/lib路径 1git clone https://github.com/theme-next/theme-next-fancybox source/lib/fancybox 在NexT的_config.yml中开启 1fancybox: true 更新 12$ cd themes/next/source/lib/fancybox$ git pull 添加评论插件：Valine实现过程： 使用 Valine 给 Hexo 博客添加评论系统 Hexo博客常用插件及用法!]]></content>
-      <categories>
-        <category>默认</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[NexT主题显示摘要]]></title>
     <url>%2Fpost%2Fhexo-next-show-summary.html</url>
     <content type="text"><![CDATA[刚创建好的网站，把几篇以前写的MarkDown文件放在_Post文件夹中，但是打开网站一下，发现在页面中每篇文章都全部显示了，翻看起来不方便。如何解决这个问题. 官方提供了三个解决办法! 在文章中使用手动截断的方法，截断的语句是&lt;!-- more --&gt; 在文章的 front-matter 中添加 description，并提供文章摘录 自动形成摘要，在主题配置文件中添加，默认截取的长度为 150字符，可以根据需要自行设定：123auto_excerpt: enable: true length: 150 文章模版1234567891011---title: git的基本使用date: 2017-01-24categories:- cate1tags: - tag1---&lt;img src="/img/git.png" width = "900" height = "600" alt="git" align=center /&gt;摘要内容......&lt;!-- more --&gt;]]></content>
@@ -458,6 +447,17 @@
       </categories>
       <tags>
         <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo插件记录]]></title>
+    <url>%2Fpost%2Fhexo-plug-in-collection.html</url>
+    <content type="text"><![CDATA[记录一些常用的Hexo插件 NexT官方集成插件介绍：https://theme-next.iissnan.com/third-party-services.html 本地搜索：Local Search 安装 hexo-generator-searchdb，在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑 站点配置文件，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 编辑 主题配置文件，启用本地搜索功能： 123# Local searchlocal_search: enable: true 采坑注意：：在Next的主题配置文件中已经存在了local_search的语句了，不要重复添加，否则会报错。只需要搜索到相关位置，将false更改为true即可。搜索效果如下： 图片预览插件：FancyBoxHexo-Next主题中已经有图片预览的功能了，如果要使用，在主题的配置中文件中把FancyBox:False改为true。但是不知道什么原因，我开启之后无法打开网站。考虑到可能是没有下载FancyBox这个插件的原因。FancyBox有两个版本，FancyBox2和FancyBox3，一般来说v2版本就够用了。 下面是安装插件的步骤（参考fancybox的github地址）） 转到Next主题的目录 1$ cd themes/next 安装FancyBox到Source/lib路径 1git clone https://github.com/theme-next/theme-next-fancybox source/lib/fancybox 在NexT的_config.yml中开启 1fancybox: true 更新 12$ cd themes/next/source/lib/fancybox$ git pull 添加评论插件：Valine实现过程： 使用 Valine 给 Hexo 博客添加评论系统 Hexo博客常用插件及用法!]]></content>
+      <categories>
+        <category>默认</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -477,8 +477,8 @@
     <url>%2Fpost%2Fbuild-hexo-blog.html</url>
     <content type="text"><![CDATA[整理总结一下如何在本地安装Hexo，因为本人的电脑是Windows系统，所以以下都是在Windows环境下进行的。 安装前提 GIt Node.Js 1. 安装Git 下载Git：Git官网 安装Git 2. 安装Node.js 直接下载Node.Js的安装包 安装并Add 到Path（自动选择了） 安装Hexo 打开Node.js Command Prompt 运行命令1$ cd d:/hexo #要安装的Hexo的路径 安装hexo的命令 1$ npm install hexo-cli -g 在Blog的目录下初始化 hexo博客，名字可以是任意取 1$ hexo init blog #安装landscape的速度的比较慢 进入博客根目录，并且安装相关插件依赖等 12$ cd blog$ npm install 运行hexo的几个名字，查看效果 12hexo g #生成静态文件，汇总当前目录下生成一个新的叫做public的文件夹hexo s #启动本地的Web服务，启动完成后，可以在地址栏输入「http://127.0.0.1:4000/」查看 运行之后的效果 hexo的官方文档 如何安装主题Hexo中很有很多不同类型的主题： 一些参考 NexT.Mist：示例网站 Next官方使用文档! pure：示例网站 下载主题1git clone https://github.com/iissnan/hexo-theme-next.git themes/next themes/next为下载主题的路径 启动主题修改Hexo目录下的_config.yml配置文件中的theme属性，将其设置为next(网站应该会启动themes下的next主题) 更新12git g #生成git s #启动本地服务器]]></content>
       <tags>
-        <tag>hexo</tag>
         <tag>blog</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>

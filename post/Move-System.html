@@ -111,7 +111,7 @@
 <meta name="keywords" content="SSD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速迁移系统">
-<meta property="og:url" content="http://lemmo.xyz/post/Move-System.html">
+<meta property="og:url" content="http://blog.lemmo.top/post/Move-System.html">
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="使用「因特尔数据迁移软件」的克隆磁盘的功能快速迁移系统">
 <meta property="og:locale" content="zh-CN">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://lemmo.xyz/post/Move-System.html">
+  <link rel="canonical" href="http://blog.lemmo.top/post/Move-System.html">
 
 
 
@@ -372,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lemmo.xyz/post/Move-System.html">
+    <link itemprop="mainEntityOfPage" href="http://blog.lemmo.top/post/Move-System.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lemmo">
@@ -452,7 +452,7 @@
                 </span>
             
                 <a href="/post/Move-System.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/Move-System.html" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/Move-System.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -594,6 +594,9 @@
 
   
     <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
     </div>
 
   
@@ -1030,32 +1033,26 @@
 
   
   
+  <script id="dsq-count-scr" src="https://lemmo.disqus.com/count.js" async></script>
 
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: '8HU3PR0gPh9JMdGWeoKeORob-MdYXbMMI',
-    appKey: 'Y0NW413IzcGgY0N4zNo1N1lu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false
-  });
+  var disqus_config = function() {
+    this.page.url = "http://blog.lemmo.top/post/Move-System.html";
+    this.page.identifier = "post/Move-System.html";
+    this.page.title = '快速迁移系统';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lemmo.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
 </script>
+
 
 
 

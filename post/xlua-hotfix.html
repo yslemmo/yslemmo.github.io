@@ -108,10 +108,10 @@
 
 
   <meta name="description" content="使用xlua热补丁修复">
-<meta name="keywords" content="热更新,xLua,Untiy">
+<meta name="keywords" content="xLua,Untiy,热更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xlua热补丁修复">
-<meta property="og:url" content="http://lemmo.xyz/post/xlua-hotfix.html">
+<meta property="og:url" content="http://blog.lemmo.top/post/xlua-hotfix.html">
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="使用xlua热补丁修复">
 <meta property="og:locale" content="zh-CN">
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://lemmo.xyz/post/xlua-hotfix.html">
+  <link rel="canonical" href="http://blog.lemmo.top/post/xlua-hotfix.html">
 
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lemmo.xyz/post/xlua-hotfix.html">
+    <link itemprop="mainEntityOfPage" href="http://blog.lemmo.top/post/xlua-hotfix.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lemmo">
@@ -467,7 +467,7 @@
                 </span>
             
                 <a href="/post/xlua-hotfix.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/xlua-hotfix.html" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/xlua-hotfix.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -577,11 +577,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/热更新/" rel="tag"><i class="fa fa-tag"></i> 热更新</a>
-          
             <a href="/tags/xLua/" rel="tag"><i class="fa fa-tag"></i> xLua</a>
           
             <a href="/tags/Untiy/" rel="tag"><i class="fa fa-tag"></i> Untiy</a>
+          
+            <a href="/tags/热更新/" rel="tag"><i class="fa fa-tag"></i> 热更新</a>
           
         </div>
       
@@ -630,6 +630,9 @@
 
   
     <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
     </div>
 
   
@@ -1066,32 +1069,26 @@
 
   
   
+  <script id="dsq-count-scr" src="https://lemmo.disqus.com/count.js" async></script>
 
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: '8HU3PR0gPh9JMdGWeoKeORob-MdYXbMMI',
-    appKey: 'Y0NW413IzcGgY0N4zNo1N1lu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false
-  });
+  var disqus_config = function() {
+    this.page.url = "http://blog.lemmo.top/post/xlua-hotfix.html";
+    this.page.identifier = "post/xlua-hotfix.html";
+    this.page.title = 'Xlua热补丁修复';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lemmo.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
 </script>
+
 
 
 

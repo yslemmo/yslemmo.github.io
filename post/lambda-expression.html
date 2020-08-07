@@ -111,7 +111,7 @@
 <meta name="keywords" content="Lambda,编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lambda表达式">
-<meta property="og:url" content="http://lemmo.xyz/post/lambda-expression.html">
+<meta property="og:url" content="http://blog.lemmo.top/post/lambda-expression.html">
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="1. Lambda表达式概念官方概念  Lambda 表达式是一种可用于创建 委托 或 表达式目录树 类型的 匿名函数 。 通过使用 lambda 表达式，可以写入可作为参数传递或作为函数调用值返回的本地函数。">
 <meta property="og:locale" content="zh-CN">
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://lemmo.xyz/post/lambda-expression.html">
+  <link rel="canonical" href="http://blog.lemmo.top/post/lambda-expression.html">
 
 
 
@@ -369,7 +369,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lemmo.xyz/post/lambda-expression.html">
+    <link itemprop="mainEntityOfPage" href="http://blog.lemmo.top/post/lambda-expression.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lemmo">
@@ -465,7 +465,7 @@
                 </span>
             
                 <a href="/post/lambda-expression.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/lambda-expression.html" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/lambda-expression.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -588,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/hexo-plug-in-collection.html" rel="next" title="Hexo插件记录">
-                <i class="fa fa-chevron-left"></i> Hexo插件记录
+              <a href="/post/hexo-next-show-summary.html" rel="next" title="NexT主题显示摘要">
+                <i class="fa fa-chevron-left"></i> NexT主题显示摘要
               </a>
             
           </div>
@@ -624,6 +624,9 @@
 
   
     <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
     </div>
 
   
@@ -1060,32 +1063,26 @@
 
   
   
+  <script id="dsq-count-scr" src="https://lemmo.disqus.com/count.js" async></script>
 
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: '8HU3PR0gPh9JMdGWeoKeORob-MdYXbMMI',
-    appKey: 'Y0NW413IzcGgY0N4zNo1N1lu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false
-  });
+  var disqus_config = function() {
+    this.page.url = "http://blog.lemmo.top/post/lambda-expression.html";
+    this.page.identifier = "post/lambda-expression.html";
+    this.page.title = 'Lambda表达式';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lemmo.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
 </script>
+
 
 
 
