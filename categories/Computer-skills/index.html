@@ -110,7 +110,7 @@
   <meta name="description" content="一个伪文青">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lemmo&#39;s Blog">
-<meta property="og:url" content="http://blog.lemmo.top/categories/Computer-skills/index.html">
+<meta property="og:url" content="http://blog.lemmo.top/categories/computer-skills/index.html">
 <meta property="og:site_name" content="Lemmo&#39;s Blog">
 <meta property="og:description" content="一个伪文青">
 <meta property="og:locale" content="zh-CN">
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.lemmo.top/categories/Computer-skills/">
+  <link rel="canonical" href="http://blog.lemmo.top/categories/computer-skills/">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>分类: Computer skills | Lemmo's Blog</title>
+  <title>分类: computer skills | Lemmo's Blog</title>
   
 
 
@@ -289,6 +289,57 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-books">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/books/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>books</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-movies">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/movies/" rel="section"><i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br>movies</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-games">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/games/" rel="section"><i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br>games</a>
+
+  </li>
 
       
       
@@ -361,6 +412,15 @@
       
       
     
+      
+      
+    
+      
+      
+    
+      
+      
+    
     
 
   
@@ -377,7 +437,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Computer skills<small>分类</small>
+        <h1>computer skills<small>分类</small>
         </h1>
       </div>
 
@@ -389,43 +449,17 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/post/win10-home-gpedit.html" itemprop="url">
+          <a class="post-title-link" href="/post/Build-Ftp-Server-On-NAS.html" itemprop="url">
             
-              <span itemprop="name">Win10 家庭版启动组策略组件</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-29T12:58:06+08:00" content="2019-06-29">
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/post/hexo-basic.html" itemprop="url">
-            
-              <span itemprop="name">Hexo文件目录</span>
+              <span itemprop="name">在NAS上搭建FTP服务</span>
             
           </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-03-01T00:00:00+08:00" content="2018-03-01">
-          03-01
+        <time class="post-time" itemprop="dateCreated" datetime="2019-04-06T23:02:51+08:00" content="2019-04-06">
+          04-06
         </time>
       </div>
 
@@ -1158,6 +1192,59 @@
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
       e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+e.stopPropagation();
       if (isfetched === false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
